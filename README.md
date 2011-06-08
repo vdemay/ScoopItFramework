@@ -47,7 +47,8 @@ Then go back to XCode : your project has been updated with three20 dependencies
 
 
 Now import ScoopItFramework in your workspace drap'n'droping ScoopItFramework/ScoopItFramework/ScoopItFramework.xcodeproj onto the left xcode column. Xcode will ask you to create a workspace. Create it and save it. 
-	$>ls 
+	
+	>ls 
 	MyApp			MyWorspace.xcworkspace	ScoopItFramework	three20
 
 [![](https://github.com/vdemay/ScoopItFramework/raw/master/Documents/Workspace.png)](https://github.com/vdemay/ScoopItFramework/raw/master/Documents/Workspace.png)
