@@ -40,19 +40,23 @@ Then go back to XCode : your project has been updated with three20 dependencies
 Now import ScoopItFramework in your workspace drap'n'droping ScoopItFramework/ScoopItFramework/ScoopItFramework.xcodeproj onto the left xcode column. Xcode will ask you to create a workspace. Create it and save it. 
 	$>ls 
 	MyApp			MyWorspace.xcworkspace	ScoopItFramework	three20
-[![](https://github.com/vdemay/VDFramework/raw/master/Documents/default.png)](https://github.com/vdemay/ScoopItFramework/raw/master/Documents/Workspace.png)
+
+[![](https://github.com/vdemay/ScoopItFramework/raw/master/Documents/Workspace.png)](https://github.com/vdemay/ScoopItFramework/raw/master/Documents/Workspace.png)
 
 
 Add the static library to the “Link Binary With Libraries” build phase.
-[![](https://github.com/vdemay/VDFramework/raw/master/Documents/default.png)](https://github.com/vdemay/ScoopItFramework/raw/master/Documents/AddStatic.png)
+
+[![](https://github.com/vdemay/ScoopItFramework/raw/master/Documents/AddStatic.png)](https://github.com/vdemay/ScoopItFramework/raw/master/Documents/AddStatic.png)
 
 
 We also need to make sure that our app’s build target can locate the public headers used in this static library. Open the “Build Settings” tab and locate the “User Header Search Paths” setting. Set this to “$(BUILT_PRODUCTS_DIR)”
-[![](https://github.com/vdemay/VDFramework/raw/master/Documents/default.png)](https://github.com/vdemay/ScoopItFramework/raw/master/Documents/HeaderPath.png)
+
+[![](https://github.com/vdemay/ScoopItFramework/raw/master/Documents/HeaderPath.png)](https://github.com/vdemay/ScoopItFramework/raw/master/Documents/HeaderPath.png)
 
 
 While we are in "Build Setting" add -all_load in Other Linker Flag
-[![](https://github.com/vdemay/VDFramework/raw/master/Documents/default.png)](https://github.com/vdemay/ScoopItFramework/raw/master/Documents/Allload.png)
+
+[![](https://github.com/vdemay/ScoopItFramework/raw/master/Documents/Allload.png)](https://github.com/vdemay/ScoopItFramework/raw/master/Documents/Allload.png)
 
 
 You can #import "ScoopItFramework/SIScoopIt.h" and build and start to play with the framework
@@ -85,6 +89,6 @@ You can #import "ScoopItFramework/SIScoopIt.h" and build and start to play with 
 	<snip>
 
 
-[![](https://github.com/vdemay/VDFramework/raw/master/Documents/default.png)](https://github.com/vdemay/ScoopItFramework/raw/master/Documents/iPad.png)
+[![](https://github.com/vdemay/ScoopItFramework/raw/master/Documents/iPad.png)](https://github.com/vdemay/ScoopItFramework/raw/master/Documents/iPad.png)
 
 
