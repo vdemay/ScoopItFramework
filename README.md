@@ -11,27 +11,30 @@ ScoopItFramework uses
 
 ### first of all check out the ScoopItFramework
 Dowload or checkout ScoopItFramework 
-	 git clone git://github.com/vdemay/ScoopItFramework.git
+	`git clone git://github.com/vdemay/ScoopItFramework.git`
 
 
 Download or checkout Three20
-	git clone git://github.com/facebook/three20.git 
+	`git clone git://github.com/facebook/three20.git`
 
 
 At this stage you should have something like that
-	$> ls
+	
+	> ls
 	ScoopItFramework	three20
 
 
 Open XCode 4 and create a New Project (for the example "My App").
 At this stage 
-	$>ls
+	
+	>ls
 	MyApp			ScoopItFramework	three20
 
 
 Add three20 to your Project with the followed command
-	$>chmod u+x three20/src/scripts/ttmodule.py
-	$>three20/src/scripts/ttmodule.py -p MyApp/MyApp.xcodeproj Three20 --xcode-version=4
+	
+	>chmod u+x three20/src/scripts/ttmodule.py
+	>three20/src/scripts/ttmodule.py -p MyApp/MyApp.xcodeproj Three20 --xcode-version=4
 
 
 Then go back to XCode : your project has been updated with three20 dependencies
