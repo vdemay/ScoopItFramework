@@ -34,7 +34,8 @@ Then go back to XCode : your project has been updated with three20 dependencies
 * Choose the right Target
 * Choose Build Phases Tab
 * For each Three20*.a select Optional instead of Required
-[![](https://github.com/vdemay/VDFramework/raw/master/Documents/default.png)](https://github.com/vdemay/ScoopItFramework/raw/master/Documents/Three20Optional.png) 
+
+[![](https://github.com/vdemay/ScoopItFramework/raw/master/Documents/Three20Optional.png)](https://github.com/vdemay/ScoopItFramework/raw/master/Documents/Three20Optional.png) 
 
 
 Now import ScoopItFramework in your workspace drap'n'droping ScoopItFramework/ScoopItFramework/ScoopItFramework.xcodeproj onto the left xcode column. Xcode will ask you to create a workspace. Create it and save it. 
