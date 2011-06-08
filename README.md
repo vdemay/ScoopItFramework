@@ -9,8 +9,7 @@ ScoopItFramework uses
 
 ## How to create a new Project and use ScoopItFramework ?
 
-### first of all check out the ScoopItFramework
-Dowload or checkout ScoopItFramework 
+Donwload or checkout ScoopItFramework 
 	`git clone git://github.com/vdemay/ScoopItFramework.git`
 
 
@@ -38,6 +37,7 @@ Add three20 to your Project with the followed command
 
 
 Then go back to XCode : your project has been updated with three20 dependencies
+
 * Click on project name (My App)
 * Choose the right Target
 * Choose Build Phases Tab
@@ -46,7 +46,7 @@ Then go back to XCode : your project has been updated with three20 dependencies
 [![](https://github.com/vdemay/ScoopItFramework/raw/master/Documents/Three20Optional.png)](https://github.com/vdemay/ScoopItFramework/raw/master/Documents/Three20Optional.png) 
 
 
-Now import ScoopItFramework in your workspace drap'n'droping ScoopItFramework/ScoopItFramework/ScoopItFramework.xcodeproj onto the left xcode column. Xcode will ask you to create a workspace. Create it and save it. 
+Now import ScoopItFramework in your workspace drap'n'droping `ScoopItFramework/ScoopItFramework.xcodeproj` onto the left xcode column. Xcode will ask you to create a workspace. Create it and save it. 
 	
 	>ls 
 	MyApp			MyWorspace.xcworkspace	ScoopItFramework	three20
