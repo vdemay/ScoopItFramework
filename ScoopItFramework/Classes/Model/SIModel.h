@@ -13,8 +13,12 @@
 
 @interface SIModel : TTModel {	
 	SIScoopIt* scoopIt;
+    
+    NSDate*       _loadedTime;
+    BOOL          _loading;
 }
 @property (nonatomic, assign) SIScoopIt* scoopIt;
+@property (nonatomic, retain) NSDate*   loadedTime;
 
 - (NSString*) generateUrl;
 - (void) populateModel:(NSDictionary*) dic;

@@ -14,6 +14,7 @@
 @implementation SIModel
 
 @synthesize scoopIt;
+@synthesize loadedTime = _loadedTime;
 
 - (NSString*) generateUrl {
 	return nil;
@@ -22,8 +23,18 @@
 - (void) populateModel:(NSDictionary*) dic {
 }
 
+- (BOOL)isLoading {
+    return _loading;
+}
+
+- (BOOL)isLoaded {
+    return !!_loadedTime;
+}
+
 
 - (void)load:(TTURLRequestCachePolicy)cachePolicy more:(BOOL)more {
+    _loading = YES;
+    
 	OAConsumer *consumer = [[OAConsumer alloc] initWithKey:self.scoopIt.key
 													secret:self.scoopIt.secret];
 	
@@ -53,6 +64,10 @@
 }
 
 - (void)requestModel:(OAServiceTicket *)ticket didFinishWithData:(NSData *)data {
+    [_loadedTime release];
+    double timestamp = [ticket.request.timestamp doubleValue];
+    _loadedTime = [[NSDate dateWithTimeIntervalSince1970:timestamp] retain];
+    
 	TTDASSERT([data isKindOfClass:[NSData class]]);
 	
 	if ([data isKindOfClass:[NSData class]]) {
@@ -61,10 +76,14 @@
 		NSDictionary* feed = [[json JSONValue] retain];
 		[self populateModel:feed];
 	}	
+    
+    _loading = NO;
 	[self didFinishLoad];
 }
 
 - (void)requestModel:(OAServiceTicket *)ticket didFailWithError:(NSError *)error {
+    
+    _loading = NO;
 	[self didFailLoadWithError:error];
 }
 
