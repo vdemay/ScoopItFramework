@@ -17,6 +17,7 @@
 #import "SISource.h"
 #import "SITopic.h"
 #import "SIUser.h"
+#import "SICompilation.h"
 
 
 #define BASE_URL @"https://www.scoop.it/"
@@ -60,6 +61,7 @@ typedef enum SIRequestType {
 - (SITopic*) getTopic:(int)lid;
 - (SIUser*) getConnectedUser;
 - (SIUser*) getUser:(int)lid;
+- (SICompilation*) getCompilation;
 
 
 @end

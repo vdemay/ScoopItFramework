@@ -163,4 +163,11 @@ static SIScoopIt* sharedObj;
     return [[SIUser alloc] init:self withLid:lid];
 }
 
+- (SICompilation*) getCompilation {
+    if (self.accessToken != nil) {
+        return [[SICompilation alloc] init:self];
+    }
+    return nil;
+}
+
 @end
