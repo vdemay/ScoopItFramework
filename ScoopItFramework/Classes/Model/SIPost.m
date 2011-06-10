@@ -58,6 +58,7 @@
 		self.imageHeight = [[dic objectForKey:@"imageHeight"] intValue];
 		self.imageSize = [[dic objectForKey:@"imageSize"] intValue];
 		NSArray *imageUrlsJson = [dic objectForKey:@"imageUrls"];
+        self.imageUrls = [[NSArray alloc] initWithArray:imageUrlsJson];
 		self.commentsCount = [[dic objectForKey:@"commentsCount"] intValue];
 		self.isUserSuggestion = [[dic objectForKey:@"isUserSuggestion"] boolValue];
 		self.publicationDate = [[dic objectForKey:@"publicationDate"] intValue];
