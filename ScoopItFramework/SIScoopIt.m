@@ -14,6 +14,7 @@ static SIScoopIt* sharedObj;
 
 @synthesize key = _key;
 @synthesize secret = _secret;
+@synthesize accessToken = _accessToken;
 
 + (SIScoopIt*) sharedWithKey:(NSString*)key andSecret:(NSString*) secret {
 	if (!sharedObj) {
@@ -22,6 +23,10 @@ static SIScoopIt* sharedObj;
 	sharedObj.key = key;
 	sharedObj.secret = secret;
 	return sharedObj;
+}
+
++ (SIScoopIt*) shared {
+    return sharedObj;
 }
 
 #pragma mark Authorization
@@ -139,12 +144,23 @@ static SIScoopIt* sharedObj;
 	return YES;
 }
 
-//////////////////////////////////////////////// REQUESTS /////////////////////////////////////////////////////
+//////////////////////////////////////////////// MODEL /////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/*- (SITopic*) getTopic:(int)lid WithDelegate:(id<SIScoopItAuthorizationDelegate>) delegate {
+- (SITopic*) getTopic:(int)lid {
 	return [[SITopic alloc] init:self withLid:lid];
-}*/
+}
+
+- (SIUser*) getConnectedUser {
+    if (self.accessToken != nil) {
+        return [[SIUser alloc] initWithConnectedUser:self];
+    }
+    return nil;
+}
+
+- (SIUser*) getUser:(int)lid {
+    return [[SIUser alloc] init:self withLid:lid];
+}
 
 @end

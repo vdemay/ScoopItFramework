@@ -49,7 +49,7 @@
 @property (nonatomic, retain) NSArray* tags;
 
 
-- (id) init:(SIScoopIt*) _scoopIt withLid:(int) _lid;
+-(id) init:(SIScoopIt*)_scoopIt withLid:(int)_lid;
 
 -(void) getFromDictionary:(NSDictionary*) dic;
 

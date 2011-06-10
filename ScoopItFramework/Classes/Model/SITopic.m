@@ -41,7 +41,7 @@
 }
 
 - (NSString*) generateUrl {
-	return [NSString stringWithFormat:@"%@api/1/topic?id=%d", BASE_URL, self.lid];
+	return [NSString stringWithFormat:@"%@api/1/topic?curated=30&curable=0&id=%d", BASE_URL, self.lid];
 }
 - (void) populateModel:(NSDictionary*) dic {
 	NSDictionary* topicJson = [dic objectForKey:@"topic"];

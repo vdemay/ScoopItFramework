@@ -20,7 +20,14 @@
 
 
 -(void) getFromDictionary:(NSDictionary*) dic {
-	//TODO
+	if (dic != nil) {
+		self.lid = [[dic objectForKey:@"id"] intValue];
+		self.type = [dic objectForKey:@"type"];
+		self.description = [dic objectForKey:@"description"];
+		self.name = [dic objectForKey:@"name"];
+		self.iconUrl = [dic objectForKey:@"iconUrl"];
+		self.url = [dic objectForKey:@"url"];
+    }
 }
 
 - (void) dealloc

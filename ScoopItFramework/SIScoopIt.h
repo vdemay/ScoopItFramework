@@ -21,6 +21,11 @@
 
 #define BASE_URL @"https://www.scoop.it/"
 
+typedef enum SIRequestType {
+    SIRequestTopicById,
+    SIRequestProfile,
+} SIRequestType;
+
 
 @protocol SIScoopItAuthorizationDelegate;
 
@@ -43,22 +48,24 @@
 }
 @property (nonatomic, retain) NSString* key;
 @property (nonatomic, retain) NSString* secret;
+@property (nonatomic, retain) OAToken* accessToken;
 
 + (SIScoopIt*) sharedWithKey:(NSString*)key andSecret:(NSString*) secret;
++ (SIScoopIt*) shared;
 
 - (bool) isAuthorized;
 - (void) getAuthorizationWithDelegate:(id<SIScoopItAuthorizationDelegate>) delegate;
 
-//- (SITopic*) getTopic:(int)lid WithDelegate:(id<SIScoopItAuthorizationDelegate>) delegate;
+//MODEL GET
+- (SITopic*) getTopic:(int)lid;
+- (SIUser*) getConnectedUser;
+- (SIUser*) getUser:(int)lid;
 
 
 @end
 
 //////////////////////////////////////////////////////////////////////////////////////////
-
+// AUthentication Deleagte
 @protocol SIScoopItAuthorizationDelegate
-
 - (void)scoopIt:(SIScoopIt*)scoopIt authenticationReturned:(BOOL)success;
-
-
 @end
