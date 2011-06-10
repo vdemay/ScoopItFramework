@@ -36,7 +36,7 @@
 	
 	OAMutableURLRequest *request = [[OAMutableURLRequest alloc] initWithURL:_url
 																   consumer:consumer
-																	  token:nil   // we don't have a Token yet
+																	  token:scoopIt.accessToken
 																	  realm:nil   // our service provider doesn't specify a realm
 														  signatureProvider:nil]; // use the default method, HMAC-SHA1
 	
@@ -57,6 +57,7 @@
 	
 	if ([data isKindOfClass:[NSData class]]) {
 		NSString* json = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSLog(json);
 		NSDictionary* feed = [[json JSONValue] retain];
 		[self populateModel:feed];
 	}	
