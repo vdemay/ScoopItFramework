@@ -21,8 +21,21 @@
 	return self;
 }
 
+- (id) init:(SIScoopIt*) _scoopIt withItemNumber:(int) itemNumber {
+    self = [super init];
+	if (self != nil) {
+		self.scoopIt = _scoopIt;
+        _nbPost = itemNumber;
+	}
+	return self;
+}
+
 - (NSString*) generateUrl {
-	return [NSString stringWithFormat:@"%@api/1/compilation", BASE_URL];
+    if (_nbPost > 0) {
+        return [NSString stringWithFormat:@"%@api/1/compilation?count=%d", BASE_URL,_nbPost];
+    } else {
+        return [NSString stringWithFormat:@"%@api/1/compilation?count=30", BASE_URL];
+    }
 }
 
 - (void) populateModel:(NSDictionary*) dic {

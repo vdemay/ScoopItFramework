@@ -154,7 +154,10 @@ static SIScoopIt* sharedObj;
 
 - (SIUser*) getConnectedUser {
     if (self.accessToken != nil) {
-        return [[SIUser alloc] initWithConnectedUser:self];
+        if (_connectedUser == nil) {
+            _connectedUser = [[[SIUser alloc] initWithConnectedUser:self] retain];
+        }
+        return _connectedUser;
     }
     return nil;
 }
@@ -166,6 +169,12 @@ static SIScoopIt* sharedObj;
 - (SICompilation*) getCompilation {
     if (self.accessToken != nil) {
         return [[SICompilation alloc] init:self];
+    }
+    return nil;
+}
+- (SICompilation*) getCompilationWithNumberOfItem:(int) number {
+    if (self.accessToken != nil) {
+        return [[SICompilation alloc] init:self withItemNumber:number];
     }
     return nil;
 }

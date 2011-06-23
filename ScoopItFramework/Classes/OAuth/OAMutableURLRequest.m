@@ -35,7 +35,7 @@
 @end
 
 @implementation OAMutableURLRequest
-@synthesize signature, nonce, timestamp;
+@synthesize signature, nonce, timestamp, tag;
 
 #pragma mark init
 

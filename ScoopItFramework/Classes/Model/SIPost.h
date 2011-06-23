@@ -8,9 +8,27 @@
 
 #import <Foundation/Foundation.h>
 #import "SIModel.h"
+#import "SIScoopIt.h"
+
+typedef enum actions {
+    PostActionPrepare = 0,
+    PostActionCreate,
+    PostActionComment,
+    PostActionThanks,
+    PostActionAccept,
+    PostActionForward,
+    PostActionRefuse,
+    PostActionDelete,
+    PostActionEdit,
+    PostActionPin
+} PostAction;
+
+/////////////////////////////////////// SIPOST //////////////////////////////////
 
 @class SITopic;
 @class SISource;
+
+@protocol SIPostActionDelegate;
 
 @interface SIPost : SIModel {
 	int lid;
@@ -28,11 +46,13 @@
 	NSArray* imageUrls;
 	int commentsCount;
 	BOOL isUserSuggestion;
-	int publicationDate;
-	int currationDate;
+	double publicationDate;
+	double currationDate;
 	NSArray* postComments;
 	BOOL thanked;
 	SITopic* topic;
+    
+    id<SIPostActionDelegate> actionDelegate;
 	
 }
 
@@ -51,14 +71,28 @@
 @property (nonatomic, retain) NSArray* imageUrls;
 @property (nonatomic) int commentsCount;
 @property (nonatomic) BOOL isUserSuggestion;
-@property (nonatomic) int publicationDate;
-@property (nonatomic) int currationDate;
+@property (nonatomic) double publicationDate;
+@property (nonatomic) double currationDate;
 @property (nonatomic, retain) NSArray* postComments;
 @property (nonatomic) BOOL thanked;
 @property (nonatomic, retain) SITopic* topic;
 
+@property (nonatomic, assign) id<SIPostActionDelegate> actionDelegate;
 
 - (id) init:(SIScoopIt*) _scoopIt withLid:(int) _lid;
 - (void) getFromDictionary:(NSDictionary*) dic;
+
+//ACTIONS
+- (void) thanks;
+
+@end
+
+
+
+/////////////////////////////// DELEGATE ////////////////////////////////////////
+@protocol SIPostActionDelegate <NSObject>
+
+- (void) post:(SIPost*)post actionFailed:(PostAction)action;
+- (void) post:(SIPost*)post actionSucceeded:(PostAction)action withData:(NSDictionary*) data;
 
 @end

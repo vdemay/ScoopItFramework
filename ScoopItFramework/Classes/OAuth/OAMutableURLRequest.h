@@ -43,10 +43,12 @@
     NSString *nonce;
     NSString *timestamp;
 	NSString *verifier;
+    int tag;
 }
 @property(readonly) NSString *signature;
 @property(readonly) NSString *nonce;
 @property(readonly) NSString *timestamp;
+@property int tag;
 
 - (id)initWithURL:(NSURL *)aUrl
 		 consumer:(OAConsumer *)aConsumer

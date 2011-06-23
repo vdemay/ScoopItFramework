@@ -10,6 +10,7 @@
 
 #import "SITopic.h"
 #import "SIScoopIt.h"
+#import "SISharer.h"
 
 @implementation SIUser
 
@@ -63,7 +64,17 @@
 		self.shortName = [dic objectForKey:@"shortName"];
 		self.bio = [dic objectForKey:@"bio"];
 		self.avatarUrl = [dic objectForKey:@"avatarUrl"];
-        //TODO sharer
+        
+        NSMutableArray* sharersToAdd  = [[NSMutableArray alloc] init];
+        NSArray* sharersJson = [dic objectForKey:@"sharers"];
+        for (NSDictionary* sharerJson in sharersJson) {
+            SISharer *sharer = [[SISharer alloc] init];
+            [sharer populateModel:sharerJson];
+            [sharersToAdd addObject:sharer];
+        }
+        self.sharers = [[NSArray alloc] initWithArray:sharersToAdd];
+        TT_RELEASE_SAFELY(sharersJson);
+        
 		NSArray* curatedTopicsJson = [dic objectForKey:@"curatedTopics"];
 		NSMutableArray* curatedTopicsToAdd = [[NSMutableArray alloc] init];
 		for (NSDictionary* curatedTopicJson in curatedTopicsJson) {

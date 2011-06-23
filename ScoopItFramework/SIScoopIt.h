@@ -18,6 +18,7 @@
 #import "SITopic.h"
 #import "SIUser.h"
 #import "SICompilation.h"
+#import "SISharer.h"
 
 
 #define BASE_URL @"https://www.scoop.it/"
@@ -43,6 +44,8 @@ typedef enum SIRequestType {
 	OAToken* _requestToken;
 	//the authenticated Token
 	OAToken* _accessToken;
+    //the connected user
+    SIUser* _connectedUser;
 	
 	//delegate for authorization
 	id<SIScoopItAuthorizationDelegate> _authorizationDelegate;
@@ -59,9 +62,17 @@ typedef enum SIRequestType {
 
 //MODEL GET
 - (SITopic*) getTopic:(int)lid;
+
+// This method does not create an object each time. It will reacte object on 
+// demand. In all cases, the user is not loaded from network. user method is in charge
+// of the loading. If the object is not loaded all property will be nil
 - (SIUser*) getConnectedUser;
+
 - (SIUser*) getUser:(int)lid;
+
 - (SICompilation*) getCompilation;
+
+- (SICompilation*) getCompilationWithNumberOfItem:(int) number;
 
 
 @end
