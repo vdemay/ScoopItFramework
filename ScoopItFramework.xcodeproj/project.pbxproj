@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2E2DC95113A21479005C31C5 /* SICompilation.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E2DC94F13A21479005C31C5 /* SICompilation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2E2DC95213A21479005C31C5 /* SICompilation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E2DC95013A21479005C31C5 /* SICompilation.m */; };
+		2E6FE4BA13C21B55005EFD37 /* SINotification.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E6FE4B813C21B55005EFD37 /* SINotification.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E6FE4BB13C21B55005EFD37 /* SINotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E6FE4B913C21B55005EFD37 /* SINotification.m */; };
 		2E943AFA139F9DB600672F6B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E943AF9139F9DB600672F6B /* Foundation.framework */; };
 		2E943B05139F9DB600672F6B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E943B04139F9DB600672F6B /* UIKit.framework */; };
 		2E943B06139F9DB600672F6B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E943AF9139F9DB600672F6B /* Foundation.framework */; };
@@ -259,6 +261,8 @@
 /* Begin PBXFileReference section */
 		2E2DC94F13A21479005C31C5 /* SICompilation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SICompilation.h; path = Classes/Model/SICompilation.h; sourceTree = "<group>"; };
 		2E2DC95013A21479005C31C5 /* SICompilation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SICompilation.m; path = Classes/Model/SICompilation.m; sourceTree = "<group>"; };
+		2E6FE4B813C21B55005EFD37 /* SINotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SINotification.h; path = Classes/Model/SINotification.h; sourceTree = "<group>"; };
+		2E6FE4B913C21B55005EFD37 /* SINotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SINotification.m; path = Classes/Model/SINotification.m; sourceTree = "<group>"; };
 		2E943AF6139F9DB600672F6B /* libScoopItFramework.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libScoopItFramework.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E943AF9139F9DB600672F6B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2E943AFD139F9DB600672F6B /* ScoopItFramework-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ScoopItFramework-Prefix.pch"; sourceTree = "<group>"; };
@@ -553,8 +557,10 @@
 				2E2DC95013A21479005C31C5 /* SICompilation.m */,
 				2EDCE21513B0F9980059484D /* SISharer.h */,
 				2EDCE21613B0F9980059484D /* SISharer.m */,
-				2E943BB5139F9FB100672F6B /* SIModel.h */,
+				2E6FE4B813C21B55005EFD37 /* SINotification.h */,
+				2E6FE4B913C21B55005EFD37 /* SINotification.m */,
 				2E943BB6139F9FB100672F6B /* SIModel.m */,
+				2E943BB5139F9FB100672F6B /* SIModel.h */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -696,6 +702,7 @@
 				2E943BC9139FA05C00672F6B /* NSURL+Base.h in Headers */,
 				2E943BD3139FA07500672F6B /* Base64Transcoder.h in Headers */,
 				2E943BD5139FA07500672F6B /* hmac.h in Headers */,
+				2E6FE4BA13C21B55005EFD37 /* SINotification.h in Headers */,
 				2E943BD7139FA07500672F6B /* sha1.h in Headers */,
 				2E2DC95113A21479005C31C5 /* SICompilation.h in Headers */,
 				2EDCE21713B0F9980059484D /* SISharer.h in Headers */,
@@ -985,6 +992,7 @@
 				2E943BEB139FA0C500672F6B /* SIUser.m in Sources */,
 				2E2DC95213A21479005C31C5 /* SICompilation.m in Sources */,
 				2EDCE21813B0F9980059484D /* SISharer.m in Sources */,
+				2E6FE4BB13C21B55005EFD37 /* SINotification.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
