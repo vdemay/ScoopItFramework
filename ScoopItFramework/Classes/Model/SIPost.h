@@ -82,12 +82,6 @@ typedef enum actions {
 - (id) init:(SIScoopIt*) _scoopIt withLid:(int) _lid;
 - (void) getFromDictionary:(NSDictionary*) dic;
 
-
-/*
- * Thanks the current : no effect if already posted
- */
-- (void) thanks;
-
 /*
  * Accept a Post into a Topic
  * Edit properties of the post before calling this method
@@ -112,25 +106,6 @@ typedef enum actions {
  * ignored
  */
 - (void) refuseWithReason:(NSString*) reason;
-
-/*
- * Add a comment to this post
- */
-- (void) commentWithMessage:(NSString*) message;
-
-/*
- * Remove this post to its current topic
- * if the post is suggested use refuse instead of remove
- */
-- (void) remove;
-
-/*
- * Save post edition
- * the post need to be edited before calling this method
- * content / title / imageUrl
- * TODO : tag
- */
-- (void) edit;
 
 /*
  * Create this post from scratch
@@ -161,6 +136,33 @@ typedef enum actions {
  * You can also set sharers : see http://www.scoop.it/dev/api/1/types#sharer
  */
 - (void) forwardTo:(int) topicLid andSharers:(NSString*) shareOn;
+
+
+/*
+ * Thanks the current : no effect if already posted
+ */
+- (void) thanks;
+
+
+/*
+ * Add a comment to this post
+ */
+- (void) commentWithMessage:(NSString*) message;
+
+/*
+ * Remove this post to its current topic
+ * if the post is suggested use refuse instead of remove
+ */
+- (void) remove;
+
+/*
+ * Save post edition
+ * the post need to be edited before calling this method
+ * content / title / imageUrl
+ * TODO : tag
+ */
+- (void) edit;
+
 
 /*
  * Pin a post
