@@ -21,7 +21,8 @@
 #import "SISharer.h"
 
 
-#define BASE_URL @"https://www.scoop.it/"
+#define BASE_URL @"http://www.scoop.it/"
+//#define BASE_URL @"http://philou.integration.scoop.it/"
 
 typedef enum SIRequestType {
     SIRequestTopicById,

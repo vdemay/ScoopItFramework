@@ -237,8 +237,11 @@ static CGFloat kBorderWidth = 10;
 }
 
 - (void)postDismissCleanup {
-  [self removeObservers];
-  [self removeFromSuperview];
+    _webView.delegate = nil;
+    [_webView release];
+    _webView = nil;
+    [self removeObservers];
+    [self removeFromSuperview];
 }
 
 - (void)dismiss:(BOOL)animated {
@@ -538,7 +541,7 @@ static CGFloat kBorderWidth = 10;
 
 - (void)loadURL:(NSString*)url {
   [_loadingURL release];
-  _loadingURL = [NSURL URLWithString:url];
+  _loadingURL = [[NSURL URLWithString:url] retain];
   NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:_loadingURL];
 
   [_webView loadRequest:request];

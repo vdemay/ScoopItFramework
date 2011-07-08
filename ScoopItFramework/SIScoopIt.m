@@ -77,7 +77,7 @@ static SIScoopIt* sharedObj;
 													   encoding:NSUTF8StringEncoding];
 		_requestToken = [[[OAToken alloc] initWithHTTPResponseBody:responseBody] retain];
 		
-		SIDialog *dialog = [[SIDialog alloc] init];
+		SIDialog *dialog = [[[SIDialog alloc] init] retain];
 		dialog.delegate = self;
 		[dialog show];
 		[dialog loadURL:[NSString stringWithFormat:@"%@oauth/authorize?oauth_token=%@&oauth_callback=http://si.ok", BASE_URL, _requestToken.key]];
@@ -117,9 +117,9 @@ static SIScoopIt* sharedObj;
 				  didFailSelector:@selector(accessTokenTicket:didFailWithError:)];
 }
 - (void)accessTokenTicket:(OAServiceTicket *)ticket didFinishWithData:(NSData *)data {
+    NSString *responseBody = [[NSString alloc] initWithData:data
+                                                   encoding:NSUTF8StringEncoding];
 	if (ticket.didSucceed) {
-		NSString *responseBody = [[NSString alloc] initWithData:data
-													   encoding:NSUTF8StringEncoding];
 		_accessToken = [[[OAToken alloc] initWithHTTPResponseBody:responseBody] retain];
 		//store the token
 		[_accessToken storeInUserDefaultsWithServiceProviderName:@"SIAPP" prefix:@"scoop.it"];
