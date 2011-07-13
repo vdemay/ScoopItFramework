@@ -90,9 +90,10 @@
             SISharer *sharer = [[SISharer alloc] init];
             [sharer populateModel:sharerJson];
             [sharersToAdd addObject:sharer];
+            TT_RELEASE_SAFELY(sharer);
         }
-        self.sharers = [[NSArray alloc] initWithArray:sharersToAdd];
-        TT_RELEASE_SAFELY(sharersJson);
+        self.sharers = [[[NSArray alloc] initWithArray:sharersToAdd] autorelease];
+        TT_RELEASE_SAFELY(sharersToAdd);
         
 		NSArray* curatedTopicsJson = [dic objectForKey:@"curatedTopics"];
 		NSMutableArray* curatedTopicsToAdd = [[NSMutableArray alloc] init];
@@ -100,16 +101,22 @@
 			SITopic *topic = [[SITopic alloc] init];
 			[topic getFromDictionary:curatedTopicJson];
 			[curatedTopicsToAdd addObject:topic];
+            TT_RELEASE_SAFELY(topic);
 		}
-		self.curatedTopics = [[NSArray alloc] initWithArray:curatedTopicsToAdd];
+		self.curatedTopics = [[[NSArray alloc] initWithArray:curatedTopicsToAdd] autorelease];
+        TT_RELEASE_SAFELY(curatedTopicsToAdd);
+        
+        
         NSArray* followedTopicsJson = [dic objectForKey:@"followedTopics"];
 		NSMutableArray* followedTopicsToAdd = [[NSMutableArray alloc] init];
 		for (NSDictionary* followedTopicJson in followedTopicsJson) {
 			SITopic *topic = [[SITopic alloc] init];
 			[topic getFromDictionary:followedTopicJson];
 			[followedTopicsToAdd addObject:topic];
+            TT_RELEASE_SAFELY(topic);
 		}
-		self.followedTopics = [[NSArray alloc] initWithArray:followedTopicsToAdd];
+		self.followedTopics = [[[NSArray alloc] initWithArray:followedTopicsToAdd] autorelease];
+        TT_RELEASE_SAFELY(followedTopicsToAdd);
     }
 }
 

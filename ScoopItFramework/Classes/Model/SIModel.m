@@ -59,7 +59,7 @@
 						 delegate:self
 				didFinishSelector:@selector(requestModel:didFinishWithData:)
 				  didFailSelector:@selector(requestModel:didFailWithError:)];
-	
+    
 	[self didStartLoad];
 }
 
@@ -76,7 +76,7 @@
 		NSDictionary* feed = [[json JSONValue] retain];
         [self populateModel:feed];
         TT_RELEASE_SAFELY(json);
-        //TT_RELEASE_SAFELY(feed);
+        TT_RELEASE_SAFELY(feed);
 	}	
     
     _loading = NO;

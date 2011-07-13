@@ -46,8 +46,10 @@
         SIPost *post = [[SIPost alloc] init];
         [post getFromDictionary:postJson];
         [postsToAdd addObject:post];
+        TT_RELEASE_SAFELY(post);
     }
-    self.posts = [[NSArray alloc] initWithArray:postsToAdd];
+    self.posts = [[[NSArray alloc] initWithArray:postsToAdd] autorelease];
+    TT_RELEASE_SAFELY(postsToAdd);
 }
 
 

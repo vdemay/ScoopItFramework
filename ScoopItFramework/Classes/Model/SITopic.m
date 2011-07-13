@@ -90,8 +90,10 @@
 			SIPost *post = [[SIPost alloc] init];
 			[post getFromDictionary:curablePostJson];
 			[curablePostsToAdd addObject:post];
+            TT_RELEASE_SAFELY(post);
 		}
-		self.curablePosts = [[NSArray alloc] initWithArray:curablePostsToAdd];
+		self.curablePosts = [[[NSArray alloc] initWithArray:curablePostsToAdd] autorelease];
+        TT_RELEASE_SAFELY(curablePostsToAdd);
 		
 		NSArray* curatedPostsJson = [dic objectForKey:@"curatedPosts"];
 		NSMutableArray* curatedPostsToAdd = [[NSMutableArray alloc] init];
@@ -99,8 +101,10 @@
 			SIPost *post = [[SIPost alloc] init];
 			[post getFromDictionary:curatedPostJson];
 			[curatedPostsToAdd addObject:post];
+            TT_RELEASE_SAFELY(post);
 		}
-		self.curatedPosts = [[NSArray alloc] initWithArray:curatedPostsToAdd];
+		self.curatedPosts = [[[NSArray alloc] initWithArray:curatedPostsToAdd] autorelease];
+        TT_RELEASE_SAFELY(curatedPostsToAdd);
 	}	
 }
 
