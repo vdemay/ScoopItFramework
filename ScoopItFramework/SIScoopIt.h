@@ -22,7 +22,6 @@
 
 
 #define BASE_URL @"http://www.scoop.it/"
-//#define BASE_URL @"http://philou.integration.scoop.it/"
 
 typedef enum SIRequestType {
     SIRequestTopicById,

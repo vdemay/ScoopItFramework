@@ -30,6 +30,9 @@
 	NSArray* curablePosts;
 	NSArray* curatedPosts;
 	NSArray* tags;
+    
+    int nbCuratedPost;
+    int nbCurablePost;
 	
 }
 @property (nonatomic) int lid;
@@ -47,6 +50,9 @@
 @property (nonatomic, retain) NSArray* curablePosts;
 @property (nonatomic, retain) NSArray* curatedPosts;
 @property (nonatomic, retain) NSArray* tags;
+
+@property (nonatomic) int nbCuratedPost;
+@property (nonatomic) int nbCurablePost;
 
 
 -(id) init:(SIScoopIt*)_scoopIt withLid:(int)_lid;

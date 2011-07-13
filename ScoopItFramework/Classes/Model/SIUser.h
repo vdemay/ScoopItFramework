@@ -23,6 +23,9 @@
 	NSArray* followedTopics;
     
     BOOL connectedUser;
+    
+    int nbCuratedPost;
+    int nbCurablePost;
 }
 @property (nonatomic) int lid;
 @property (nonatomic, retain) NSString* name;
@@ -33,6 +36,9 @@
 @property (nonatomic, retain) NSArray* curatedTopics;
 @property (nonatomic, retain) NSArray* followedTopics;
 @property (nonatomic) BOOL connectedUser;
+
+@property (nonatomic) int nbCuratedPost;
+@property (nonatomic) int nbCurablePost;
 
 
 -(void) getFromDictionary:(NSDictionary*) dic;

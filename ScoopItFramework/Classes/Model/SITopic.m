@@ -30,18 +30,32 @@
 @synthesize curatedPosts;
 @synthesize tags;
 
+@synthesize nbCuratedPost;
+@synthesize nbCurablePost;
+
 - (id) init:(SIScoopIt*) _scoopIt withLid:(int) _lid
 {
 	self = [super init];
 	if (self != nil) {
 		self.scoopIt = _scoopIt;
 		self.lid = _lid;
+        nbCuratedPost = 30;
 	}
 	return self;
 }
 
+- (void) setNbCurablePost:(int)nb {
+    nbCurablePost = nb;
+    [self invalidate:YES];
+}
+
+- (void) setNbCuratedPost:(int)nb {
+    nbCuratedPost = nb;
+    [self invalidate:YES];
+}
+
 - (NSString*) generateUrl {
-	return [NSString stringWithFormat:@"%@api/1/topic?curated=30&curable=0&id=%d", BASE_URL, self.lid];
+	return [NSString stringWithFormat:@"%@api/1/topic?curated=%d&curable=%d&id=%d", BASE_URL, nbCuratedPost, nbCurablePost, self.lid];
 }
 - (void) populateModel:(NSDictionary*) dic {
 	NSDictionary* topicJson = [dic objectForKey:@"topic"];

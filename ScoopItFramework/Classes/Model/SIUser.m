@@ -24,6 +24,8 @@
 @synthesize curatedTopics;
 @synthesize followedTopics;
 @synthesize connectedUser;
+@synthesize nbCuratedPost;
+@synthesize nbCurablePost;
 
 
 -(id) init:(SIScoopIt*)_scoopIt withLid:(int)_lid {
@@ -36,6 +38,18 @@
 	return self;
 }
 
+- (void) setNbCurablePost:(int)nb {
+    nbCurablePost = nb;
+    [self invalidate:YES];
+}
+
+- (void) setNbCuratedPost:(int)nb {
+    nbCuratedPost = nb;
+    [self invalidate:YES];
+}
+
+
+
 -(id) initWithConnectedUser:(SIScoopIt*)_scoopIt {
     self = [super init];
 	if (self != nil) {
@@ -46,11 +60,16 @@
 }
 
 - (NSString*) generateUrl {
+    NSString *url = nil;
     if (!connectedUser) {
-        return [NSString stringWithFormat:@"%@api/1/profile?id=%d", BASE_URL, self.lid];
+        url =  [NSString stringWithFormat:@"%@api/1/profile?id=%d", BASE_URL, self.lid];
     } else {
-        return [NSString stringWithFormat:@"%@api/1/profile", BASE_URL];
+        url =  [NSString stringWithFormat:@"%@api/1/profile?1=1", BASE_URL];
     }
+    
+    url = [NSString stringWithFormat:@"%@&curated=%d&curable=%d", url, self.nbCuratedPost, self.nbCurablePost];
+    
+    return url;
 }
 - (void) populateModel:(NSDictionary*) dic {
 	NSDictionary* topicJson = [dic objectForKey:@"user"];

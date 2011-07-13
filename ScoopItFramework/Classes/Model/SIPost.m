@@ -444,6 +444,7 @@
 		NSString* json = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         NSLog(json);
 		feed = [json JSONValue];
+        TT_RELEASE_SAFELY(json);
     }
     
     if (ticket.request.tag == PostActionThanks) {
@@ -461,7 +462,7 @@
     if (actionDelegate != nil) {
         [actionDelegate post:self actionSucceeded:ticket.request.tag withData:feed];
     }
-    //TT_RELEASE_SAFELY(feed);
+    TT_RELEASE_SAFELY(feed);
 }
 
 - (void) postActionRequest:(OAServiceTicket *)ticket didFailWithError:(NSError *)error {
