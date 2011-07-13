@@ -67,6 +67,9 @@ static SIScoopIt* sharedObj;
 							 delegate:sharedObj
 					didFinishSelector:@selector(requestTokenTicket:didFinishWithData:)
 					  didFailSelector:@selector(requestTokenTicket:didFailWithError:)];
+        
+        TT_RELEASE_SAFELY(consumer);
+        TT_RELEASE_SAFELY(request);
 	} else {
 		[_authorizationDelegate scoopIt:self authenticationReturned:YES];
 	}
@@ -116,6 +119,10 @@ static SIScoopIt* sharedObj;
 						 delegate:sharedObj
 				didFinishSelector:@selector(accessTokenTicket:didFinishWithData:)
 				  didFailSelector:@selector(accessTokenTicket:didFailWithError:)];
+    
+    
+    TT_RELEASE_SAFELY(consumer);
+    TT_RELEASE_SAFELY(request);
 }
 - (void)accessTokenTicket:(OAServiceTicket *)ticket didFinishWithData:(NSData *)data {
 	if (ticket.didSucceed) {
@@ -150,6 +157,7 @@ static SIScoopIt* sharedObj;
 //////////////////////////////////////////////// MODEL /////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//FIXME Memory management
 
 - (SITopic*) getTopic:(int)lid {
 	return [[SITopic alloc] init:self withLid:lid];

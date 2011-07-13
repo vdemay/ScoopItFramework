@@ -115,6 +115,8 @@
     OARequestParameter *idParam = [[OARequestParameter alloc] initWithName:@"id"
                                                                      value:[NSString stringWithFormat:@"%d", self.lid]];
     NSArray *params = [NSArray arrayWithObjects:actionParam, idParam, nil];
+    TT_RELEASE_SAFELY(actionParam);
+    TT_RELEASE_SAFELY(idParam);
     
     [self postAction:PostActionThanks withParameters:params];
 }
@@ -122,15 +124,17 @@
 /////////////////////////////////////////////////////////////////////////////////////
 
 - (void) pin {
-    NSMutableArray *params = [[NSMutableArray alloc] init];
+    NSMutableArray *params = [[[NSMutableArray alloc] init] autorelease];
     
     OARequestParameter *actionParam = [[OARequestParameter alloc] initWithName:@"action"
                                                                          value:@"pin"];
     [params addObject:actionParam];
+    TT_RELEASE_SAFELY(actionParam);
     
     OARequestParameter *idParam = [[OARequestParameter alloc] initWithName:@"id"
                                                                      value:[NSString stringWithFormat:@"%d",self.lid]];
     [params addObject:idParam];
+    TT_RELEASE_SAFELY(idParam);
     
     [self postAction:PostActionDelete withParameters:params];
 }
@@ -144,19 +148,22 @@
         return;
     }
     
-    NSMutableArray *params = [[NSMutableArray alloc] init];
+    NSMutableArray *params = [[[NSMutableArray alloc] init] autorelease];
     
     OARequestParameter *actionParam = [[OARequestParameter alloc] initWithName:@"action"
                                                                          value:@"comment"];
     [params addObject:actionParam];
+    TT_RELEASE_SAFELY(actionParam);
     
     OARequestParameter *idParam = [[OARequestParameter alloc] initWithName:@"id"
                                                                      value:[NSString stringWithFormat:@"%d",self.lid]];
     [params addObject:idParam];
+    TT_RELEASE_SAFELY(idParam);
     
     OARequestParameter *commentTextParam = [[OARequestParameter alloc] initWithName:@"commentText"
                                                                      value:message];
     [params addObject:commentTextParam];
+    TT_RELEASE_SAFELY(commentTextParam);
     
     
     [self postAction:PostActionComment withParameters:params];
@@ -169,29 +176,34 @@
         [self postActionRequest:nil didFailWithError:[NSError errorWithDomain:@"Can not edit a post not yet accpeted" code:0 userInfo:nil]];
         return;
     }
-    NSMutableArray *params = [[NSMutableArray alloc] init];
+    NSMutableArray *params = [[[NSMutableArray alloc] init] autorelease];
     
     OARequestParameter *actionParam = [[OARequestParameter alloc] initWithName:@"action"
                                                                          value:@"edit"];
     [params addObject:actionParam];
+    TT_RELEASE_SAFELY(actionParam);
     
     OARequestParameter *idParam = [[OARequestParameter alloc] initWithName:@"id"
                                                                      value:[NSString stringWithFormat:@"%d",self.lid]];
     [params addObject:idParam];
+    TT_RELEASE_SAFELY(idParam);
     
     
     OARequestParameter *titleParam = [[OARequestParameter alloc] initWithName:@"title"
                                                                               value:self.title];
     [params addObject:titleParam];
+    TT_RELEASE_SAFELY(titleParam);
     
     OARequestParameter *contentParam = [[OARequestParameter alloc] initWithName:@"content"
                                                                         value:self.content];
     [params addObject:contentParam];
+    TT_RELEASE_SAFELY(contentParam);
     
     
     OARequestParameter *imageUrlParam = [[OARequestParameter alloc] initWithName:@"imageUrl"
                                                                           value:self.imageUrl];
     [params addObject:imageUrlParam];
+    TT_RELEASE_SAFELY(imageUrlParam);
     
     //TODO Tags
     
@@ -206,20 +218,23 @@
 }
 
 - (void) refuseWithReason:(NSString*) reason {
-    NSMutableArray *params = [[NSMutableArray alloc] init];
+    NSMutableArray *params = [[[NSMutableArray alloc] init] autorelease];
     
     OARequestParameter *actionParam = [[OARequestParameter alloc] initWithName:@"action"
                                                                          value:@"refuse"];
     [params addObject:actionParam];
+    TT_RELEASE_SAFELY(actionParam);
     
     OARequestParameter *idParam = [[OARequestParameter alloc] initWithName:@"id"
                                                                      value:[NSString stringWithFormat:@"%d",self.lid]];
     [params addObject:idParam];
+    TT_RELEASE_SAFELY(idParam);
     
     if (self.isUserSuggestion && reason == nil) {
         OARequestParameter *reasonParam = [[OARequestParameter alloc] initWithName:@"reason"
                                                                               value:reason];
         [params addObject:reasonParam];
+        TT_RELEASE_SAFELY(reasonParam);
     }
     
     [self postAction:PostActionRefuse withParameters:params];
@@ -233,42 +248,49 @@
 }
 
 - (void) acceptToTopic:(int) topicLid andSharers:(NSString*) shareOn {
-    NSMutableArray *params = [[NSMutableArray alloc] init];
+    NSMutableArray *params = [[[NSMutableArray alloc] init] autorelease];
     
     OARequestParameter *actionParam = [[OARequestParameter alloc] initWithName:@"action"
                                                                          value:@"accept"];
     [params addObject:actionParam];
+    TT_RELEASE_SAFELY(actionParam);
     
     OARequestParameter *idParam = [[OARequestParameter alloc] initWithName:@"id"
                                                                          value:[NSString stringWithFormat:@"%d",self.lid]];
     [params addObject:idParam];
+    TT_RELEASE_SAFELY(idParam);
     
     
     OARequestParameter *topicId = [[OARequestParameter alloc] initWithName:@"topicId"
-                                                                     value:[NSString stringWithFormat:@"%d",topicId]];
+                                                                     value:[NSString stringWithFormat:@"%d",topicLid]];
     [params addObject:topicId];
+    TT_RELEASE_SAFELY(topicId);
     
     
     if (self.title) {
         OARequestParameter *titleParam = [[OARequestParameter alloc] initWithName:@"title"
                                                                         value:self.title];
         [params addObject:titleParam];
+        TT_RELEASE_SAFELY(titleParam);
     }
     if (self.content) {
         OARequestParameter *contentParam = [[OARequestParameter alloc] initWithName:@"content"
                                                                           value:self.content];
         [params addObject:contentParam];
+        TT_RELEASE_SAFELY(contentParam);
     }
     if (self.imageUrl) {
         OARequestParameter *imageUrlParam = [[OARequestParameter alloc] initWithName:@"imageUrl"
                                                                           value:self.imageUrl];
         [params addObject:imageUrlParam];
+        TT_RELEASE_SAFELY(imageUrlParam);
     }
     
     if (shareOn) {
         OARequestParameter *shareOnParam = [[OARequestParameter alloc] initWithName:@"shareOn"
                                                                      value:shareOn];
         [params addObject:shareOnParam];
+        TT_RELEASE_SAFELY(shareOnParam);
     }
     
     [self postAction:PostActionAccept withParameters:params];
@@ -282,42 +304,49 @@
 }
 
 - (void) createOn:(int) topicLid andSharers:(NSString*) shareOn {
-    NSMutableArray *params = [[NSMutableArray alloc] init];
+    NSMutableArray *params = [[[NSMutableArray alloc] init] autorelease];
     
     OARequestParameter *actionParam = [[OARequestParameter alloc] initWithName:@"action"
                                                                          value:@"create"];
     [params addObject:actionParam];
+    TT_RELEASE_SAFELY(actionParam);
     
     OARequestParameter *idParam = [[OARequestParameter alloc] initWithName:@"id"
                                                                      value:[NSString stringWithFormat:@"%d",self.lid]];
     [params addObject:idParam];
+    TT_RELEASE_SAFELY(idParam);
     
     
     OARequestParameter *topicId = [[OARequestParameter alloc] initWithName:@"topicId"
-                                                                     value:[NSString stringWithFormat:@"%d",topicId]];
+                                                                     value:[NSString stringWithFormat:@"%d",topicLid]];
     [params addObject:topicId];
+    TT_RELEASE_SAFELY(topicId);
     
     
     if (self.title) {
         OARequestParameter *titleParam = [[OARequestParameter alloc] initWithName:@"title"
                                                                             value:self.title];
         [params addObject:titleParam];
+        TT_RELEASE_SAFELY(titleParam);
     }
     if (self.content) {
         OARequestParameter *contentParam = [[OARequestParameter alloc] initWithName:@"content"
                                                                               value:self.content];
         [params addObject:contentParam];
+        TT_RELEASE_SAFELY(contentParam);
     }
     if (self.imageUrl) {
         OARequestParameter *imageUrlParam = [[OARequestParameter alloc] initWithName:@"imageUrl"
                                                                                value:self.imageUrl];
         [params addObject:imageUrlParam];
+        TT_RELEASE_SAFELY(imageUrlParam);
     }
     
     if (shareOn) {
         OARequestParameter *shareOnParam = [[OARequestParameter alloc] initWithName:@"shareOn"
                                                                               value:shareOn];
         [params addObject:shareOnParam];
+        TT_RELEASE_SAFELY(shareOnParam);
     }
     
     [self postAction:PostActionCreate withParameters:params];
@@ -326,15 +355,17 @@
 /////////////////////////////////////////////////////////////////////////////////////
 
 - (void) remove {
-    NSMutableArray *params = [[NSMutableArray alloc] init];
+    NSMutableArray *params = [[[NSMutableArray alloc] init] autorelease];
     
     OARequestParameter *actionParam = [[OARequestParameter alloc] initWithName:@"action"
                                                                          value:@"delete"];
     [params addObject:actionParam];
+    TT_RELEASE_SAFELY(actionParam);
     
     OARequestParameter *idParam = [[OARequestParameter alloc] initWithName:@"id"
                                                                      value:[NSString stringWithFormat:@"%d",self.lid]];
     [params addObject:idParam];
+    TT_RELEASE_SAFELY(idParam);
     
     [self postAction:PostActionDelete withParameters:params];
 }
@@ -346,42 +377,49 @@
 }
 
 - (void) forwardTo:(int) topicLid andSharers:(NSString*) shareOn {
-    NSMutableArray *params = [[NSMutableArray alloc] init];
+    NSMutableArray *params = [[[NSMutableArray alloc] init] autorelease];
     
     OARequestParameter *actionParam = [[OARequestParameter alloc] initWithName:@"action"
                                                                          value:@"forward"];
     [params addObject:actionParam];
+    TT_RELEASE_SAFELY(actionParam);
     
     OARequestParameter *idParam = [[OARequestParameter alloc] initWithName:@"id"
                                                                      value:[NSString stringWithFormat:@"%d",self.lid]];
     [params addObject:idParam];
+    TT_RELEASE_SAFELY(idParam);
     
     
     OARequestParameter *topicId = [[OARequestParameter alloc] initWithName:@"topicId"
-                                                                     value:[NSString stringWithFormat:@"%d",topicId]];
+                                                                     value:[NSString stringWithFormat:@"%d",topicLid]];
     [params addObject:topicId];
+    TT_RELEASE_SAFELY(topicId);
     
     
     if (self.title) {
         OARequestParameter *titleParam = [[OARequestParameter alloc] initWithName:@"title"
                                                                             value:self.title];
         [params addObject:titleParam];
+        TT_RELEASE_SAFELY(titleParam);
     }
     if (self.content) {
         OARequestParameter *contentParam = [[OARequestParameter alloc] initWithName:@"content"
                                                                               value:self.content];
         [params addObject:contentParam];
+        TT_RELEASE_SAFELY(contentParam);
     }
     if (self.imageUrl) {
         OARequestParameter *imageUrlParam = [[OARequestParameter alloc] initWithName:@"imageUrl"
                                                                                value:self.imageUrl];
         [params addObject:imageUrlParam];
+        TT_RELEASE_SAFELY(imageUrlParam);
     }
     
     if (shareOn) {
         OARequestParameter *shareOnParam = [[OARequestParameter alloc] initWithName:@"shareOn"
                                                                               value:shareOn];
         [params addObject:shareOnParam];
+        TT_RELEASE_SAFELY(shareOnParam);
     }
     
     [self postAction:PostActionForward withParameters:params];
@@ -390,15 +428,17 @@
 /////////////////////////////////////////////////////////////////////////////////////
 
 - (void) preparForUrl:(NSString*) url {
-    NSMutableArray *params = [[NSMutableArray alloc] init];
+    NSMutableArray *params = [[[NSMutableArray alloc] init] autorelease];
     
     OARequestParameter *actionParam = [[OARequestParameter alloc] initWithName:@"action"
                                                                          value:@"forward"];
     [params addObject:actionParam];
+    TT_RELEASE_SAFELY(actionParam);
     
     OARequestParameter *urlParam = [[OARequestParameter alloc] initWithName:@"url"
                                                                      value:url];
     [params addObject:urlParam];
+    TT_RELEASE_SAFELY(urlParam);
     
     [self postAction:PostActionForward withParameters:params];
 }
@@ -432,6 +472,9 @@
 						 delegate:self
 				didFinishSelector:@selector(postActionRequest:didFinishWithData:)
 				  didFailSelector:@selector(postActionRequest:didFailWithError:)];
+    
+    TT_RELEASE_SAFELY(consumer);
+    TT_RELEASE_SAFELY(request);
 }
 
 //////////////////////////////////////////// DELEGATE /////////////////////////////////////////////
@@ -462,7 +505,6 @@
     if (actionDelegate != nil) {
         [actionDelegate post:self actionSucceeded:ticket.request.tag withData:feed];
     }
-    TT_RELEASE_SAFELY(feed);
 }
 
 - (void) postActionRequest:(OAServiceTicket *)ticket didFailWithError:(NSError *)error {

@@ -34,17 +34,18 @@
 
 - (void)load:(TTURLRequestCachePolicy)cachePolicy more:(BOOL)more {
     _loading = YES;
+	NSString* urlString = [self generateUrl];
+	if (urlString == nil) {
+		[self didFailLoadWithError:nil];
+        
+		return;
+	}
+	NSURL *_url = [NSURL URLWithString:urlString];
     
 	OAConsumer *consumer = [[OAConsumer alloc] initWithKey:self.scoopIt.key
 													secret:self.scoopIt.secret];
 	
-	NSString* urlString = [self generateUrl];
-	if (urlString == nil) {
-		[self didFailLoadWithError:nil];
-		return;
-	}
-	NSURL *_url = [NSURL URLWithString:urlString];
-	
+    
 	OAMutableURLRequest *request = [[OAMutableURLRequest alloc] initWithURL:_url
 																   consumer:consumer
 																	  token:scoopIt.accessToken
@@ -59,6 +60,9 @@
 						 delegate:self
 				didFinishSelector:@selector(requestModel:didFinishWithData:)
 				  didFailSelector:@selector(requestModel:didFailWithError:)];
+    
+    TT_RELEASE_SAFELY(consumer);
+    TT_RELEASE_SAFELY(request);
     
 	[self didStartLoad];
 }
