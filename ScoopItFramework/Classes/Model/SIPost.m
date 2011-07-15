@@ -72,7 +72,7 @@
 		self.commentsCount = [[dic objectForKey:@"commentsCount"] intValue];
 		self.isUserSuggestion = [[dic objectForKey:@"isUserSuggestion"] boolValue];
 		self.publicationDate = [[dic objectForKey:@"publicationDate"] doubleValue];
-		self.currationDate = [[dic objectForKey:@"currationDate"] doubleValue];
+		self.currationDate = [[dic objectForKey:@"curationDate"] doubleValue];
 		//TODO Comments
 		self.thanked = [[dic objectForKey:@"thanked"] boolValue];
 		NSDictionary* topicJson = [dic objectForKey:@"topic"];
