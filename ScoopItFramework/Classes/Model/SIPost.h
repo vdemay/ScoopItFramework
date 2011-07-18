@@ -34,18 +34,27 @@ typedef enum actions {
 	int lid;
 	NSString* content;
 	NSString* title;
-	int thanksCount;
 	SISource* source;
 	NSString* url;
 	NSString* scoopUrl;
+    
 	NSString* imageUrl;
+    NSString* smallImageUrl;
+    NSString* mediumImageUrl;
+    NSString* largeImageUrl;
 	int imageWidth;
 	int imageHeight;
 	int imageSize;
 	NSString* imagePosition;
 	NSArray* imageUrls;
+    
+    int pagesView;
 	int commentsCount;
+	int thanksCount;
+    int reactionsCount;
+    
 	BOOL isUserSuggestion;
+    
 	double publicationDate;
 	double currationDate;
 	NSArray* postComments;
@@ -64,6 +73,9 @@ typedef enum actions {
 @property (nonatomic, retain) NSString* url;
 @property (nonatomic, retain) NSString* scoopUrl;
 @property (nonatomic, retain) NSString* imageUrl;
+@property (nonatomic, retain) NSString* smallImageUrl;
+@property (nonatomic, retain) NSString* mediumImageUrl;
+@property (nonatomic, retain) NSString* largeImageUrl;
 @property (nonatomic) int imageWidth;
 @property (nonatomic) int imageHeight;
 @property (nonatomic) int imageSize;
@@ -76,6 +88,8 @@ typedef enum actions {
 @property (nonatomic, retain) NSArray* postComments;
 @property (nonatomic) BOOL thanked;
 @property (nonatomic, retain) SITopic* topic;
+@property (nonatomic) int pagesView;
+@property (nonatomic) int reactionsCount;
 
 @property (nonatomic, assign) id<SIPostActionDelegate> actionDelegate;
 

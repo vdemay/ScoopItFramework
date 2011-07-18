@@ -13,10 +13,13 @@
 @interface SICompilation : SIModel {
     NSArray *_posts;
     int _nbPost;
+    
+    BOOL followed;
 }
 @property (nonatomic, retain) NSArray* posts;
 
 - (id) init:(SIScoopIt*) _scoopIt;
 - (id) init:(SIScoopIt*) _scoopIt withItemNumber:(int) itemNumber;
+- (id) initWithFollowedType:(SIScoopIt*) _scoopIt withItemNumber:(int) itemNumber;
 
 @end

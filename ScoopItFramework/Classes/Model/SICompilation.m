@@ -30,12 +30,28 @@
 	return self;
 }
 
+- (id) initWithFollowedType:(SIScoopIt*) _scoopIt withItemNumber:(int) itemNumber {
+    self = [super init];
+	if (self != nil) {
+		self.scoopIt = _scoopIt;
+        _nbPost = itemNumber;
+        followed = true;
+	}
+	return self;
+}
+
 - (NSString*) generateUrl {
+    NSString * url;
     if (_nbPost > 0) {
-        return [NSString stringWithFormat:@"%@api/1/compilation?count=%d", BASE_URL,_nbPost];
+        url =  [NSString stringWithFormat:@"%@api/1/compilation?count=%d", BASE_URL,_nbPost];
     } else {
-        return [NSString stringWithFormat:@"%@api/1/compilation?count=30", BASE_URL];
+        url =  [NSString stringWithFormat:@"%@api/1/compilation?count=30", BASE_URL];
     }
+    
+    if (followed) {
+        url = [NSString stringWithFormat:@"%@&sort=following", url];
+    }
+    return url;
 }
 
 - (void) populateModel:(NSDictionary*) dic {

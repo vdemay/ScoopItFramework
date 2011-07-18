@@ -190,4 +190,11 @@ static SIScoopIt* sharedObj;
     return nil;
 }
 
+- (SICompilation*) getFollowingCompilationWithNumberOfItem:(int) number {
+    if (self.accessToken != nil) {
+        return [[SICompilation alloc] initWithFollowedType:self withItemNumber:number];
+    }
+    return nil;
+}
+
 @end

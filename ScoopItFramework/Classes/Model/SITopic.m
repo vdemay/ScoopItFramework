@@ -16,6 +16,9 @@
 
 @synthesize lid;
 @synthesize imageUrl;
+@synthesize smallImageUrl;
+@synthesize mediumImageUrl;
+@synthesize largeImageUrl;
 @synthesize description;
 @synthesize name;
 @synthesize shortName;
@@ -67,6 +70,9 @@
 	if (dic != nil) {
 		self.lid = [[dic objectForKey:@"id"] intValue];
 		self.imageUrl = [dic objectForKey:@"imageUrl"];
+		self.smallImageUrl = [dic objectForKey:@"smallImageUrl"];
+		self.mediumImageUrl = [dic objectForKey:@"mediumImageUrl"];
+		self.largeImageUrl = [dic objectForKey:@"largeImageUrl"];
 		self.description = [dic objectForKey:@"description"];
 		self.name = [dic objectForKey:@"name"];
 		self.shortName = [dic objectForKey:@"shortName"];
@@ -77,11 +83,11 @@
 		self.unreadPostCount = [[dic objectForKey:@"unreadPostCount"] intValue];
 		
 		NSDictionary* creatorJson = [dic objectForKey:@"creator"];
-		self.creator = [[SIUser alloc] init];
+		self.creator = [[[SIUser alloc] init] autorelease];
 		[self.creator getFromDictionary:creatorJson];
 		
 		NSDictionary* pinnedPostJson = [dic objectForKey:@"pinnedPost"]; 
-		self.pinnedPost = [[SIPost alloc] init];
+		self.pinnedPost = [[[SIPost alloc] init] autorelease];
 		[self.pinnedPost getFromDictionary:pinnedPostJson];
 		
 		NSArray* curablePostsJson = [dic objectForKey:@"curablePosts"];
@@ -111,23 +117,41 @@
 - (void) dealloc {
 	[imageUrl release];
 	imageUrl = nil;
+    
+	[smallImageUrl release];
+	smallImageUrl = nil;
+    
+	[mediumImageUrl release];
+	mediumImageUrl = nil;
+    
+	[largeImageUrl release];
+	largeImageUrl = nil;
+    
 	[description release];
 	description = nil;
+    
 	[name release];
 	name = nil;
-	[shortName release];
+	
+    [shortName release];
 	shortName = nil;
-	[url release];
+	
+    [url release];
 	url = nil;
-	[creator release];
+	
+    [creator release];
 	creator = nil;
-	[pinnedPost release];
+	
+    [pinnedPost release];
 	pinnedPost = nil;
-	[curablePosts release];
+	
+    [curablePosts release];
 	curablePosts = nil;
-	[curatedPosts release];
+	
+    [curatedPosts release];
 	curatedPosts = nil;
-	[tags release];
+	
+    [tags release];
 	tags = nil;
 	[super dealloc];
 }

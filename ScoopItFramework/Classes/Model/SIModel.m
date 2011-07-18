@@ -63,6 +63,7 @@
     
     TT_RELEASE_SAFELY(consumer);
     TT_RELEASE_SAFELY(request);
+    TT_RELEASE_SAFELY(fetcher);
     
 	[self didStartLoad];
 }

@@ -32,6 +32,9 @@
 @synthesize imageSize;
 @synthesize imagePosition;
 @synthesize imageUrls;
+@synthesize smallImageUrl;
+@synthesize mediumImageUrl;
+@synthesize largeImageUrl;
 @synthesize commentsCount;
 @synthesize isUserSuggestion;
 @synthesize publicationDate;
@@ -39,6 +42,8 @@
 @synthesize postComments;
 @synthesize thanked;
 @synthesize topic;
+@synthesize pagesView;
+@synthesize reactionsCount;
 
 @synthesize actionDelegate;
 
@@ -59,25 +64,30 @@
 		self.content = [dic objectForKey:@"content"];
 		self.title = [dic objectForKey:@"title"];
 		self.thanksCount = [[dic objectForKey:@"thanksCount"] intValue];
-		self.source = [[SISource alloc] init];
+		self.source = [[[SISource alloc] init] autorelease] ;
 		[self.source getFromDictionary:[dic objectForKey:@"source"]];
 		self.url = [dic objectForKey:@"url"];
 		self.scoopUrl = [dic objectForKey:@"scoopUrl"];
 		self.imageUrl = [dic objectForKey:@"imageUrl"];
+		self.smallImageUrl = [dic objectForKey:@"smallImageUrl"];
+		self.mediumImageUrl = [dic objectForKey:@"mediumImageUrl"];
+		self.largeImageUrl = [dic objectForKey:@"largeImageUrl"];
 		self.imageWidth = [[dic objectForKey:@"imageWidth"] intValue];
 		self.imageHeight = [[dic objectForKey:@"imageHeight"] intValue];
 		self.imageSize = [[dic objectForKey:@"imageSize"] intValue];
 		NSArray *imageUrlsJson = [dic objectForKey:@"imageUrls"];
         self.imageUrls = [[NSArray alloc] initWithArray:imageUrlsJson];
 		self.commentsCount = [[dic objectForKey:@"commentsCount"] intValue];
+		self.reactionsCount = [[dic objectForKey:@"reactionsCount"] intValue];
 		self.isUserSuggestion = [[dic objectForKey:@"isUserSuggestion"] boolValue];
 		self.publicationDate = [[dic objectForKey:@"publicationDate"] doubleValue];
 		self.currationDate = [[dic objectForKey:@"currationDate"] doubleValue];
+        self.pagesView = [[dic objectForKey:@"pagesView"] intValue];
 		//TODO Comments
 		self.thanked = [[dic objectForKey:@"thanked"] boolValue];
 		NSDictionary* topicJson = [dic objectForKey:@"topic"];
 		if (topicJson) {
-			self.topic = [[SITopic alloc] init];
+			self.topic = [[[SITopic alloc] init] autorelease];
 			[self.topic getFromDictionary:topicJson];
 		}
 		
@@ -88,21 +98,41 @@
 {
 	[content release];
 	content = nil;
+    
 	[title release];
 	title = nil;
-	[source release];
+	
+    [source release];
 	source = nil;
-	[url release];
+	
+    [url release];
 	url = nil;
-	[scoopUrl release];
+	
+    [scoopUrl release];
 	scoopUrl = nil;
-	[imagePosition release];
+	
+    [imagePosition release];
 	imagePosition = nil;
-	[imageUrls release];
+	
+    [imageUrls release];
 	imageUrls = nil;
-	[postComments release];
+	
+    [imageUrl release];
+	imageUrl = nil;
+	
+    [smallImageUrl release];
+	smallImageUrl = nil;
+	
+    [mediumImageUrl release];
+	mediumImageUrl = nil;
+	
+    [largeImageUrl release];
+	largeImageUrl = nil;
+	
+    [postComments release];
 	postComments = nil;
-	[topic release];
+	
+    [topic release];
 	topic = nil;
 	
 	[super dealloc];
@@ -475,6 +505,7 @@
     
     TT_RELEASE_SAFELY(consumer);
     TT_RELEASE_SAFELY(request);
+    TT_RELEASE_SAFELY(fetcher);
 }
 
 //////////////////////////////////////////// DELEGATE /////////////////////////////////////////////

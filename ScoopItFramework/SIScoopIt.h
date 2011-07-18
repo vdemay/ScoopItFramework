@@ -73,6 +73,7 @@ typedef enum SIRequestType {
 - (SICompilation*) getCompilation;
 
 - (SICompilation*) getCompilationWithNumberOfItem:(int) number;
+- (SICompilation*) getFollowingCompilationWithNumberOfItem:(int) number;
 
 
 @end

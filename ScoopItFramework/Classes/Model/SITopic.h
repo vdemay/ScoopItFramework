@@ -17,6 +17,9 @@
 @interface SITopic : SIModel {
 	int lid;
 	NSString* imageUrl;
+	NSString* smallImageUrl;
+	NSString* mediumImageUrl;
+	NSString* largeImageUrl;
 	NSString* description;
 	NSString* name;
 	NSString* shortName;
@@ -37,6 +40,9 @@
 }
 @property (nonatomic) int lid;
 @property (nonatomic, retain) NSString* imageUrl;
+@property (nonatomic, retain) NSString* smallImageUrl;
+@property (nonatomic, retain) NSString* mediumImageUrl;
+@property (nonatomic, retain) NSString* largeImageUrl;
 @property (nonatomic, retain) NSString* description;
 @property (nonatomic, retain) NSString* name;
 @property (nonatomic, retain) NSString* shortName;
