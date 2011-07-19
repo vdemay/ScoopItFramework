@@ -461,7 +461,7 @@
     NSMutableArray *params = [[[NSMutableArray alloc] init] autorelease];
     
     OARequestParameter *actionParam = [[OARequestParameter alloc] initWithName:@"action"
-                                                                         value:@"forward"];
+                                                                         value:@"prepare"];
     [params addObject:actionParam];
     TT_RELEASE_SAFELY(actionParam);
     
@@ -470,7 +470,7 @@
     [params addObject:urlParam];
     TT_RELEASE_SAFELY(urlParam);
     
-    [self postAction:PostActionForward withParameters:params];
+    [self postAction:PostActionPrepare withParameters:params];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
