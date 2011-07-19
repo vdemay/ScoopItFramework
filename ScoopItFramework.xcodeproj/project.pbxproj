@@ -7,24 +7,104 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
-		2E10FE9D13D5A7AF00B6F2D7 /* ScoopItFramework_agg */ = {
+		2E45A46813D5BE46004377B2 /* MergeiOSAndSimulator */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = 2E10FEA813D5A7AF00B6F2D7 /* Build configuration list for PBXAggregateTarget "ScoopItFramework_agg" */;
+			buildConfigurationList = 2E45A46913D5BE46004377B2 /* Build configuration list for PBXAggregateTarget "MergeiOSAndSimulator" */;
 			buildPhases = (
-				2E10FEAA13D5A7FA00B6F2D7 /* ShellScript */,
+				2E45A46D13D5BE56004377B2 /* ShellScript */,
 			);
 			dependencies = (
 			);
-			name = ScoopItFramework_agg;
-			productName = ScoopItFramework_agg;
+			name = MergeiOSAndSimulator;
+			productName = MergeiOSAndSimulator;
 		};
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
 		2E017FF813D49F2E00491868 /* SISearch.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E017FF613D49F2B00491868 /* SISearch.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2E017FF913D49F2E00491868 /* SISearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E017FF713D49F2C00491868 /* SISearch.m */; };
+		2E10FEE013D5B32100B6F2D7 /* SIScoopIt.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E943BD8139FA0A300672F6B /* SIScoopIt.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E10FEE113D5B32100B6F2D7 /* URLParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E943B93139F9F8800672F6B /* URLParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E10FEE213D5B32100B6F2D7 /* JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E943B98139F9F9B00672F6B /* JSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E10FEE313D5B32100B6F2D7 /* NSObject+SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E943B99139F9F9B00672F6B /* NSObject+SBJSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E10FEE413D5B32100B6F2D7 /* NSString+SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E943B9B139F9F9B00672F6B /* NSString+SBJSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E10FEE513D5B32100B6F2D7 /* SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E943B9E139F9F9B00672F6B /* SBJSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E10FEE613D5B32100B6F2D7 /* SBJsonBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E943BA0139F9F9B00672F6B /* SBJsonBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E10FEE713D5B32100B6F2D7 /* SBJsonParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E943BA2139F9F9B00672F6B /* SBJsonParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E10FEE813D5B32100B6F2D7 /* SBJsonWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E943BA4139F9F9B00672F6B /* SBJsonWriter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E10FEE913D5B32100B6F2D7 /* Base64Transcoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E943BCD139FA07500672F6B /* Base64Transcoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E10FEEA13D5B32100B6F2D7 /* hmac.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E943BCF139FA07500672F6B /* hmac.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E10FEEB13D5B32100B6F2D7 /* sha1.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E943BD1139FA07500672F6B /* sha1.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E10FEEC13D5B32100B6F2D7 /* NSMutableURLRequest+Parameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E943BBF139FA05C00672F6B /* NSMutableURLRequest+Parameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E10FEED13D5B32100B6F2D7 /* NSString+URLEncoding.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E943BC1139FA05C00672F6B /* NSString+URLEncoding.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E10FEEE13D5B32100B6F2D7 /* NSURL+Base.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E943BC3139FA05C00672F6B /* NSURL+Base.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E10FEEF13D5B32100B6F2D7 /* OAAttachment.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E943B5A139F9F6500672F6B /* OAAttachment.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E10FEF013D5B32100B6F2D7 /* OACall.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E943B5C139F9F6500672F6B /* OACall.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E10FEF113D5B32100B6F2D7 /* OAConsumer.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E943B5E139F9F6500672F6B /* OAConsumer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E10FEF213D5B32100B6F2D7 /* OADataFetcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E943B60139F9F6500672F6B /* OADataFetcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E10FEF313D5B32100B6F2D7 /* OAHMAC_SHA1SignatureProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E943B62139F9F6500672F6B /* OAHMAC_SHA1SignatureProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E10FEF413D5B32100B6F2D7 /* OAMutableURLRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E943B64139F9F6500672F6B /* OAMutableURLRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E10FEF513D5B32100B6F2D7 /* OAPlaintextSignatureProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E943B66139F9F6500672F6B /* OAPlaintextSignatureProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E10FEF613D5B32100B6F2D7 /* OAProblem.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E943B68139F9F6500672F6B /* OAProblem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E10FEF713D5B32100B6F2D7 /* OARequestParameter.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E943B6A139F9F6500672F6B /* OARequestParameter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E10FEF813D5B32100B6F2D7 /* OAServiceTicket.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E943B6C139F9F6500672F6B /* OAServiceTicket.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E10FEF913D5B32100B6F2D7 /* OASignatureProviding.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E943B6E139F9F6500672F6B /* OASignatureProviding.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E10FEFA13D5B32100B6F2D7 /* OAToken.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E943B70139F9F6500672F6B /* OAToken.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E10FEFB13D5B32100B6F2D7 /* OATokenManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E943B72139F9F6500672F6B /* OATokenManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E10FEFC13D5B32100B6F2D7 /* OAuthConsumer.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E943B74139F9F6500672F6B /* OAuthConsumer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E10FEFD13D5B32100B6F2D7 /* SIDialog.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E943BBA139F9FC500672F6B /* SIDialog.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E10FEFE13D5B32100B6F2D7 /* SIPost.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E943BDC139FA0C500672F6B /* SIPost.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E10FEFF13D5B32100B6F2D7 /* SISource.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E943BDE139FA0C500672F6B /* SISource.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E10FF0013D5B32100B6F2D7 /* SITopic.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E943BE0139FA0C500672F6B /* SITopic.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E10FF0113D5B32100B6F2D7 /* SIUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E943BE2139FA0C500672F6B /* SIUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E10FF0213D5B32100B6F2D7 /* SICompilation.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E2DC94F13A21479005C31C5 /* SICompilation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E10FF0313D5B32200B6F2D7 /* SISharer.h in Headers */ = {isa = PBXBuildFile; fileRef = 2EDCE21513B0F9980059484D /* SISharer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E10FF0413D5B32200B6F2D7 /* SINotification.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E6FE4B813C21B55005EFD37 /* SINotification.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E10FF0513D5B32200B6F2D7 /* SISearch.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E017FF613D49F2B00491868 /* SISearch.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E10FF0613D5B32200B6F2D7 /* SIModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E943BB5139F9FB100672F6B /* SIModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2E2DC95113A21479005C31C5 /* SICompilation.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E2DC94F13A21479005C31C5 /* SICompilation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2E2DC95213A21479005C31C5 /* SICompilation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E2DC95013A21479005C31C5 /* SICompilation.m */; };
+		2E45A40813D5B4F1004377B2 /* SIScoopIt.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E943BD9139FA0A300672F6B /* SIScoopIt.m */; };
+		2E45A40913D5B4F1004377B2 /* URLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E943B94139F9F8800672F6B /* URLParser.m */; };
+		2E45A40A13D5B4F1004377B2 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E943B9A139F9F9B00672F6B /* NSObject+SBJSON.m */; };
+		2E45A40B13D5B4F1004377B2 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E943B9C139F9F9B00672F6B /* NSString+SBJSON.m */; };
+		2E45A40C13D5B4F1004377B2 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E943B9F139F9F9B00672F6B /* SBJSON.m */; };
+		2E45A40D13D5B4F1004377B2 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E943BA1139F9F9B00672F6B /* SBJsonBase.m */; };
+		2E45A40E13D5B4F1004377B2 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E943BA3139F9F9B00672F6B /* SBJsonParser.m */; };
+		2E45A40F13D5B4F1004377B2 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E943BA5139F9F9B00672F6B /* SBJsonWriter.m */; };
+		2E45A41013D5B4F1004377B2 /* Base64Transcoder.c in Sources */ = {isa = PBXBuildFile; fileRef = 2E943BCC139FA07500672F6B /* Base64Transcoder.c */; };
+		2E45A41113D5B4F1004377B2 /* hmac.c in Sources */ = {isa = PBXBuildFile; fileRef = 2E943BCE139FA07500672F6B /* hmac.c */; };
+		2E45A41213D5B4F1004377B2 /* sha1.c in Sources */ = {isa = PBXBuildFile; fileRef = 2E943BD0139FA07500672F6B /* sha1.c */; };
+		2E45A41313D5B4F1004377B2 /* NSMutableURLRequest+Parameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E943BC0139FA05C00672F6B /* NSMutableURLRequest+Parameters.m */; };
+		2E45A41413D5B4F1004377B2 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E943BC2139FA05C00672F6B /* NSString+URLEncoding.m */; };
+		2E45A41513D5B4F1004377B2 /* NSURL+Base.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E943BC4139FA05C00672F6B /* NSURL+Base.m */; };
+		2E45A41613D5B4F1004377B2 /* OAAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E943B5B139F9F6500672F6B /* OAAttachment.m */; };
+		2E45A41713D5B4F1004377B2 /* OACall.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E943B5D139F9F6500672F6B /* OACall.m */; };
+		2E45A41813D5B4F1004377B2 /* OAConsumer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E943B5F139F9F6500672F6B /* OAConsumer.m */; };
+		2E45A41913D5B4F1004377B2 /* OADataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E943B61139F9F6500672F6B /* OADataFetcher.m */; };
+		2E45A41A13D5B4F1004377B2 /* OAHMAC_SHA1SignatureProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E943B63139F9F6500672F6B /* OAHMAC_SHA1SignatureProvider.m */; };
+		2E45A41B13D5B4F1004377B2 /* OAMutableURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E943B65139F9F6500672F6B /* OAMutableURLRequest.m */; };
+		2E45A41C13D5B4F1004377B2 /* OAPlaintextSignatureProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E943B67139F9F6500672F6B /* OAPlaintextSignatureProvider.m */; };
+		2E45A41D13D5B4F1004377B2 /* OAProblem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E943B69139F9F6500672F6B /* OAProblem.m */; };
+		2E45A41E13D5B4F1004377B2 /* OARequestParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E943B6B139F9F6500672F6B /* OARequestParameter.m */; };
+		2E45A41F13D5B4F1004377B2 /* OAServiceTicket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E943B6D139F9F6500672F6B /* OAServiceTicket.m */; };
+		2E45A42013D5B4F1004377B2 /* OAToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E943B71139F9F6500672F6B /* OAToken.m */; };
+		2E45A42113D5B4F1004377B2 /* OATokenManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E943B73139F9F6500672F6B /* OATokenManager.m */; };
+		2E45A42213D5B4F1004377B2 /* SIDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E943BBB139F9FC500672F6B /* SIDialog.m */; };
+		2E45A42313D5B4F1004377B2 /* SIPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E943BDD139FA0C500672F6B /* SIPost.m */; };
+		2E45A42413D5B4F1004377B2 /* SISource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E943BDF139FA0C500672F6B /* SISource.m */; };
+		2E45A42513D5B4F1004377B2 /* SITopic.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E943BE1139FA0C500672F6B /* SITopic.m */; };
+		2E45A42613D5B4F1004377B2 /* SIUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E943BE3139FA0C500672F6B /* SIUser.m */; };
+		2E45A42713D5B4F1004377B2 /* SICompilation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E2DC95013A21479005C31C5 /* SICompilation.m */; };
+		2E45A42813D5B4F1004377B2 /* SISharer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EDCE21613B0F9980059484D /* SISharer.m */; };
+		2E45A42913D5B4F1004377B2 /* SINotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E6FE4B913C21B55005EFD37 /* SINotification.m */; };
+		2E45A42A13D5B4F1004377B2 /* SISearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E017FF713D49F2C00491868 /* SISearch.m */; };
+		2E45A42B13D5B4F1004377B2 /* SIModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E943BB6139F9FB100672F6B /* SIModel.m */; };
+		2E45A43813D5B547004377B2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E943AF9139F9DB600672F6B /* Foundation.framework */; };
+		2E45A43913D5B547004377B2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E943B04139F9DB600672F6B /* UIKit.framework */; };
+		2E45A43A13D5B547004377B2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E943B07139F9DB600672F6B /* CoreGraphics.framework */; };
+		2E45A43B13D5B547004377B2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 320AF8492C47A4D819F7C450 /* QuartzCore.framework */; };
+		2E45A43C13D5B547004377B2 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E10FEB013D5AE9000B6F2D7 /* CoreFoundation.framework */; };
 		2E6FE4BA13C21B55005EFD37 /* SINotification.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E6FE4B813C21B55005EFD37 /* SINotification.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2E6FE4BB13C21B55005EFD37 /* SINotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E6FE4B913C21B55005EFD37 /* SINotification.m */; };
 		2E943AFA139F9DB600672F6B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E943AF9139F9DB600672F6B /* Foundation.framework */; };
@@ -106,15 +186,8 @@
 		2E943BEB139FA0C500672F6B /* SIUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E943BE3139FA0C500672F6B /* SIUser.m */; };
 		2EDCE21713B0F9980059484D /* SISharer.h in Headers */ = {isa = PBXBuildFile; fileRef = 2EDCE21513B0F9980059484D /* SISharer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2EDCE21813B0F9980059484D /* SISharer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EDCE21613B0F9980059484D /* SISharer.m */; };
-		3201088596B4756681693705 /* libThree20UICommon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3201088596B4756681693704 /* libThree20UICommon.a */; settings = {ATTRIBUTES = (Weak, ); }; };
-		320A2827FEC940B25BC42C65 /* libThree20Core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320A2827FEC940B25BC42C64 /* libThree20Core.a */; settings = {ATTRIBUTES = (Weak, ); }; };
-		320A5A189C235877202780D5 /* libThree20Network.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320A5A189C235877202780D4 /* libThree20Network.a */; settings = {ATTRIBUTES = (Weak, ); }; };
-		320A737074758E53BA54BE95 /* libThree20UINavigator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320A737074758E53BA54BE94 /* libThree20UINavigator.a */; settings = {ATTRIBUTES = (Weak, ); }; };
 		320AF8492C47A4D819F7C451 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 320AF8492C47A4D819F7C450 /* QuartzCore.framework */; };
 		320B6C86F11D9990244A9731 /* Three20.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 320B6C86F11D9990244A9730 /* Three20.bundle */; };
-		320CC833B8AF0ACFD35E6225 /* libThree20Style.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320CC833B8AF0ACFD35E6224 /* libThree20Style.a */; settings = {ATTRIBUTES = (Weak, ); }; };
-		320D7DCCE32703ACAB9A45E5 /* libThree20.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320D7DCCE32703ACAB9A45E4 /* libThree20.a */; settings = {ATTRIBUTES = (Weak, ); }; };
-		320F2C48872C2E2C4DF86205 /* libThree20UI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320F2C48872C2E2C4DF86204 /* libThree20UI.a */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -277,8 +350,27 @@
 /* Begin PBXFileReference section */
 		2E017FF613D49F2B00491868 /* SISearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SISearch.h; path = Classes/Model/SISearch.h; sourceTree = "<group>"; };
 		2E017FF713D49F2C00491868 /* SISearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SISearch.m; path = Classes/Model/SISearch.m; sourceTree = "<group>"; };
+		2E10FEB013D5AE9000B6F2D7 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		2E10FEB413D5AE9100B6F2D7 /* BundleScoopItFramework-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BundleScoopItFramework-Info.plist"; sourceTree = "<group>"; };
+		2E10FEB613D5AE9100B6F2D7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2E10FEB813D5AE9100B6F2D7 /* BundleScoopItFramework-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BundleScoopItFramework-Prefix.pch"; sourceTree = "<group>"; };
+		2E10FEC513D5B0BF00B6F2D7 /* ScoopItFramework_universal-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ScoopItFramework_universal-Info.plist"; sourceTree = "<group>"; };
+		2E10FEC713D5B0BF00B6F2D7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2E10FEC913D5B0BF00B6F2D7 /* ScoopItFramework_universal-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ScoopItFramework_universal-Prefix.pch"; sourceTree = "<group>"; };
+		2E10FED213D5B1BE00B6F2D7 /* SIFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SIFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E10FED613D5B1BE00B6F2D7 /* SIFramework-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SIFramework-Info.plist"; sourceTree = "<group>"; };
+		2E10FED813D5B1BE00B6F2D7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2E10FEDA13D5B1BE00B6F2D7 /* SIFramework-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SIFramework-Prefix.pch"; sourceTree = "<group>"; };
 		2E2DC94F13A21479005C31C5 /* SICompilation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SICompilation.h; path = Classes/Model/SICompilation.h; sourceTree = "<group>"; };
 		2E2DC95013A21479005C31C5 /* SICompilation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SICompilation.m; path = Classes/Model/SICompilation.m; sourceTree = "<group>"; };
+		2E45A44B13D5B589004377B2 /* libThree20UICommon.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libThree20UICommon.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E45A44D13D5B599004377B2 /* libThree20.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libThree20.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E45A44E13D5B599004377B2 /* libThree20Core.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libThree20Core.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E45A44F13D5B599004377B2 /* libThree20Network.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libThree20Network.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E45A45013D5B599004377B2 /* libThree20Style.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libThree20Style.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E45A45113D5B599004377B2 /* libThree20UI.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libThree20UI.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E45A45213D5B599004377B2 /* libThree20UINavigator.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libThree20UINavigator.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E45A45913D5B5AD004377B2 /* libThree20UICommon.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libThree20UICommon.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E6FE4B813C21B55005EFD37 /* SINotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SINotification.h; path = Classes/Model/SINotification.h; sourceTree = "<group>"; };
 		2E6FE4B913C21B55005EFD37 /* SINotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SINotification.m; path = Classes/Model/SINotification.m; sourceTree = "<group>"; };
 		2E943AF6139F9DB600672F6B /* libScoopItFramework.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libScoopItFramework.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -375,18 +467,23 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2E10FECF13D5B1BE00B6F2D7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E45A43813D5B547004377B2 /* Foundation.framework in Frameworks */,
+				2E45A43913D5B547004377B2 /* UIKit.framework in Frameworks */,
+				2E45A43A13D5B547004377B2 /* CoreGraphics.framework in Frameworks */,
+				2E45A43B13D5B547004377B2 /* QuartzCore.framework in Frameworks */,
+				2E45A43C13D5B547004377B2 /* CoreFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2E943AF3139F9DB600672F6B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3201088596B4756681693705 /* libThree20UICommon.a in Frameworks */,
-				320D7DCCE32703ACAB9A45E5 /* libThree20.a in Frameworks */,
-				320A737074758E53BA54BE95 /* libThree20UINavigator.a in Frameworks */,
-				320A2827FEC940B25BC42C65 /* libThree20Core.a in Frameworks */,
-				320F2C48872C2E2C4DF86205 /* libThree20UI.a in Frameworks */,
 				320AF8492C47A4D819F7C451 /* QuartzCore.framework in Frameworks */,
-				320A5A189C235877202780D5 /* libThree20Network.a in Frameworks */,
-				320CC833B8AF0ACFD35E6225 /* libThree20Style.a in Frameworks */,
 				2E943AFA139F9DB600672F6B /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -405,11 +502,76 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E10FEB213D5AE9100B6F2D7 /* BundleScoopItFramework */ = {
+			isa = PBXGroup;
+			children = (
+				2E10FEB313D5AE9100B6F2D7 /* Supporting Files */,
+			);
+			path = BundleScoopItFramework;
+			sourceTree = "<group>";
+		};
+		2E10FEB313D5AE9100B6F2D7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2E10FEB413D5AE9100B6F2D7 /* BundleScoopItFramework-Info.plist */,
+				2E10FEB513D5AE9100B6F2D7 /* InfoPlist.strings */,
+				2E10FEB813D5AE9100B6F2D7 /* BundleScoopItFramework-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2E10FEC313D5B0BF00B6F2D7 /* ScoopItFramework_universal */ = {
+			isa = PBXGroup;
+			children = (
+				2E10FEC413D5B0BF00B6F2D7 /* Supporting Files */,
+			);
+			path = ScoopItFramework_universal;
+			sourceTree = "<group>";
+		};
+		2E10FEC413D5B0BF00B6F2D7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2E10FEC513D5B0BF00B6F2D7 /* ScoopItFramework_universal-Info.plist */,
+				2E10FEC613D5B0BF00B6F2D7 /* InfoPlist.strings */,
+				2E10FEC913D5B0BF00B6F2D7 /* ScoopItFramework_universal-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2E10FED413D5B1BE00B6F2D7 /* SIFramework */ = {
+			isa = PBXGroup;
+			children = (
+				2E10FED513D5B1BE00B6F2D7 /* Supporting Files */,
+			);
+			path = SIFramework;
+			sourceTree = "<group>";
+		};
+		2E10FED513D5B1BE00B6F2D7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2E10FED613D5B1BE00B6F2D7 /* SIFramework-Info.plist */,
+				2E10FED713D5B1BE00B6F2D7 /* InfoPlist.strings */,
+				2E10FEDA13D5B1BE00B6F2D7 /* SIFramework-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		2E943AEB139F9DB600672F6B = {
 			isa = PBXGroup;
 			children = (
+				2E45A45913D5B5AD004377B2 /* libThree20UICommon.a */,
+				2E45A44D13D5B599004377B2 /* libThree20.a */,
+				2E45A44E13D5B599004377B2 /* libThree20Core.a */,
+				2E45A44F13D5B599004377B2 /* libThree20Network.a */,
+				2E45A45013D5B599004377B2 /* libThree20Style.a */,
+				2E45A45113D5B599004377B2 /* libThree20UI.a */,
+				2E45A45213D5B599004377B2 /* libThree20UINavigator.a */,
+				2E45A44B13D5B589004377B2 /* libThree20UICommon.a */,
 				2E943AFB139F9DB600672F6B /* ScoopItFramework */,
 				2E943B0C139F9DB600672F6B /* ScoopItFrameworkTests */,
+				2E10FEB213D5AE9100B6F2D7 /* BundleScoopItFramework */,
+				2E10FEC313D5B0BF00B6F2D7 /* ScoopItFramework_universal */,
+				2E10FED413D5B1BE00B6F2D7 /* SIFramework */,
 				2E943AF8139F9DB600672F6B /* Frameworks */,
 				2E943AF7139F9DB600672F6B /* Products */,
 			);
@@ -420,6 +582,7 @@
 			children = (
 				2E943AF6139F9DB600672F6B /* libScoopItFramework.a */,
 				2E943B03139F9DB600672F6B /* ScoopItFrameworkTests.octest */,
+				2E10FED213D5B1BE00B6F2D7 /* SIFramework.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -438,6 +601,7 @@
 				2E943B04139F9DB600672F6B /* UIKit.framework */,
 				2E943B07139F9DB600672F6B /* CoreGraphics.framework */,
 				320AF8492C47A4D819F7C450 /* QuartzCore.framework */,
+				2E10FEB013D5AE9000B6F2D7 /* CoreFoundation.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -686,6 +850,52 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		2E10FEDF13D5B2ED00B6F2D7 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E10FEE013D5B32100B6F2D7 /* SIScoopIt.h in Headers */,
+				2E10FEE113D5B32100B6F2D7 /* URLParser.h in Headers */,
+				2E10FEE213D5B32100B6F2D7 /* JSON.h in Headers */,
+				2E10FEE313D5B32100B6F2D7 /* NSObject+SBJSON.h in Headers */,
+				2E10FEE413D5B32100B6F2D7 /* NSString+SBJSON.h in Headers */,
+				2E10FEE513D5B32100B6F2D7 /* SBJSON.h in Headers */,
+				2E10FEE613D5B32100B6F2D7 /* SBJsonBase.h in Headers */,
+				2E10FEE713D5B32100B6F2D7 /* SBJsonParser.h in Headers */,
+				2E10FEE813D5B32100B6F2D7 /* SBJsonWriter.h in Headers */,
+				2E10FEE913D5B32100B6F2D7 /* Base64Transcoder.h in Headers */,
+				2E10FEEA13D5B32100B6F2D7 /* hmac.h in Headers */,
+				2E10FEEB13D5B32100B6F2D7 /* sha1.h in Headers */,
+				2E10FEEC13D5B32100B6F2D7 /* NSMutableURLRequest+Parameters.h in Headers */,
+				2E10FEED13D5B32100B6F2D7 /* NSString+URLEncoding.h in Headers */,
+				2E10FEEE13D5B32100B6F2D7 /* NSURL+Base.h in Headers */,
+				2E10FEEF13D5B32100B6F2D7 /* OAAttachment.h in Headers */,
+				2E10FEF013D5B32100B6F2D7 /* OACall.h in Headers */,
+				2E10FEF113D5B32100B6F2D7 /* OAConsumer.h in Headers */,
+				2E10FEF213D5B32100B6F2D7 /* OADataFetcher.h in Headers */,
+				2E10FEF313D5B32100B6F2D7 /* OAHMAC_SHA1SignatureProvider.h in Headers */,
+				2E10FEF413D5B32100B6F2D7 /* OAMutableURLRequest.h in Headers */,
+				2E10FEF513D5B32100B6F2D7 /* OAPlaintextSignatureProvider.h in Headers */,
+				2E10FEF613D5B32100B6F2D7 /* OAProblem.h in Headers */,
+				2E10FEF713D5B32100B6F2D7 /* OARequestParameter.h in Headers */,
+				2E10FEF813D5B32100B6F2D7 /* OAServiceTicket.h in Headers */,
+				2E10FEF913D5B32100B6F2D7 /* OASignatureProviding.h in Headers */,
+				2E10FEFA13D5B32100B6F2D7 /* OAToken.h in Headers */,
+				2E10FEFB13D5B32100B6F2D7 /* OATokenManager.h in Headers */,
+				2E10FEFC13D5B32100B6F2D7 /* OAuthConsumer.h in Headers */,
+				2E10FEFD13D5B32100B6F2D7 /* SIDialog.h in Headers */,
+				2E10FEFE13D5B32100B6F2D7 /* SIPost.h in Headers */,
+				2E10FEFF13D5B32100B6F2D7 /* SISource.h in Headers */,
+				2E10FF0013D5B32100B6F2D7 /* SITopic.h in Headers */,
+				2E10FF0113D5B32100B6F2D7 /* SIUser.h in Headers */,
+				2E10FF0213D5B32100B6F2D7 /* SICompilation.h in Headers */,
+				2E10FF0313D5B32200B6F2D7 /* SISharer.h in Headers */,
+				2E10FF0413D5B32200B6F2D7 /* SINotification.h in Headers */,
+				2E10FF0513D5B32200B6F2D7 /* SISearch.h in Headers */,
+				2E10FF0613D5B32200B6F2D7 /* SIModel.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2E943AF4139F9DB600672F6B /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -735,6 +945,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		2E10FED113D5B1BE00B6F2D7 /* SIFramework */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2E10FEDB13D5B1BE00B6F2D7 /* Build configuration list for PBXNativeTarget "SIFramework" */;
+			buildPhases = (
+				2E10FECE13D5B1BE00B6F2D7 /* Sources */,
+				2E10FECF13D5B1BE00B6F2D7 /* Frameworks */,
+				2E10FED013D5B1BE00B6F2D7 /* Resources */,
+				2E10FEDF13D5B2ED00B6F2D7 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SIFramework;
+			productName = SIFramework;
+			productReference = 2E10FED213D5B1BE00B6F2D7 /* SIFramework.framework */;
+			productType = "com.apple.product-type.bundle";
+		};
 		2E943AF5139F9DB600672F6B /* ScoopItFramework */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2E943B19139F9DB600672F6B /* Build configuration list for PBXNativeTarget "ScoopItFramework" */;
@@ -831,7 +1059,8 @@
 			targets = (
 				2E943AF5139F9DB600672F6B /* ScoopItFramework */,
 				2E943B02139F9DB600672F6B /* ScoopItFrameworkTests */,
-				2E10FE9D13D5A7AF00B6F2D7 /* ScoopItFramework_agg */,
+				2E10FED113D5B1BE00B6F2D7 /* SIFramework */,
+				2E45A46813D5BE46004377B2 /* MergeiOSAndSimulator */,
 			);
 		};
 /* End PBXProject section */
@@ -938,6 +1167,13 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
+		2E10FED013D5B1BE00B6F2D7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2E943B00139F9DB600672F6B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -960,7 +1196,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2E10FEAA13D5A7FA00B6F2D7 /* ShellScript */ = {
+		2E45A46D13D5BE56004377B2 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -971,7 +1207,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ \"${ACTION}\" = \"build\" ]\nthen\n# Set the target folders and the final framework product.\nINSTALL_DIR=${SYMROOT}/ScoopItFramework.framework\nDEVICE_DIR=${SYMROOT}/Release-iphoneos\nSIMULATOR_DIR=${SYMROOT}/Release-iphonesimulator\n\n# Create and renews the final product folder.\nmkdir -p \"${INSTALL_DIR}\"\nrm -rf \"${INSTALL_DIR}\"\nrm -rf \"${INSTALL_DIR}/ScoopItFramework\"\n\n# Copy the header files to the final product folder.\nditto \"${DEVICE_DIR}/ScoopItFramework\" \"${INSTALL_DIR}/Headers\"\n\n# Use the Lipo Tool to merge both binary files (i386 + armv6/armv7) into one Universal final product.\nlipo -create \"${DEVICE_DIR}/ScoopItFramework\" \"${SIMULATOR_DIR}/ScoopItFramework\" -output \"${INSTALL_DIR}/ScoopItFramework\"\nfi";
+			shellScript = "if [ \"${ACTION}\" = \"build\" ]\nthen\n# Set the target folders and the final framework product.\nINSTALL_DIR=${SYMROOT}/SIFramework.framework\nDEVICE_DIR=${SYMROOT}/Release-iphoneos\nSIMULATOR_DIR=${SYMROOT}/Release-iphonesimulator\n\n# Create and renews the final product folder.\nmkdir -p \"${INSTALL_DIR}\"\nrm -rf \"${INSTALL_DIR}\"\nrm -rf \"${INSTALL_DIR}/SIFramework\"\n\n# Copy the header files to the final product folder.\nditto \"${DEVICE_DIR}/SIFramework.framework/Headers\" \"${INSTALL_DIR}/Headers\"\n\n# Use the Lipo Tool to merge both binary files (i386 + armv6/armv7) into one Universal final product.\nlipo -create \"${DEVICE_DIR}/SIFramework.framework/SIFramework\" \"${SIMULATOR_DIR}/SIFramework.framework/SIFramework\" -output \"${INSTALL_DIR}/SIFramework\"\nfi";
 		};
 		2E943B01139F9DB600672F6B /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -989,6 +1225,49 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2E10FECE13D5B1BE00B6F2D7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E45A40813D5B4F1004377B2 /* SIScoopIt.m in Sources */,
+				2E45A40913D5B4F1004377B2 /* URLParser.m in Sources */,
+				2E45A40A13D5B4F1004377B2 /* NSObject+SBJSON.m in Sources */,
+				2E45A40B13D5B4F1004377B2 /* NSString+SBJSON.m in Sources */,
+				2E45A40C13D5B4F1004377B2 /* SBJSON.m in Sources */,
+				2E45A40D13D5B4F1004377B2 /* SBJsonBase.m in Sources */,
+				2E45A40E13D5B4F1004377B2 /* SBJsonParser.m in Sources */,
+				2E45A40F13D5B4F1004377B2 /* SBJsonWriter.m in Sources */,
+				2E45A41013D5B4F1004377B2 /* Base64Transcoder.c in Sources */,
+				2E45A41113D5B4F1004377B2 /* hmac.c in Sources */,
+				2E45A41213D5B4F1004377B2 /* sha1.c in Sources */,
+				2E45A41313D5B4F1004377B2 /* NSMutableURLRequest+Parameters.m in Sources */,
+				2E45A41413D5B4F1004377B2 /* NSString+URLEncoding.m in Sources */,
+				2E45A41513D5B4F1004377B2 /* NSURL+Base.m in Sources */,
+				2E45A41613D5B4F1004377B2 /* OAAttachment.m in Sources */,
+				2E45A41713D5B4F1004377B2 /* OACall.m in Sources */,
+				2E45A41813D5B4F1004377B2 /* OAConsumer.m in Sources */,
+				2E45A41913D5B4F1004377B2 /* OADataFetcher.m in Sources */,
+				2E45A41A13D5B4F1004377B2 /* OAHMAC_SHA1SignatureProvider.m in Sources */,
+				2E45A41B13D5B4F1004377B2 /* OAMutableURLRequest.m in Sources */,
+				2E45A41C13D5B4F1004377B2 /* OAPlaintextSignatureProvider.m in Sources */,
+				2E45A41D13D5B4F1004377B2 /* OAProblem.m in Sources */,
+				2E45A41E13D5B4F1004377B2 /* OARequestParameter.m in Sources */,
+				2E45A41F13D5B4F1004377B2 /* OAServiceTicket.m in Sources */,
+				2E45A42013D5B4F1004377B2 /* OAToken.m in Sources */,
+				2E45A42113D5B4F1004377B2 /* OATokenManager.m in Sources */,
+				2E45A42213D5B4F1004377B2 /* SIDialog.m in Sources */,
+				2E45A42313D5B4F1004377B2 /* SIPost.m in Sources */,
+				2E45A42413D5B4F1004377B2 /* SISource.m in Sources */,
+				2E45A42513D5B4F1004377B2 /* SITopic.m in Sources */,
+				2E45A42613D5B4F1004377B2 /* SIUser.m in Sources */,
+				2E45A42713D5B4F1004377B2 /* SICompilation.m in Sources */,
+				2E45A42813D5B4F1004377B2 /* SISharer.m in Sources */,
+				2E45A42913D5B4F1004377B2 /* SINotification.m in Sources */,
+				2E45A42A13D5B4F1004377B2 /* SISearch.m in Sources */,
+				2E45A42B13D5B4F1004377B2 /* SIModel.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2E943AF2139F9DB600672F6B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1086,6 +1365,30 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		2E10FEB513D5AE9100B6F2D7 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2E10FEB613D5AE9100B6F2D7 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		2E10FEC613D5B0BF00B6F2D7 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2E10FEC713D5B0BF00B6F2D7 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		2E10FED713D5B1BE00B6F2D7 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2E10FED813D5B1BE00B6F2D7 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		2E943B0F139F9DB600672F6B /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1151,21 +1454,105 @@
 			};
 			name = "Ad-Hoc";
 		};
-		2E10FE9E13D5A7AF00B6F2D7 /* Debug */ = {
+		2E10FEDC13D5B1BE00B6F2D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				INFOPLIST_FILE = "";
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				LINK_WITH_STANDARD_LIBRARIES = NO;
+				MACH_O_TYPE = mh_object;
+				MACOSX_DEPLOYMENT_TARGET = "";
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				VALID_ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Debug;
+		};
+		2E10FEDD13D5B1BE00B6F2D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEAD_CODE_STRIPPING = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				INFOPLIST_FILE = "";
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				LINK_WITH_STANDARD_LIBRARIES = NO;
+				MACH_O_TYPE = mh_object;
+				MACOSX_DEPLOYMENT_TARGET = "";
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				VALID_ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Release;
+		};
+		2E10FEDE13D5B1BE00B6F2D7 /* Ad-Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEAD_CODE_STRIPPING = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				INFOPLIST_FILE = "";
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				LINK_WITH_STANDARD_LIBRARIES = NO;
+				MACH_O_TYPE = mh_object;
+				MACOSX_DEPLOYMENT_TARGET = "";
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				VALID_ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				WRAPPER_EXTENSION = framework;
+			};
+			name = "Ad-Hoc";
+		};
+		2E45A46A13D5BE46004377B2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
-		2E10FE9F13D5A7AF00B6F2D7 /* Release */ = {
+		2E45A46B13D5BE46004377B2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
-		2E10FEA013D5A7AF00B6F2D7 /* Ad-Hoc */ = {
+		2E45A46C13D5BE46004377B2 /* Ad-Hoc */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1286,12 +1673,22 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2E10FEA813D5A7AF00B6F2D7 /* Build configuration list for PBXAggregateTarget "ScoopItFramework_agg" */ = {
+		2E10FEDB13D5B1BE00B6F2D7 /* Build configuration list for PBXNativeTarget "SIFramework" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2E10FE9E13D5A7AF00B6F2D7 /* Debug */,
-				2E10FE9F13D5A7AF00B6F2D7 /* Release */,
-				2E10FEA013D5A7AF00B6F2D7 /* Ad-Hoc */,
+				2E10FEDC13D5B1BE00B6F2D7 /* Debug */,
+				2E10FEDD13D5B1BE00B6F2D7 /* Release */,
+				2E10FEDE13D5B1BE00B6F2D7 /* Ad-Hoc */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2E45A46913D5BE46004377B2 /* Build configuration list for PBXAggregateTarget "MergeiOSAndSimulator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2E45A46A13D5BE46004377B2 /* Debug */,
+				2E45A46B13D5BE46004377B2 /* Release */,
+				2E45A46C13D5BE46004377B2 /* Ad-Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
