@@ -14,6 +14,13 @@
 @class SIPost;
 @class SIScoopIt;
 
+typedef enum actions_topics {
+    TopicActionReorder = 0,
+    TopicActionFollow,
+    TopicActionUnfolow,
+    TopicActionMarkread
+} TopicAction;
+
 @interface SITopic : SIModel {
 	int lid;
 	NSString* imageUrl;

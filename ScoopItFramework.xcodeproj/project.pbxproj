@@ -6,7 +6,23 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		2E10FE9D13D5A7AF00B6F2D7 /* ScoopItFramework_agg */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 2E10FEA813D5A7AF00B6F2D7 /* Build configuration list for PBXAggregateTarget "ScoopItFramework_agg" */;
+			buildPhases = (
+				2E10FEAA13D5A7FA00B6F2D7 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = ScoopItFramework_agg;
+			productName = ScoopItFramework_agg;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
+		2E017FF813D49F2E00491868 /* SISearch.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E017FF613D49F2B00491868 /* SISearch.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E017FF913D49F2E00491868 /* SISearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E017FF713D49F2C00491868 /* SISearch.m */; };
 		2E2DC95113A21479005C31C5 /* SICompilation.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E2DC94F13A21479005C31C5 /* SICompilation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2E2DC95213A21479005C31C5 /* SICompilation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E2DC95013A21479005C31C5 /* SICompilation.m */; };
 		2E6FE4BA13C21B55005EFD37 /* SINotification.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E6FE4B813C21B55005EFD37 /* SINotification.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -259,6 +275,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2E017FF613D49F2B00491868 /* SISearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SISearch.h; path = Classes/Model/SISearch.h; sourceTree = "<group>"; };
+		2E017FF713D49F2C00491868 /* SISearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SISearch.m; path = Classes/Model/SISearch.m; sourceTree = "<group>"; };
 		2E2DC94F13A21479005C31C5 /* SICompilation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SICompilation.h; path = Classes/Model/SICompilation.h; sourceTree = "<group>"; };
 		2E2DC95013A21479005C31C5 /* SICompilation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SICompilation.m; path = Classes/Model/SICompilation.m; sourceTree = "<group>"; };
 		2E6FE4B813C21B55005EFD37 /* SINotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SINotification.h; path = Classes/Model/SINotification.h; sourceTree = "<group>"; };
@@ -559,6 +577,8 @@
 				2EDCE21613B0F9980059484D /* SISharer.m */,
 				2E6FE4B813C21B55005EFD37 /* SINotification.h */,
 				2E6FE4B913C21B55005EFD37 /* SINotification.m */,
+				2E017FF613D49F2B00491868 /* SISearch.h */,
+				2E017FF713D49F2C00491868 /* SISearch.m */,
 				2E943BB6139F9FB100672F6B /* SIModel.m */,
 				2E943BB5139F9FB100672F6B /* SIModel.h */,
 			);
@@ -703,6 +723,7 @@
 				2E943BD3139FA07500672F6B /* Base64Transcoder.h in Headers */,
 				2E943BD5139FA07500672F6B /* hmac.h in Headers */,
 				2E6FE4BA13C21B55005EFD37 /* SINotification.h in Headers */,
+				2E017FF813D49F2E00491868 /* SISearch.h in Headers */,
 				2E943BD7139FA07500672F6B /* sha1.h in Headers */,
 				2E2DC95113A21479005C31C5 /* SICompilation.h in Headers */,
 				2EDCE21713B0F9980059484D /* SISharer.h in Headers */,
@@ -810,6 +831,7 @@
 			targets = (
 				2E943AF5139F9DB600672F6B /* ScoopItFramework */,
 				2E943B02139F9DB600672F6B /* ScoopItFrameworkTests */,
+				2E10FE9D13D5A7AF00B6F2D7 /* ScoopItFramework_agg */,
 			);
 		};
 /* End PBXProject section */
@@ -938,6 +960,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2E10FEAA13D5A7FA00B6F2D7 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ \"${ACTION}\" = \"build\" ]\nthen\n# Set the target folders and the final framework product.\nINSTALL_DIR=${SYMROOT}/ScoopItFramework.framework\nDEVICE_DIR=${SYMROOT}/Release-iphoneos\nSIMULATOR_DIR=${SYMROOT}/Release-iphonesimulator\n\n# Create and renews the final product folder.\nmkdir -p \"${INSTALL_DIR}\"\nrm -rf \"${INSTALL_DIR}\"\nrm -rf \"${INSTALL_DIR}/ScoopItFramework\"\n\n# Copy the header files to the final product folder.\nditto \"${DEVICE_DIR}/ScoopItFramework\" \"${INSTALL_DIR}/Headers\"\n\n# Use the Lipo Tool to merge both binary files (i386 + armv6/armv7) into one Universal final product.\nlipo -create \"${DEVICE_DIR}/ScoopItFramework\" \"${SIMULATOR_DIR}/ScoopItFramework\" -output \"${INSTALL_DIR}/ScoopItFramework\"\nfi";
+		};
 		2E943B01139F9DB600672F6B /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -993,6 +1028,7 @@
 				2E2DC95213A21479005C31C5 /* SICompilation.m in Sources */,
 				2EDCE21813B0F9980059484D /* SISharer.m in Sources */,
 				2E6FE4BB13C21B55005EFD37 /* SINotification.m in Sources */,
+				2E017FF913D49F2E00491868 /* SISearch.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1061,6 +1097,81 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		2E017FE713D48F0500491868 /* Ad-Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(BUILT_PRODUCTS_DIR)/../three20",
+					"$(BUILT_PRODUCTS_DIR)/../../three20",
+					../three20/Build/Products/three20,
+					"$(BUILT_PRODUCTS_DIR)/usr/local/include",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_LDFLAGS = "-ObjC";
+				SDKROOT = iphoneos;
+			};
+			name = "Ad-Hoc";
+		};
+		2E017FE813D48F0500491868 /* Ad-Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DSTROOT = /tmp/ScoopItFramework.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ScoopItFramework/ScoopItFramework-Prefix.pch";
+				INSTALL_PATH = "${BUILT_PRODUCT_DIR}";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = ScoopItFramework;
+			};
+			name = "Ad-Hoc";
+		};
+		2E017FE913D48F0500491868 /* Ad-Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ScoopItFrameworkTests/ScoopItFrameworkTests-Prefix.pch";
+				INFOPLIST_FILE = "ScoopItFrameworkTests/ScoopItFrameworkTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = "Ad-Hoc";
+		};
+		2E10FE9E13D5A7AF00B6F2D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		2E10FE9F13D5A7AF00B6F2D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		2E10FEA013D5A7AF00B6F2D7 /* Ad-Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = "Ad-Hoc";
+		};
 		2E943B17139F9DB600672F6B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1175,11 +1286,21 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2E10FEA813D5A7AF00B6F2D7 /* Build configuration list for PBXAggregateTarget "ScoopItFramework_agg" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2E10FE9E13D5A7AF00B6F2D7 /* Debug */,
+				2E10FE9F13D5A7AF00B6F2D7 /* Release */,
+				2E10FEA013D5A7AF00B6F2D7 /* Ad-Hoc */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		2E943AF0139F9DB600672F6B /* Build configuration list for PBXProject "ScoopItFramework" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2E943B17139F9DB600672F6B /* Debug */,
 				2E943B18139F9DB600672F6B /* Release */,
+				2E017FE713D48F0500491868 /* Ad-Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1189,6 +1310,7 @@
 			buildConfigurations = (
 				2E943B1A139F9DB600672F6B /* Debug */,
 				2E943B1B139F9DB600672F6B /* Release */,
+				2E017FE813D48F0500491868 /* Ad-Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1198,6 +1320,7 @@
 			buildConfigurations = (
 				2E943B1D139F9DB600672F6B /* Debug */,
 				2E943B1E139F9DB600672F6B /* Release */,
+				2E017FE913D48F0500491868 /* Ad-Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

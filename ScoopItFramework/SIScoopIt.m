@@ -197,4 +197,8 @@ static SIScoopIt* sharedObj;
     return nil;
 }
 
+- (SISearch*) getSearchForTopic: (NSString*) query {
+    return [[SISearch alloc] init:self withSearch:query];
+}
+
 @end

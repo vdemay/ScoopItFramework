@@ -19,6 +19,7 @@
 #import "SIUser.h"
 #import "SICompilation.h"
 #import "SISharer.h"
+#import "SISearch.h"
 
 
 #define BASE_URL @"http://www.scoop.it/"
@@ -74,6 +75,8 @@ typedef enum SIRequestType {
 
 - (SICompilation*) getCompilationWithNumberOfItem:(int) number;
 - (SICompilation*) getFollowingCompilationWithNumberOfItem:(int) number;
+
+- (SISearch*) getSearchForTopic: (NSString*) query;
 
 
 @end
