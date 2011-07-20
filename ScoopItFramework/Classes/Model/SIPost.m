@@ -81,7 +81,7 @@
 		self.reactionsCount = [[dic objectForKey:@"reactionsCount"] intValue];
 		self.isUserSuggestion = [[dic objectForKey:@"isUserSuggestion"] boolValue];
 		self.publicationDate = [[dic objectForKey:@"publicationDate"] doubleValue];
-		self.currationDate = [[dic objectForKey:@"currationDate"] doubleValue];
+		self.currationDate = [[dic objectForKey:@"curationDate"] doubleValue];
         self.pagesView = [[dic objectForKey:@"pagesView"] intValue];
 		//TODO Comments
 		self.thanked = [[dic objectForKey:@"thanked"] boolValue];
@@ -341,10 +341,12 @@
     [params addObject:actionParam];
     TT_RELEASE_SAFELY(actionParam);
     
-    OARequestParameter *idParam = [[OARequestParameter alloc] initWithName:@"id"
+    if (self.lid) {
+        OARequestParameter *idParam = [[OARequestParameter alloc] initWithName:@"id"
                                                                      value:[NSString stringWithFormat:@"%d",self.lid]];
-    [params addObject:idParam];
-    TT_RELEASE_SAFELY(idParam);
+        [params addObject:idParam];
+        TT_RELEASE_SAFELY(idParam);
+    }
     
     
     OARequestParameter *topicId = [[OARequestParameter alloc] initWithName:@"topicId"

@@ -1691,6 +1691,7 @@
 				2E45A46C13D5BE46004377B2 /* Ad-Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2E943AF0139F9DB600672F6B /* Build configuration list for PBXProject "ScoopItFramework" */ = {
 			isa = XCConfigurationList;

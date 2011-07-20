@@ -14,10 +14,12 @@
 @class SIPost;
 @class SIScoopIt;
 
+@protocol SITopicActionDelegate;
+
 typedef enum actions_topics {
     TopicActionReorder = 0,
     TopicActionFollow,
-    TopicActionUnfolow,
+    TopicActionUnfollow,
     TopicActionMarkread
 } TopicAction;
 
@@ -43,6 +45,8 @@ typedef enum actions_topics {
     
     int nbCuratedPost;
     int nbCurablePost;
+    
+    id<SITopicActionDelegate> actionDelegate;
 	
 }
 @property (nonatomic) int lid;
@@ -67,9 +71,23 @@ typedef enum actions_topics {
 @property (nonatomic) int nbCuratedPost;
 @property (nonatomic) int nbCurablePost;
 
+@property (nonatomic, assign) id<SITopicActionDelegate> actionDelegate;
+
 
 -(id) init:(SIScoopIt*)_scoopIt withLid:(int)_lid;
 
 -(void) getFromDictionary:(NSDictionary*) dic;
 
+-(void) follow;
+-(void) unfollow;
+
 @end
+
+
+/////////////////////////////// DELEGATE ////////////////////////////////////////
+@protocol SITopicActionDelegate <NSObject>
+
+- (void) topic:(SITopic*)topic actionFailed:(TopicAction)action;
+- (void) topic:(SITopic*)topic actionSucceeded:(TopicAction)action withData:(NSDictionary*) data;
+@end
+

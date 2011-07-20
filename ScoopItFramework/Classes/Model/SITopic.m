@@ -12,6 +12,12 @@
 #import "SIUser.h"
 #import "SIPost.h"
 
+@interface SITopic (Private)
+- (void) topicAction:(TopicAction)action withParameters:(NSArray*) params;
+- (void) topicActionRequest:(OAServiceTicket *)ticket didFinishWithData:(NSData *)data;
+- (void) topicActionRequest:(OAServiceTicket *)ticket didFailWithError:(NSError *)error;
+@end
+
 @implementation SITopic
 
 @synthesize lid;
@@ -35,6 +41,8 @@
 
 @synthesize nbCuratedPost;
 @synthesize nbCurablePost;
+
+@synthesize actionDelegate;
 
 - (id) init:(SIScoopIt*) _scoopIt withLid:(int) _lid
 {
@@ -155,6 +163,98 @@
 	tags = nil;
 	[super dealloc];
 }
+
+-(void) follow {
+    NSMutableArray *params = [[[NSMutableArray alloc] init] autorelease];
+    
+    OARequestParameter *actionParam = [[OARequestParameter alloc] initWithName:@"action"
+                                                                         value:@"follow"];
+    [params addObject:actionParam];
+    TT_RELEASE_SAFELY(actionParam);
+    
+    OARequestParameter *idParam = [[OARequestParameter alloc] initWithName:@"id"
+                                                                      value:[NSString stringWithFormat:@"%d",self.lid]];
+    [params addObject:idParam];
+    TT_RELEASE_SAFELY(idParam);
+    
+    [self topicAction:TopicActionFollow withParameters:params];
+}
+
+-(void) unfollow {
+    NSMutableArray *params = [[[NSMutableArray alloc] init] autorelease];
+    
+    OARequestParameter *actionParam = [[OARequestParameter alloc] initWithName:@"action"
+                                                                         value:@"unfollow"];
+    [params addObject:actionParam];
+    TT_RELEASE_SAFELY(actionParam);
+    
+    OARequestParameter *idParam = [[OARequestParameter alloc] initWithName:@"id"
+                                                                     value:[NSString stringWithFormat:@"%d",self.lid]];
+    [params addObject:idParam];
+    TT_RELEASE_SAFELY(idParam);
+    
+    [self topicAction:TopicActionUnfollow withParameters:params];
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+- (void) topicAction:(TopicAction)action withParameters:(NSArray*) params {
+    OAConsumer *consumer = [[OAConsumer alloc] initWithKey:[SIScoopIt shared].key
+													secret:[SIScoopIt shared].secret];
+	
+	NSURL *_url = [NSURL URLWithString:[NSString stringWithFormat:@"%@api/1/topic", BASE_URL]];
+	
+	OAMutableURLRequest *request = [[OAMutableURLRequest alloc] initWithURL:_url
+																   consumer:consumer
+																	  token:[SIScoopIt shared].accessToken
+																	  realm:nil   // our service provider doesn't specify a realm
+														  signatureProvider:nil]; // use the default method, HMAC-SHA1
+	
+	[request setHTTPMethod:@"POST"];
+    request.tag = action;
+    if (params != nil) {
+        [request setParameters:params];
+    }
+	OADataFetcher *fetcher = [[OADataFetcher alloc] init];
+	
+	[fetcher fetchDataWithRequest:request
+						 delegate:self
+				didFinishSelector:@selector(topicActionRequest:didFinishWithData:)
+				  didFailSelector:@selector(topicctionRequest:didFailWithError:)];
+    
+    TT_RELEASE_SAFELY(consumer);
+    TT_RELEASE_SAFELY(request);
+    TT_RELEASE_SAFELY(fetcher);
+}
+
+//////////////////////////////////////////// DELEGATE /////////////////////////////////////////////
+
+- (void)topicActionRequest:(OAServiceTicket *)ticket didFinishWithData:(NSData *)data {
+    
+    TTDASSERT([data isKindOfClass:[NSData class]]);
+    NSDictionary* feed = nil;
+	if ([data isKindOfClass:[NSData class]]) {
+		NSString* json = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSLog(json);
+		feed = [json JSONValue];
+        TT_RELEASE_SAFELY(json);
+    }
+    if (actionDelegate != nil) {
+        [actionDelegate topic:self actionSucceeded:ticket.request.tag withData:feed];
+    }
+}
+
+- (void) topicActionRequest:(OAServiceTicket *)ticket didFailWithError:(NSError *)error {
+    if (actionDelegate != nil) {
+        [actionDelegate topic:self actionFailed:ticket.request.tag];
+    }
+}
+
 
 
 @end
