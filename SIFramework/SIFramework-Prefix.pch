@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'SIFramework' target in the 'SIFramework' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif
