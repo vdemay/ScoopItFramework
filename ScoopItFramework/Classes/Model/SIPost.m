@@ -94,6 +94,10 @@
 	}
 }
 
+- (void) populateModel:(NSDictionary*) dic {
+    [self getFromDictionary:dic];
+}
+
 - (void) dealloc
 {
 	[content release];
