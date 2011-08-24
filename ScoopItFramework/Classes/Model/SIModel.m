@@ -77,7 +77,7 @@
 	
 	if ([data isKindOfClass:[NSData class]]) {
 		NSString* json = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        //NSLog(json);
+        NSLog(@"%@",json);
 		NSDictionary* feed = [[json JSONValue] retain];
         [self populateModel:feed];
         TT_RELEASE_SAFELY(json);
