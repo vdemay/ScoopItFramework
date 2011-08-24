@@ -211,7 +211,7 @@
 /////////////////////////////////////////////////////////////////////////////////////
 
 - (void) edit {
-    if (!self.topic) {
+    if (!self.publicationDate) {
         [self postActionRequest:nil didFailWithError:[NSError errorWithDomain:@"Can not edit a post not yet accpeted" code:0 userInfo:nil]];
         return;
     }
@@ -244,11 +244,38 @@
     [params addObject:imageUrlParam];
     TT_RELEASE_SAFELY(imageUrlParam);
     
-    //TODO Tags
-    
     [self postAction:PostActionEdit withParameters:params];
 }
 
+- (void) saveTags {
+    if (!self.publicationDate) {
+        [self postActionRequest:nil didFailWithError:[NSError errorWithDomain:@"Can not set tags on a post not yet accpeted" code:0 userInfo:nil]];
+        return;
+    }
+    
+    NSMutableArray *params = [[[NSMutableArray alloc] init] autorelease];
+    
+    OARequestParameter *actionParam = [[OARequestParameter alloc] initWithName:@"action"
+                                                                         value:@"edit"];
+    [params addObject:actionParam];
+    TT_RELEASE_SAFELY(actionParam);
+    
+    OARequestParameter *idParam = [[OARequestParameter alloc] initWithName:@"id"
+                                                                     value:[NSString stringWithFormat:@"%d",self.lid]];
+    [params addObject:idParam];
+    TT_RELEASE_SAFELY(idParam);
+    
+    for (NSString *tag in self.tags) {
+        OARequestParameter *tagsParam = [[OARequestParameter alloc] initWithName:@"tag"
+                                                                     value:tag];
+        [params addObject:tagsParam];
+        TT_RELEASE_SAFELY(tagsParam);
+    }
+    
+    [self postAction:PostActionSetTags withParameters:params];
+    
+    
+}
 
 /////////////////////////////////////////////////////////////////////////////////////
 
@@ -539,7 +566,7 @@
         
         self.thanked = _thanked;
         self.thanksCount = _thankCount;
-    } else if (ticket.request.tag == PostActionEdit || ticket.request.tag == PostActionAccept || ticket.request.tag == PostActionCreate || ticket.request.tag == PostActionPrepare || ticket.request.tag == PostActionForward) {
+    } else if (ticket.request.tag == PostActionEdit || ticket.request.tag == PostActionAccept || ticket.request.tag == PostActionCreate || ticket.request.tag == PostActionPrepare || ticket.request.tag == PostActionForward || ticket.request.tag == PostActionSetTags) {
         //update the post
         [self populateModel:[feed objectForKey:@"post"]];
     }

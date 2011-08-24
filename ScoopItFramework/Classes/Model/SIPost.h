@@ -20,6 +20,7 @@ typedef enum actions {
     PostActionRefuse,
     PostActionDelete,
     PostActionEdit,
+    PostActionSetTags,
     PostActionPin
 } PostAction;
 
@@ -175,10 +176,14 @@ typedef enum actions {
  * Save post edition
  * the post need to be edited before calling this method
  * content / title / imageUrl
- * TODO : tag
+ * Tags are not save here : use saveTags instead 
  */
 - (void) edit;
 
+/*
+ * Save tags set on the topic
+ */
+- (void) saveTags; 
 
 /*
  * Pin a post
