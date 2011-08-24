@@ -270,7 +270,8 @@ static CGFloat kBorderWidth = 10;
 // NSObject
 
 - (id)init {
-  if (self = [super initWithFrame:CGRectZero]) {
+    self = [super initWithFrame:CGRectZero];
+  if (self) {
     _delegate = nil;
     _loadingURL = nil;
     _orientation = UIDeviceOrientationUnknown;
