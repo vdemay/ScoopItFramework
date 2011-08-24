@@ -55,11 +55,14 @@ typedef enum SIRequestType {
 @property (nonatomic, retain) NSString* secret;
 @property (nonatomic, retain) OAToken* accessToken;
 
-+ (SIScoopIt*) sharedWithKey:(NSString*)key andSecret:(NSString*) secret;
+//+ (SIScoopIt*) sharedWithKey:(NSString*)key andSecret:(NSString*) secret;
 + (SIScoopIt*) shared;
 
 - (bool) isAuthorized;
-- (void) getAuthorizationWithDelegate:(id<SIScoopItAuthorizationDelegate>) delegate;
+//- (void) getAuthorizationWithDelegate:(id<SIScoopItAuthorizationDelegate>) delegate;
+- (void) getAuthorizationWithKey:(NSString*)key andSecret:(NSString*) secret andDelegate:(id<SIScoopItAuthorizationDelegate>) delegate;
+
+- (void) logout;
 
 //MODEL GET
 - (SITopic*) getTopic:(int)lid;
