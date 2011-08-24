@@ -55,16 +55,18 @@
 - (id)initWithKey:(NSString *)aKey secret:(NSString *)aSecret session:(NSString *)aSession
 		 duration:(NSNumber *)aDuration attributes:(NSDictionary *)theAttributes created:(NSDate *)creation
 		renewable:(BOOL)renew {
-	[super init];
-	self.key = aKey;
-	self.secret = aSecret;
-	self.session = aSession;
-	self.duration = aDuration;
-	self.attributes = theAttributes;
-	created = [creation retain];
-	renewable = renew;
-	forRenewal = NO;
-
+    
+	self = [super init];
+    if (self){
+        self.key = aKey;
+        self.secret = aSecret;
+        self.session = aSession;
+        self.duration = aDuration;
+        self.attributes = theAttributes;
+        created = [creation retain];
+        renewable = renew;
+        forRenewal = NO;
+    }
 	return self;
 }
 
@@ -281,6 +283,7 @@
 	for(NSString *name in keys) {
 		[[NSUserDefaults standardUserDefaults] removeObjectForKey:[OAToken settingsKey:name provider:provider prefix:prefix]];
 	}
+    [NSUserDefaults resetStandardUserDefaults];
 }
 			
 + (NSNumber *)durationWithString:(NSString *)aDuration {

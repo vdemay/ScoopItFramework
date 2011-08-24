@@ -36,12 +36,12 @@
 	BOOL renewable;
 	BOOL forRenewal;
 }
-@property(retain, readwrite) NSString *key;
-@property(retain, readwrite) NSString *secret;
-@property(retain, readwrite) NSString *session;
-@property(retain, readwrite) NSNumber *duration;
-@property(retain, readwrite) NSDictionary *attributes;
-@property(readwrite, getter=isForRenewal) BOOL forRenewal;
+@property(nonatomic, retain) NSString *key;
+@property(nonatomic, retain) NSString *secret;
+@property(nonatomic, retain) NSString *session;
+@property(nonatomic, retain) NSNumber *duration;
+@property(nonatomic, retain) NSDictionary *attributes;
+@property(nonatomic, getter=isForRenewal) BOOL forRenewal;
 
 - (id)initWithKey:(NSString *)aKey secret:(NSString *)aSecret;
 - (id)initWithKey:(NSString *)aKey secret:(NSString *)aSecret session:(NSString *)aSession
