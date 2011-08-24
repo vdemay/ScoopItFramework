@@ -543,7 +543,7 @@ static CGFloat kBorderWidth = 10;
   [_loadingURL release];
   _loadingURL = [[NSURL URLWithString:url] retain];
   NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:_loadingURL];
-
+  [request setCachePolicy:NSURLCacheStorageNotAllowed];
   [_webView loadRequest:request];
 }
 
