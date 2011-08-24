@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "SIModel.h"
 #import "SIScoopIt.h"
+#import "SISharer.h"
 
 typedef enum actions {
     PostActionPrepare = 0,
@@ -21,6 +22,7 @@ typedef enum actions {
     PostActionDelete,
     PostActionEdit,
     PostActionSetTags,
+    PostActionShare,
     PostActionPin
 } PostAction;
 
@@ -110,7 +112,15 @@ typedef enum actions {
  * Edit properties of the post before calling this method
  * You can also set sharers : see http://www.scoop.it/dev/api/1/types#sharer
  */
-- (void) acceptToTopic:(int) topicLid andSharers:(NSString*) shareOn;
+- (void) acceptToTopic:(int) topicLid andSharers:(NSString *) shareOn;
+
+/*
+ * Accept a Post into a Topic
+ * Edit properties of the post before calling this method
+ * You can also set sharers via an Array
+ * You can set a specific texy using property "specificText" in sharer it self
+ */
+- (void) acceptToTopic:(int) topicLid andSharersArray:(NSArray *) sharers;
 
 /*
  * Refuse this post
@@ -135,9 +145,19 @@ typedef enum actions {
  * Create this post from scratch
  * The post need to be populated first
  * Usefull information are : title / url / content / imageUrl 
+ * You can also set sharers via an Array
+ * You can set a specific texy using property "specificText" in sharer it self
+ */
+- (void) createOn:(int) topicLid andSharersArray:(NSArray*) sharers;
+
+/*
+ * Create this post from scratch
+ * The post need to be populated first
+ * Usefull information are : title / url / content / imageUrl 
+ * topic
  * You can also set sharers : see http://www.scoop.it/dev/api/1/types#sharer
  */
-- (void) createOn:(int) topicLid andSharers:(NSString*) shareOn;
+- (void) createOn:(int) topicLid andSharers:(NSString *) sharerOn;
 
 /*
  * Forward this post to another topic
@@ -150,15 +170,43 @@ typedef enum actions {
  * Forward this post to another topic
  * this action is equivalent to Accept but to another
  * topic
+ * You can also set sharers via an Array
+ * You can set a specific texy using property "specificText" in sharer it self
+ */
+- (void) forwardTo:(int) topicLid andSharersArray:(NSArray *) sharers;
+
+/*
+ * Forward this post to another topic
+ * this action is equivalent to Accept but to another
+ * topic
  * You can also set sharers : see http://www.scoop.it/dev/api/1/types#sharer
  */
-- (void) forwardTo:(int) topicLid andSharers:(NSString*) shareOn;
+- (void) forwardTo:(int) topicLid andSharers:(NSString *) sharerOn;
 
 
 /*
  * Thanks the current : no effect if already posted
  */
 - (void) thanks;
+
+/*
+ * Share a post to a sharer
+ * You can set a specific texy using property "specificText" in sharer it self
+ */
+- (void) shareOnSingle:(SISharer *) sharer;
+
+/*
+ * Directly share to multiple sharer 
+ * You can also set sharers via an Array
+ * You can set a specific texy using property "specificText" in sharer it self
+ */
+- (void) shareOnSharersArray:(NSArray *) sharers;
+
+/*
+ * Directly share to multiple sharer 
+ * You can also set sharers : see http://www.scoop.it/dev/api/1/types#sharer
+ */
+- (void) shareOn:(NSString *) shareOn;
 
 
 /*
@@ -193,7 +241,7 @@ typedef enum actions {
 /*
  * Prepar a post. It will init this object with data from the given url
  */
-- (void) preparForUrl:(NSString*) url;
+- (void) preparForUrl:(NSString*) urlToPrepar;
 
 
 @end

@@ -247,9 +247,11 @@
     [self postAction:PostActionEdit withParameters:params];
 }
 
+//////////////////////////////////////////////////////////////////////////////
+
 - (void) saveTags {
     if (!self.publicationDate) {
-        [self postActionRequest:nil didFailWithError:[NSError errorWithDomain:@"Can not set tags on a post not yet accpeted" code:0 userInfo:nil]];
+        [self postActionRequest:nil didFailWithError:[NSError errorWithDomain:@"Can not set tags on a post not yet accepted" code:0 userInfo:nil]];
         return;
     }
     
@@ -274,6 +276,47 @@
     
     [self postAction:PostActionSetTags withParameters:params];
     
+    
+}
+
+
+//////////////////////////////////////////////////////////////////////////////
+
+
+- (void) shareOnSingle:(SISharer *) sharer { 
+    NSArray *sharers = [[NSArray alloc] initWithObjects:sharer, nil];
+    [self shareOnSharersArray:sharers];
+    TT_RELEASE_SAFELY(sharers);
+}
+
+- (void) shareOnSharersArray:(NSArray *)sharers {
+    [self shareOn:[SISharer getSharerFragmentFor:sharers]];
+}
+
+- (void) shareOn:(NSString *) shareOn {
+    if (!self.publicationDate) {
+        [self postActionRequest:nil didFailWithError:[NSError errorWithDomain:@"Can not set tags on a post not yet accepted" code:0 userInfo:nil]];
+        return;
+    }
+    
+    NSMutableArray *params = [[[NSMutableArray alloc] init] autorelease];
+    
+    OARequestParameter *actionParam = [[OARequestParameter alloc] initWithName:@"action"
+                                                                         value:@"share"];
+    [params addObject:actionParam];
+    TT_RELEASE_SAFELY(actionParam);
+    
+    OARequestParameter *idParam = [[OARequestParameter alloc] initWithName:@"id"
+                                                                     value:[NSString stringWithFormat:@"%d",self.lid]];
+    [params addObject:idParam];
+    TT_RELEASE_SAFELY(idParam);
+    
+    OARequestParameter *sharerParam = [[OARequestParameter alloc] initWithName:@"shareOn"
+                                                                           value:shareOn];
+    [params addObject:sharerParam];
+    TT_RELEASE_SAFELY(sharerParam);
+    
+    [self postAction:PostActionShare withParameters:params];
     
 }
 
@@ -311,6 +354,10 @@
 
 - (void) acceptToTopic:(int) topicLid {
     [self acceptToTopic:topicLid andSharers:nil];
+}
+
+- (void) acceptToTopic:(int) topicLid andSharersArray:(NSArray*) sharers {
+    [self acceptToTopic:topicLid andSharers:[SISharer getSharerFragmentFor:sharers]];
 }
 
 - (void) acceptToTopic:(int) topicLid andSharers:(NSString*) shareOn {
@@ -367,6 +414,10 @@
 
 - (void) createOn:(int) topicLid {
     [self createOn:topicLid andSharers:nil];
+}
+
+- (void) createOn:(int)topicLid andSharersArray:(NSArray *)sharers {
+    [self createOn:topicLid andSharers:[SISharer getSharerFragmentFor:sharers]];
 }
 
 - (void) createOn:(int) topicLid andSharers:(NSString*) shareOn {
@@ -444,6 +495,10 @@
     [self forwardTo:topicLid andSharers:nil];
 }
 
+- (void) forwardTo:(int)topicLid andSharersArray:(NSArray *)sharers {
+    [self forwardTo:topicLid andSharers:[SISharer getSharerFragmentFor:sharers]];
+}
+
 - (void) forwardTo:(int) topicLid andSharers:(NSString*) shareOn {
     NSMutableArray *params = [[[NSMutableArray alloc] init] autorelease];
     
@@ -495,7 +550,7 @@
 
 /////////////////////////////////////////////////////////////////////////////////////
 
-- (void) preparForUrl:(NSString*) url {
+- (void) preparForUrl:(NSString*) urlToPrepar {
     NSMutableArray *params = [[[NSMutableArray alloc] init] autorelease];
     
     OARequestParameter *actionParam = [[OARequestParameter alloc] initWithName:@"action"
@@ -504,7 +559,7 @@
     TT_RELEASE_SAFELY(actionParam);
     
     OARequestParameter *urlParam = [[OARequestParameter alloc] initWithName:@"url"
-                                                                     value:url];
+                                                                     value:urlToPrepar];
     [params addObject:urlParam];
     TT_RELEASE_SAFELY(urlParam);
     
