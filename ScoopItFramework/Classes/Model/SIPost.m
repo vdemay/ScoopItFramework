@@ -44,6 +44,7 @@
 @synthesize topic;
 @synthesize pagesView;
 @synthesize reactionsCount;
+@synthesize tags;
 
 @synthesize actionDelegate;
 
@@ -75,8 +76,7 @@
 		self.imageWidth = [[dic objectForKey:@"imageWidth"] intValue];
 		self.imageHeight = [[dic objectForKey:@"imageHeight"] intValue];
 		self.imageSize = [[dic objectForKey:@"imageSize"] intValue];
-		NSArray *imageUrlsJson = [dic objectForKey:@"imageUrls"];
-        self.imageUrls = [[NSArray alloc] initWithArray:imageUrlsJson];
+		self.imageUrls = [NSArray arrayWithArray:[dic objectForKey:@"imageUrls"]];
 		self.commentsCount = [[dic objectForKey:@"commentsCount"] intValue];
 		self.reactionsCount = [[dic objectForKey:@"reactionsCount"] intValue];
 		self.isUserSuggestion = [[dic objectForKey:@"isUserSuggestion"] boolValue];
@@ -90,6 +90,7 @@
 			self.topic = [[[SITopic alloc] init] autorelease];
 			[self.topic getFromDictionary:topicJson];
 		}
+        self.tags = [NSArray arrayWithArray:[dic objectForKey:@"tags"]];
 		
 	}
 }
@@ -138,6 +139,10 @@
 	
     [topic release];
 	topic = nil;
+    
+    [tags release];
+    tags = nil;
+
 	
 	[super dealloc];
 }
@@ -522,7 +527,7 @@
     NSDictionary* feed = nil;
 	if ([data isKindOfClass:[NSData class]]) {
 		NSString* json = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        NSLog(json);
+        NSLog(@"%@", json);
 		feed = [json JSONValue];
         TT_RELEASE_SAFELY(json);
     }

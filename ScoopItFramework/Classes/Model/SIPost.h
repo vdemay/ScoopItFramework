@@ -61,6 +61,8 @@ typedef enum actions {
 	BOOL thanked;
 	SITopic* topic;
     
+    NSArray* tags;
+    
     id<SIPostActionDelegate> actionDelegate;
 	
 }
@@ -90,7 +92,7 @@ typedef enum actions {
 @property (nonatomic, retain) SITopic* topic;
 @property (nonatomic) int pagesView;
 @property (nonatomic) int reactionsCount;
-
+@property (nonatomic, retain) NSArray* tags;
 @property (nonatomic, assign) id<SIPostActionDelegate> actionDelegate;
 
 - (id) init:(SIScoopIt*) _scoopIt withLid:(int) _lid;
