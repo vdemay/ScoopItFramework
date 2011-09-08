@@ -460,7 +460,12 @@
         [params addObject:imageUrlParam];
         TT_RELEASE_SAFELY(imageUrlParam);
     }
-    
+    if (self.url) {
+        OARequestParameter *imageUrlParam = [[OARequestParameter alloc] initWithName:@"url"
+                                                                               value:self.url];
+        [params addObject:imageUrlParam];
+        TT_RELEASE_SAFELY(imageUrlParam);
+    }
     if (shareOn) {
         OARequestParameter *shareOnParam = [[OARequestParameter alloc] initWithName:@"shareOn"
                                                                               value:shareOn];
