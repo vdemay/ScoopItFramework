@@ -26,6 +26,9 @@
     
     int nbCuratedPost;
     int nbCurablePost;
+    
+    BOOL getCuratedTopics;
+    BOOL getFollowedTopics;
 }
 @property (nonatomic) int lid;
 @property (nonatomic, retain) NSString* name;
@@ -35,6 +38,8 @@
 @property (nonatomic, retain) NSArray* sharers;
 @property (nonatomic, retain) NSArray* curatedTopics;
 @property (nonatomic, retain) NSArray* followedTopics;
+@property (nonatomic) BOOL getCuratedTopics;
+@property (nonatomic) BOOL getFollowedTopics;
 @property (nonatomic) BOOL connectedUser;
 
 @property (nonatomic) int nbCuratedPost;
