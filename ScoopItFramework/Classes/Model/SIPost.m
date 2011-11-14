@@ -238,7 +238,9 @@
     [params addObject:contentParam];
     TT_RELEASE_SAFELY(contentParam);
     
-    
+    if (self.imageUrl == nil) {
+        self.imageUrl = @"";
+    }
     OARequestParameter *imageUrlParam = [[OARequestParameter alloc] initWithName:@"imageUrl"
                                                                           value:self.imageUrl];
     [params addObject:imageUrlParam];
