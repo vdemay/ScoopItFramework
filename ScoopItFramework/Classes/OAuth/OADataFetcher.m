@@ -33,8 +33,8 @@
 	self = [super init];
     if (self) {
         responseData = [[NSMutableData alloc] init];
-        return self;
     }
+    return self;
 }
 
 - (void)dealloc {

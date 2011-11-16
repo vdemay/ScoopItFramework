@@ -211,7 +211,7 @@
 /////////////////////////////////////////////////////////////////////////////////////
 
 - (void) edit {
-    if (!self.topic) {
+    if (!self.publicationDate) {
         [self postActionRequest:nil didFailWithError:[NSError errorWithDomain:@"Can not edit a post not yet accpeted" code:0 userInfo:nil]];
         return;
     }
@@ -238,17 +238,89 @@
     [params addObject:contentParam];
     TT_RELEASE_SAFELY(contentParam);
     
-    
+    if (self.imageUrl == nil) {
+        self.imageUrl = @"";
+    }
     OARequestParameter *imageUrlParam = [[OARequestParameter alloc] initWithName:@"imageUrl"
                                                                           value:self.imageUrl];
     [params addObject:imageUrlParam];
     TT_RELEASE_SAFELY(imageUrlParam);
     
-    //TODO Tags
-    
     [self postAction:PostActionEdit withParameters:params];
 }
 
+//////////////////////////////////////////////////////////////////////////////
+
+- (void) saveTags {
+    if (!self.publicationDate) {
+        [self postActionRequest:nil didFailWithError:[NSError errorWithDomain:@"Can not set tags on a post not yet accepted" code:0 userInfo:nil]];
+        return;
+    }
+    
+    NSMutableArray *params = [[[NSMutableArray alloc] init] autorelease];
+    
+    OARequestParameter *actionParam = [[OARequestParameter alloc] initWithName:@"action"
+                                                                         value:@"edit"];
+    [params addObject:actionParam];
+    TT_RELEASE_SAFELY(actionParam);
+    
+    OARequestParameter *idParam = [[OARequestParameter alloc] initWithName:@"id"
+                                                                     value:[NSString stringWithFormat:@"%d",self.lid]];
+    [params addObject:idParam];
+    TT_RELEASE_SAFELY(idParam);
+    
+    for (NSString *tag in self.tags) {
+        OARequestParameter *tagsParam = [[OARequestParameter alloc] initWithName:@"tag"
+                                                                     value:tag];
+        [params addObject:tagsParam];
+        TT_RELEASE_SAFELY(tagsParam);
+    }
+    
+    [self postAction:PostActionSetTags withParameters:params];
+    
+    
+}
+
+
+//////////////////////////////////////////////////////////////////////////////
+
+
+- (void) shareOnSingle:(SISharer *) sharer { 
+    NSArray *sharers = [[NSArray alloc] initWithObjects:sharer, nil];
+    [self shareOnSharersArray:sharers];
+    TT_RELEASE_SAFELY(sharers);
+}
+
+- (void) shareOnSharersArray:(NSArray *)sharers {
+    [self shareOn:[SISharer getSharerFragmentFor:sharers]];
+}
+
+- (void) shareOn:(NSString *) shareOn {
+    if (!self.publicationDate) {
+        [self postActionRequest:nil didFailWithError:[NSError errorWithDomain:@"Can not set tags on a post not yet accepted" code:0 userInfo:nil]];
+        return;
+    }
+    
+    NSMutableArray *params = [[[NSMutableArray alloc] init] autorelease];
+    
+    OARequestParameter *actionParam = [[OARequestParameter alloc] initWithName:@"action"
+                                                                         value:@"share"];
+    [params addObject:actionParam];
+    TT_RELEASE_SAFELY(actionParam);
+    
+    OARequestParameter *idParam = [[OARequestParameter alloc] initWithName:@"id"
+                                                                     value:[NSString stringWithFormat:@"%d",self.lid]];
+    [params addObject:idParam];
+    TT_RELEASE_SAFELY(idParam);
+    
+    OARequestParameter *sharerParam = [[OARequestParameter alloc] initWithName:@"shareOn"
+                                                                           value:shareOn];
+    [params addObject:sharerParam];
+    TT_RELEASE_SAFELY(sharerParam);
+    
+    [self postAction:PostActionShare withParameters:params];
+    
+}
 
 /////////////////////////////////////////////////////////////////////////////////////
 
@@ -284,6 +356,10 @@
 
 - (void) acceptToTopic:(int) topicLid {
     [self acceptToTopic:topicLid andSharers:nil];
+}
+
+- (void) acceptToTopic:(int) topicLid andSharersArray:(NSArray*) sharers {
+    [self acceptToTopic:topicLid andSharers:[SISharer getSharerFragmentFor:sharers]];
 }
 
 - (void) acceptToTopic:(int) topicLid andSharers:(NSString*) shareOn {
@@ -342,6 +418,10 @@
     [self createOn:topicLid andSharers:nil];
 }
 
+- (void) createOn:(int)topicLid andSharersArray:(NSArray *)sharers {
+    [self createOn:topicLid andSharers:[SISharer getSharerFragmentFor:sharers]];
+}
+
 - (void) createOn:(int) topicLid andSharers:(NSString*) shareOn {
     NSMutableArray *params = [[[NSMutableArray alloc] init] autorelease];
     
@@ -382,7 +462,12 @@
         [params addObject:imageUrlParam];
         TT_RELEASE_SAFELY(imageUrlParam);
     }
-    
+    if (self.url) {
+        OARequestParameter *imageUrlParam = [[OARequestParameter alloc] initWithName:@"url"
+                                                                               value:self.url];
+        [params addObject:imageUrlParam];
+        TT_RELEASE_SAFELY(imageUrlParam);
+    }
     if (shareOn) {
         OARequestParameter *shareOnParam = [[OARequestParameter alloc] initWithName:@"shareOn"
                                                                               value:shareOn];
@@ -415,6 +500,10 @@
 
 - (void) forwardTo:(int) topicLid {
     [self forwardTo:topicLid andSharers:nil];
+}
+
+- (void) forwardTo:(int)topicLid andSharersArray:(NSArray *)sharers {
+    [self forwardTo:topicLid andSharers:[SISharer getSharerFragmentFor:sharers]];
 }
 
 - (void) forwardTo:(int) topicLid andSharers:(NSString*) shareOn {
@@ -468,7 +557,7 @@
 
 /////////////////////////////////////////////////////////////////////////////////////
 
-- (void) preparForUrl:(NSString*) _url {
+- (void) preparForUrl:(NSString*) urlToPrepar {
     NSMutableArray *params = [[[NSMutableArray alloc] init] autorelease];
     
     OARequestParameter *actionParam = [[OARequestParameter alloc] initWithName:@"action"
@@ -477,7 +566,7 @@
     TT_RELEASE_SAFELY(actionParam);
     
     OARequestParameter *urlParam = [[OARequestParameter alloc] initWithName:@"url"
-                                                                     value:_url];
+                                                                     value:urlToPrepar];
     [params addObject:urlParam];
     TT_RELEASE_SAFELY(urlParam);
     
@@ -539,7 +628,7 @@
         
         self.thanked = _thanked;
         self.thanksCount = _thankCount;
-    } else if (ticket.request.tag == PostActionEdit || ticket.request.tag == PostActionAccept || ticket.request.tag == PostActionCreate || ticket.request.tag == PostActionPrepare || ticket.request.tag == PostActionForward) {
+    } else if (ticket.request.tag == PostActionEdit || ticket.request.tag == PostActionAccept || ticket.request.tag == PostActionCreate || ticket.request.tag == PostActionPrepare || ticket.request.tag == PostActionForward || ticket.request.tag == PostActionSetTags) {
         //update the post
         [self populateModel:[feed objectForKey:@"post"]];
     }

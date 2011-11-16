@@ -16,6 +16,14 @@
 @synthesize scoopIt;
 @synthesize loadedTime = _loadedTime;
 
+- (id)init {
+    self = [super init];
+    if (self) {
+        _fetchers = [[NSMutableArray alloc] init];
+    }
+    return self;
+}
+
 - (NSString*) generateUrl {
 	return nil;
 }
@@ -51,7 +59,7 @@
 																	  token:scoopIt.accessToken
 																	  realm:nil   // our service provider doesn't specify a realm
 														  signatureProvider:nil]; // use the default method, HMAC-SHA1
-	
+    
 	[request setHTTPMethod:@"GET"];
 	
 	OADataFetcher *fetcher = [[OADataFetcher alloc] init];
@@ -60,6 +68,8 @@
 						 delegate:self
 				didFinishSelector:@selector(requestModel:didFinishWithData:)
 				  didFailSelector:@selector(requestModel:didFailWithError:)];
+    [_fetchers addObject:fetcher];
+    
     
     TT_RELEASE_SAFELY(consumer);
     TT_RELEASE_SAFELY(request);
@@ -92,6 +102,14 @@
     
     _loading = NO;
 	[self didFailLoadWithError:error];
+}
+
+- (void)dealloc {
+    for (OADataFetcher *fetcher in _fetchers) {
+        [fetcher cancel];
+    }
+    TT_RELEASE_SAFELY(_fetchers);
+    [super dealloc];
 }
 
 @end

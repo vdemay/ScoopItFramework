@@ -26,6 +26,9 @@
 @synthesize connectedUser;
 @synthesize nbCuratedPost;
 @synthesize nbCurablePost;
+@synthesize getCuratedTopics;
+@synthesize getFollowedTopics;
+
 
 
 -(id) init:(SIScoopIt*)_scoopIt withLid:(int)_lid {
@@ -34,6 +37,8 @@
 		self.scoopIt = _scoopIt;
 		self.lid = _lid;
 		self.connectedUser = NO;
+        self.getCuratedTopics = YES;
+        self.getFollowedTopics = YES;
 	}
 	return self;
 }
@@ -55,6 +60,8 @@
 	if (self != nil) {
 		self.scoopIt = _scoopIt;
 		self.connectedUser = YES;
+        self.getCuratedTopics = YES;
+        self.getFollowedTopics = YES;
 	}
 	return self;
 }
@@ -68,6 +75,13 @@
     }
     
     url = [NSString stringWithFormat:@"%@&curated=%d&curable=%d", url, self.nbCuratedPost, self.nbCurablePost];
+    
+    if (!getCuratedTopics) {
+        url = [NSString stringWithFormat:@"%@&getCuratedTopics=false", url];
+    }
+    if (!getFollowedTopics) {
+        url = [NSString stringWithFormat:@"%@&getFollowedTopics=false", url];
+    }
     
     return url;
 }
