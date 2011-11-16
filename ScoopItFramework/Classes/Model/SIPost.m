@@ -468,7 +468,7 @@
 
 /////////////////////////////////////////////////////////////////////////////////////
 
-- (void) preparForUrl:(NSString*) url {
+- (void) preparForUrl:(NSString*) _url {
     NSMutableArray *params = [[[NSMutableArray alloc] init] autorelease];
     
     OARequestParameter *actionParam = [[OARequestParameter alloc] initWithName:@"action"
@@ -477,7 +477,7 @@
     TT_RELEASE_SAFELY(actionParam);
     
     OARequestParameter *urlParam = [[OARequestParameter alloc] initWithName:@"url"
-                                                                     value:url];
+                                                                     value:_url];
     [params addObject:urlParam];
     TT_RELEASE_SAFELY(urlParam);
     
