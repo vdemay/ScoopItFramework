@@ -45,6 +45,11 @@
 	[super dealloc];
 }
 
+
+- (void) cancel {
+    delegate = nil;
+}
+
 /* Protocol for async URL loading */
 - (void)connection:(NSURLConnection *)aConnection didReceiveResponse:(NSURLResponse *)aResponse {
 	[response release];

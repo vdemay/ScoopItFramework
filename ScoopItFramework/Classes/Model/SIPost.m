@@ -8,6 +8,7 @@
 
 #import "SIPost.h"
 #import "OAuthConsumer.h"
+#import "NSString+SBJSON.h"
 
 @interface SIPost (Private)
 - (void) postAction:(PostAction)action withParameters:(NSArray*) params;
@@ -616,7 +617,6 @@
     NSDictionary* feed = nil;
 	if ([data isKindOfClass:[NSData class]]) {
 		NSString* json = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        NSLog(@"%@", json);
 		feed = [json JSONValue];
         TT_RELEASE_SAFELY(json);
     }

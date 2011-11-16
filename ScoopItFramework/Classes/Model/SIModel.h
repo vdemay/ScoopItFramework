@@ -16,6 +16,8 @@
     
     NSDate*       _loadedTime;
     BOOL          _loading;
+    
+    NSMutableArray* _fetchers;
 }
 @property (nonatomic, assign) SIScoopIt* scoopIt;
 @property (nonatomic, retain) NSDate*   loadedTime;

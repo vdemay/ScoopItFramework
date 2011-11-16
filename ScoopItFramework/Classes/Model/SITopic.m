@@ -123,6 +123,9 @@
 }
 
 - (void) dealloc {
+    //detach delegate
+    actionDelegate = nil;
+    
 	[imageUrl release];
 	imageUrl = nil;
     
@@ -161,6 +164,7 @@
 	
     [tags release];
 	tags = nil;
+    
 	[super dealloc];
 }
 
@@ -220,16 +224,17 @@
     if (params != nil) {
         [request setParameters:params];
     }
-	OADataFetcher *fetcher = [[OADataFetcher alloc] init];
-	
+	OADataFetcher *fetcher = [[[OADataFetcher alloc] init] retain];
 	[fetcher fetchDataWithRequest:request
 						 delegate:self
 				didFinishSelector:@selector(topicActionRequest:didFinishWithData:)
 				  didFailSelector:@selector(topicctionRequest:didFailWithError:)];
     
+    [_fetchers addObject:fetcher];
+    
     TT_RELEASE_SAFELY(consumer);
-    TT_RELEASE_SAFELY(request);
     TT_RELEASE_SAFELY(fetcher);
+    TT_RELEASE_SAFELY(request);
 }
 
 //////////////////////////////////////////// DELEGATE /////////////////////////////////////////////
