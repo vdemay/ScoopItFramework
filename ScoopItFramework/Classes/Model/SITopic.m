@@ -8,6 +8,7 @@
 
 #import "SITopic.h"
 #import "SIScoopIt.h"
+#import "NSString+SBJSON.h"
 
 #import "SIUser.h"
 #import "SIPost.h"
@@ -245,7 +246,6 @@
     NSDictionary* feed = nil;
 	if ([data isKindOfClass:[NSData class]]) {
 		NSString* json = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        NSLog(@"%@", json);
 		feed = [json JSONValue];
         TT_RELEASE_SAFELY(json);
     }
