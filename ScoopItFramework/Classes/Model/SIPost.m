@@ -343,7 +343,7 @@
     TT_RELEASE_SAFELY(idParam);
     
     if (self.isUserSuggestion && reason == nil) {
-        OARequestParameter *reasonParam = [[OARequestParameter alloc] initWithName:@"reason"
+        OARequestParameter * reasonParam = [[OARequestParameter alloc] initWithName:@"reason"
                                                                               value:reason];
         [params addObject:reasonParam];
         TT_RELEASE_SAFELY(reasonParam);

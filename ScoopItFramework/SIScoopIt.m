@@ -38,7 +38,7 @@ static SIScoopIt* sharedObj = nil;
     return sharedObj;
 }
 
-+(id)allocWithZone:(NSZone *)zone {
++ (id) allocWithZone:(NSZone *)zone {
     @synchronized(self) {
         if (sharedObj == nil) {
             sharedObj = [super allocWithZone:zone];
@@ -117,6 +117,12 @@ static SIScoopIt* sharedObj = nil;
 }
 
 - (void) logout {
+    NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    for (NSHTTPCookie *each in [[[cookieStorage cookiesForURL:[NSURL URLWithString:BASE_URL]] copy] autorelease]) {
+    	[cookieStorage deleteCookie:each];
+    }
+    
+    TT_RELEASE_SAFELY(_connectedUser);
     [OAToken removeFromUserDefaultsWithServiceProviderName:@"SIAPP" prefix:@"scoop.it"];
     self.secret = nil;
     self.key = nil;
