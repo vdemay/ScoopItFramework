@@ -17,6 +17,7 @@
 #import "SISource.h"
 #import "SITopic.h"
 #import "SIUser.h"
+#import "SITopicTag.h"
 #import "SICompilation.h"
 #import "SISharer.h"
 #import "SISearch.h"
