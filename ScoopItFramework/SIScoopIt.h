@@ -23,11 +23,13 @@
 
 
 #define BASE_URL @"http://www.scoop.it/"
+//#define BASE_URL @"http://10.0.0.144:8888/"
+
 
 typedef enum SIRequestType {
     SIRequestTopicById,
     SIRequestProfile,
-} SIRequestType;
+} SIRequestType;    
 
 
 @protocol SIScoopItAuthorizationDelegate;

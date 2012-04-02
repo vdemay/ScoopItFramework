@@ -12,7 +12,7 @@
 
 @interface SIPost (Private)
 - (void) postAction:(PostAction)action withParameters:(NSArray*) params;
-- (void)postActionRequest:(OAServiceTicket *)ticket didFinishWithData:(NSData *)data;
+- (void) postActionRequest:(OAServiceTicket *)ticket didFinishWithData:(NSData *)data;
 - (void) postActionRequest:(OAServiceTicket *)ticket didFailWithError:(NSError *)error;
 @end
 
@@ -77,7 +77,7 @@
 		self.imageWidth = [[dic objectForKey:@"imageWidth"] intValue];
 		self.imageHeight = [[dic objectForKey:@"imageHeight"] intValue];
 		self.imageSize = [[dic objectForKey:@"imageSize"] intValue];
-		self.imageUrls = [NSArray arrayWithArray:[dic objectForKey:@"imageUrls"]];
+		self.imageUrls = [NSMutableArray arrayWithArray:[dic objectForKey:@"imageUrls"]];
 		self.commentsCount = [[dic objectForKey:@"commentsCount"] intValue];
 		self.reactionsCount = [[dic objectForKey:@"reactionsCount"] intValue];
 		self.isUserSuggestion = [[dic objectForKey:@"isUserSuggestion"] boolValue];
@@ -212,10 +212,11 @@
 /////////////////////////////////////////////////////////////////////////////////////
 
 - (void) edit {
-    if (!self.publicationDate) {
+    //https://issues.koorjet.com/browse/IPHIT-32
+    /*if (!self.publicationDate) {
         [self postActionRequest:nil didFailWithError:[NSError errorWithDomain:@"Can not edit a post not yet accpeted" code:0 userInfo:nil]];
         return;
-    }
+    }*/
     NSMutableArray *params = [[[NSMutableArray alloc] init] autorelease];
     
     OARequestParameter *actionParam = [[OARequestParameter alloc] initWithName:@"action"
@@ -574,13 +575,16 @@
     [self postAction:PostActionPrepare withParameters:params];
 }
 
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
 - (void) postAction:(PostAction)action withParameters:(NSArray*) params {
+    
     OAConsumer *consumer = [[OAConsumer alloc] initWithKey:[SIScoopIt shared].key
 													secret:[SIScoopIt shared].secret];
 	
@@ -594,9 +598,11 @@
 	
 	[request setHTTPMethod:@"POST"];
     request.tag = action;
+    
     if (params != nil) {
         [request setParameters:params];
     }
+    
 	OADataFetcher *fetcher = [[OADataFetcher alloc] init];
 	
 	[fetcher fetchDataWithRequest:request

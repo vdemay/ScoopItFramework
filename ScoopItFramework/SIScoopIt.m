@@ -184,6 +184,11 @@ static SIScoopIt* sharedObj = nil;
 	[_authorizationDelegate scoopIt:self authenticationReturned:NO];
 }
 
+- (void)dialog:(SIDialog*)dialog didFailWithError:(NSError*)error {
+	NSLog(@"FAIL WITH ERROR");
+	[_authorizationDelegate scoopIt:self authenticationReturned:NO];
+}
+
 - (BOOL)dialog:(SIDialog*)dialog shouldOpenURLInExternalBrowser:(NSURL*)url {
 	return YES;
 }

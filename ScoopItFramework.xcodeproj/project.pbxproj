@@ -107,6 +107,8 @@
 		2E45A43C13D5B547004377B2 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E10FEB013D5AE9000B6F2D7 /* CoreFoundation.framework */; };
 		2E6FE4BA13C21B55005EFD37 /* SINotification.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E6FE4B813C21B55005EFD37 /* SINotification.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2E6FE4BB13C21B55005EFD37 /* SINotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E6FE4B913C21B55005EFD37 /* SINotification.m */; };
+		2E84BCF914BF3209003D520E /* SIImageUploader.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E84BCF714BF3209003D520E /* SIImageUploader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E84BCFA14BF3209003D520E /* SIImageUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E84BCF814BF3209003D520E /* SIImageUploader.m */; };
 		2E943AFA139F9DB600672F6B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E943AF9139F9DB600672F6B /* Foundation.framework */; };
 		2E943B05139F9DB600672F6B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E943B04139F9DB600672F6B /* UIKit.framework */; };
 		2E943B06139F9DB600672F6B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E943AF9139F9DB600672F6B /* Foundation.framework */; };
@@ -184,6 +186,8 @@
 		2E943BE9139FA0C500672F6B /* SITopic.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E943BE1139FA0C500672F6B /* SITopic.m */; };
 		2E943BEA139FA0C500672F6B /* SIUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E943BE2139FA0C500672F6B /* SIUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2E943BEB139FA0C500672F6B /* SIUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E943BE3139FA0C500672F6B /* SIUser.m */; };
+		2E96B40C14BF3850005EF89B /* SIImageUploader.m in Headers */ = {isa = PBXBuildFile; fileRef = 2E84BCF814BF3209003D520E /* SIImageUploader.m */; };
+		2E96B40D14BF3889005EF89B /* SIImageUploader.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E84BCF714BF3209003D520E /* SIImageUploader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2EDCE21713B0F9980059484D /* SISharer.h in Headers */ = {isa = PBXBuildFile; fileRef = 2EDCE21513B0F9980059484D /* SISharer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2EDCE21813B0F9980059484D /* SISharer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EDCE21613B0F9980059484D /* SISharer.m */; };
 		320AF8492C47A4D819F7C451 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 320AF8492C47A4D819F7C450 /* QuartzCore.framework */; };
@@ -373,6 +377,8 @@
 		2E45A45913D5B5AD004377B2 /* libThree20UICommon.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libThree20UICommon.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E6FE4B813C21B55005EFD37 /* SINotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SINotification.h; path = Classes/Model/SINotification.h; sourceTree = "<group>"; };
 		2E6FE4B913C21B55005EFD37 /* SINotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SINotification.m; path = Classes/Model/SINotification.m; sourceTree = "<group>"; };
+		2E84BCF714BF3209003D520E /* SIImageUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SIImageUploader.h; path = Uploader/SIImageUploader.h; sourceTree = "<group>"; };
+		2E84BCF814BF3209003D520E /* SIImageUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SIImageUploader.m; path = Uploader/SIImageUploader.m; sourceTree = "<group>"; };
 		2E943AF6139F9DB600672F6B /* libScoopItFramework.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libScoopItFramework.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E943AF9139F9DB600672F6B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2E943AFD139F9DB600672F6B /* ScoopItFramework-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ScoopItFramework-Prefix.pch"; sourceTree = "<group>"; };
@@ -556,6 +562,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		2E84BCEE14BF3034003D520E /* Uploader */ = {
+			isa = PBXGroup;
+			children = (
+				2E84BCF714BF3209003D520E /* SIImageUploader.h */,
+				2E84BCF814BF3209003D520E /* SIImageUploader.m */,
+			);
+			name = Uploader;
+			sourceTree = "<group>";
+		};
 		2E943AEB139F9DB600672F6B = {
 			isa = PBXGroup;
 			children = (
@@ -649,6 +664,7 @@
 		2E943B56139F9EB400672F6B /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				2E84BCEE14BF3034003D520E /* Uploader */,
 				2E943B92139F9F7700672F6B /* URLParser */,
 				2E943B97139F9F8D00672F6B /* JSON */,
 				2E943B57139F9EC200672F6B /* OAuth */,
@@ -892,6 +908,7 @@
 				2E10FF0313D5B32200B6F2D7 /* SISharer.h in Headers */,
 				2E10FF0413D5B32200B6F2D7 /* SINotification.h in Headers */,
 				2E10FF0513D5B32200B6F2D7 /* SISearch.h in Headers */,
+				2E96B40D14BF3889005EF89B /* SIImageUploader.h in Headers */,
 				2E10FF0613D5B32200B6F2D7 /* SIModel.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -935,10 +952,12 @@
 				2E6FE4BA13C21B55005EFD37 /* SINotification.h in Headers */,
 				2E017FF813D49F2E00491868 /* SISearch.h in Headers */,
 				2E943BD7139FA07500672F6B /* sha1.h in Headers */,
+				2E84BCF914BF3209003D520E /* SIImageUploader.h in Headers */,
 				2E2DC95113A21479005C31C5 /* SICompilation.h in Headers */,
 				2EDCE21713B0F9980059484D /* SISharer.h in Headers */,
 				2E943BE8139FA0C500672F6B /* SITopic.h in Headers */,
 				2E943BEA139FA0C500672F6B /* SIUser.h in Headers */,
+				2E96B40C14BF3850005EF89B /* SIImageUploader.m in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1308,6 +1327,7 @@
 				2EDCE21813B0F9980059484D /* SISharer.m in Sources */,
 				2E6FE4BB13C21B55005EFD37 /* SINotification.m in Sources */,
 				2E017FF913D49F2E00491868 /* SISearch.m in Sources */,
+				2E84BCFA14BF3209003D520E /* SIImageUploader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
