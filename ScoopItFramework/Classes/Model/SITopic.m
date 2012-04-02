@@ -120,6 +120,18 @@
 		}
 		self.curatedPosts = [[[NSArray alloc] initWithArray:curatedPostsToAdd] autorelease];
         TT_RELEASE_SAFELY(curatedPostsToAdd);
+        
+        
+        NSArray* topicTagsJson = [dic objectForKey:@"tags"];
+        NSMutableArray* topicTagsToAdd = [[NSMutableArray alloc] init];
+        for (NSDictionary* topicTagJson in topicTagsJson) {
+			SITopicTag *tag = [[SITopicTag alloc] init];
+			[tag getFromDictionary:topicTagJson];
+			[topicTagsToAdd addObject:tag];
+            TT_RELEASE_SAFELY(tag);
+		}
+		self.tags = [[[NSArray alloc] initWithArray:topicTagsToAdd] autorelease];
+        TT_RELEASE_SAFELY(topicTagsToAdd);
 	}	
 }
 
