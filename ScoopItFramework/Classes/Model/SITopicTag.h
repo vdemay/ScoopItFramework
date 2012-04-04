@@ -6,6 +6,9 @@
 //  Copyright 2011 Goojet. All rights reserved.
 //
 
+
+#import "SIModel.h"
+
 @interface SITopicTag : SIModel {
     NSString *tag;
     int count;

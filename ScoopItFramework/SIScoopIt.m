@@ -16,17 +16,17 @@ static SIScoopIt* sharedObj = nil;
 @synthesize secret = _secret;
 @synthesize accessToken = _accessToken;
 
-/*
+
  + (SIScoopIt*) sharedWithKey:(NSString*)key andSecret:(NSString*) secret {
- @synchronized(self) {
- if (!sharedObj) {
- sharedObj = [[SIScoopIt alloc] init];
- sharedObj.key = key;
- sharedObj.secret = secret;
+     @synchronized(self) {
+         if (!sharedObj) {
+             sharedObj = [[SIScoopIt alloc] init];
+             sharedObj.key = key;
+             sharedObj.secret = secret;
+         }
+     }
+     return sharedObj;
  }
- }
- return sharedObj;
- }*/
 
 + (SIScoopIt*) shared {
     @synchronized(self) {
@@ -76,12 +76,9 @@ static SIScoopIt* sharedObj = nil;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-- (void) getAuthorizationWithKey:(NSString*)key andSecret:(NSString*) secret andDelegate:(id<SIScoopItAuthorizationDelegate>) delegate {
-	
-	_authorizationDelegate = delegate;
-    self.key = key;
-    self.secret = secret;
-	
+
+- (void) getAuthorizationWithDelegate:(id<SIScoopItAuthorizationDelegate>) delegate {
+    _authorizationDelegate = delegate;
 	//try to get in the keychain
 	_accessToken = [[OAToken alloc] initWithUserDefaultsUsingServiceProviderName:@"SIAPP" prefix:@"scoop.it"];
 	if (_accessToken == nil) {
@@ -114,6 +111,15 @@ static SIScoopIt* sharedObj = nil;
         NSLog(@"accessToken is not nil");
 		[_authorizationDelegate scoopIt:self authenticationReturned:YES];
 	}
+}
+
+- (void) getAuthorizationWithKey:(NSString*)key andSecret:(NSString*) secret andDelegate:(id<SIScoopItAuthorizationDelegate>) delegate {
+	
+    self.key = key;
+    self.secret = secret;
+	
+    [self getAuthorizationWithKey:key andSecret:secret andDelegate:delegate];
+
 }
 
 - (void) logout {
