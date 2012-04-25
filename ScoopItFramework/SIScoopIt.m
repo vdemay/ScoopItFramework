@@ -250,6 +250,10 @@ static SIScoopIt* sharedObj = nil;
     return [[SIUser alloc] init:self withLid:lid];
 }
 
+- (SIProfile*) getProfile:(int)lid {
+    return [[SIProfile alloc] init:self withLid:lid];
+}
+
 - (SICompilation*) getCompilation {
     if (self.accessToken != nil) {
         return [[SICompilation alloc] init:self];
@@ -272,6 +276,10 @@ static SIScoopIt* sharedObj = nil;
 
 - (SISearch*) getSearchForTopic: (NSString*) query {
     return [[SISearch alloc] init:self withSearch:query];
+}
+
+- (SISearch*) getSearchForPosts: (NSString*) query {
+    return [[SISearch alloc] init:self withSearch:query andLang:@"en" andType:@"post"];
 }
 
 @end
