@@ -9,7 +9,7 @@
 /* Begin PBXAggregateTarget section */
 		2E45A46813D5BE46004377B2 /* MergeiOSAndSimulator */ = {
 			isa = PBXAggregateTarget;
-						buildConfigurationList = 2E45A46913D5BE46004377B2 /* Build configuration list for PBXAggregateTarget "MergeiOSAndSimulator" */;
+			buildConfigurationList = 2E45A46913D5BE46004377B2 /* Build configuration list for PBXAggregateTarget "MergeiOSAndSimulator" */;
 			buildPhases = (
 				2E45A46D13D5BE56004377B2 /* ShellScript */,
 			);
