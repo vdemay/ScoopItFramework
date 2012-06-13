@@ -21,6 +21,8 @@
 #import "SICompilation.h"
 #import "SISharer.h"
 #import "SISearch.h"
+#import "SIStats.h"
+#import "SIProfile.h"
 
 
 #define BASE_URL @"http://www.scoop.it/"
@@ -58,11 +60,11 @@ typedef enum SIRequestType {
 @property (nonatomic, retain) NSString* secret;
 @property (nonatomic, retain) OAToken* accessToken;
 
-//+ (SIScoopIt*) sharedWithKey:(NSString*)key andSecret:(NSString*) secret;
++ (SIScoopIt*) sharedWithKey:(NSString*)key andSecret:(NSString*) secret;
 + (SIScoopIt*) shared;
 
 - (bool) isAuthorized;
-//- (void) getAuthorizationWithDelegate:(id<SIScoopItAuthorizationDelegate>) delegate;
+- (void) getAuthorizationWithDelegate:(id<SIScoopItAuthorizationDelegate>) delegate;
 - (void) getAuthorizationWithKey:(NSString*)key andSecret:(NSString*) secret andDelegate:(id<SIScoopItAuthorizationDelegate>) delegate;
 
 - (void) logout;
@@ -77,12 +79,15 @@ typedef enum SIRequestType {
 
 - (SIUser*) getUser:(int)lid;
 
+- (SIProfile*) getProfile:(int)lid;
+
 - (SICompilation*) getCompilation;
 
 - (SICompilation*) getCompilationWithNumberOfItem:(int) number;
 - (SICompilation*) getFollowingCompilationWithNumberOfItem:(int) number;
 
 - (SISearch*) getSearchForTopic: (NSString*) query;
+- (SISearch*) getSearchForPosts: (NSString*) query;
 
 
 @end

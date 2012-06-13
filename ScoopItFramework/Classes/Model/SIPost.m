@@ -70,6 +70,7 @@
 		[self.source getFromDictionary:[dic objectForKey:@"source"]];
 		self.url = [dic objectForKey:@"url"];
 		self.scoopUrl = [dic objectForKey:@"scoopUrl"];
+        self.imagePosition = [dic objectForKey:@"imagePosition"];
 		self.imageUrl = [dic objectForKey:@"imageUrl"];
 		self.smallImageUrl = [dic objectForKey:@"smallImageUrl"];
 		self.mediumImageUrl = [dic objectForKey:@"mediumImageUrl"];
