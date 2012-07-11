@@ -49,7 +49,7 @@
 
 @synthesize actionDelegate;
 
-- (id) init:(SIScoopIt*) _scoopIt withLid:(int) _lid
+- (id) init:(SIScoopIt*) _scoopIt withLid:(long long) _lid
 {
 	self = [super init];
 	if (self != nil) {
@@ -62,7 +62,7 @@
 
 -(void) getFromDictionary:(NSDictionary*) dic {
 	if (dic != nil) {
-		self.lid = [[dic objectForKey:@"id"] intValue];
+		self.lid = [[dic objectForKey:@"id"] longLongValue];
 		self.content = [dic objectForKey:@"content"];
 		self.title = [dic objectForKey:@"title"];
 		self.thanksCount = [[dic objectForKey:@"thanksCount"] intValue];
@@ -154,7 +154,7 @@
     OARequestParameter *actionParam = [[OARequestParameter alloc] initWithName:@"action"
                                                                          value:@"thank"];
     OARequestParameter *idParam = [[OARequestParameter alloc] initWithName:@"id"
-                                                                     value:[NSString stringWithFormat:@"%d", self.lid]];
+                                                                     value:[NSString stringWithFormat:@"%lld", self.lid]];
     NSArray *params = [NSArray arrayWithObjects:actionParam, idParam, nil];
     TT_RELEASE_SAFELY(actionParam);
     TT_RELEASE_SAFELY(idParam);
@@ -173,7 +173,7 @@
     TT_RELEASE_SAFELY(actionParam);
     
     OARequestParameter *idParam = [[OARequestParameter alloc] initWithName:@"id"
-                                                                     value:[NSString stringWithFormat:@"%d",self.lid]];
+                                                                     value:[NSString stringWithFormat:@"%lld",self.lid]];
     [params addObject:idParam];
     TT_RELEASE_SAFELY(idParam);
     
@@ -197,7 +197,7 @@
     TT_RELEASE_SAFELY(actionParam);
     
     OARequestParameter *idParam = [[OARequestParameter alloc] initWithName:@"id"
-                                                                     value:[NSString stringWithFormat:@"%d",self.lid]];
+                                                                     value:[NSString stringWithFormat:@"%lld",self.lid]];
     [params addObject:idParam];
     TT_RELEASE_SAFELY(idParam);
     
@@ -226,7 +226,7 @@
     TT_RELEASE_SAFELY(actionParam);
     
     OARequestParameter *idParam = [[OARequestParameter alloc] initWithName:@"id"
-                                                                     value:[NSString stringWithFormat:@"%d",self.lid]];
+                                                                     value:[NSString stringWithFormat:@"%lld",self.lid]];
     [params addObject:idParam];
     TT_RELEASE_SAFELY(idParam);
     
@@ -268,7 +268,7 @@
     TT_RELEASE_SAFELY(actionParam);
     
     OARequestParameter *idParam = [[OARequestParameter alloc] initWithName:@"id"
-                                                                     value:[NSString stringWithFormat:@"%d",self.lid]];
+                                                                     value:[NSString stringWithFormat:@"%lld",self.lid]];
     [params addObject:idParam];
     TT_RELEASE_SAFELY(idParam);
     
@@ -312,7 +312,7 @@
     TT_RELEASE_SAFELY(actionParam);
     
     OARequestParameter *idParam = [[OARequestParameter alloc] initWithName:@"id"
-                                                                     value:[NSString stringWithFormat:@"%d",self.lid]];
+                                                                     value:[NSString stringWithFormat:@"%lld",self.lid]];
     [params addObject:idParam];
     TT_RELEASE_SAFELY(idParam);
     
@@ -340,7 +340,7 @@
     TT_RELEASE_SAFELY(actionParam);
     
     OARequestParameter *idParam = [[OARequestParameter alloc] initWithName:@"id"
-                                                                     value:[NSString stringWithFormat:@"%d",self.lid]];
+                                                                     value:[NSString stringWithFormat:@"%lld",self.lid]];
     [params addObject:idParam];
     TT_RELEASE_SAFELY(idParam);
     
@@ -357,15 +357,15 @@
 
 /////////////////////////////////////////////////////////////////////////////////////
 
-- (void) acceptToTopic:(int) topicLid {
+- (void) acceptToTopic:(long) topicLid {
     [self acceptToTopic:topicLid andSharers:nil];
 }
 
-- (void) acceptToTopic:(int) topicLid andSharersArray:(NSArray*) sharers {
+- (void) acceptToTopic:(long) topicLid andSharersArray:(NSArray*) sharers {
     [self acceptToTopic:topicLid andSharers:[SISharer getSharerFragmentFor:sharers]];
 }
 
-- (void) acceptToTopic:(int) topicLid andSharers:(NSString*) shareOn {
+- (void) acceptToTopic:(long) topicLid andSharers:(NSString*) shareOn {
     NSMutableArray *params = [[[NSMutableArray alloc] init] autorelease];
     
     OARequestParameter *actionParam = [[OARequestParameter alloc] initWithName:@"action"
@@ -374,13 +374,13 @@
     TT_RELEASE_SAFELY(actionParam);
     
     OARequestParameter *idParam = [[OARequestParameter alloc] initWithName:@"id"
-                                                                         value:[NSString stringWithFormat:@"%d",self.lid]];
+                                                                         value:[NSString stringWithFormat:@"%lld",self.lid]];
     [params addObject:idParam];
     TT_RELEASE_SAFELY(idParam);
     
     
     OARequestParameter *topicId = [[OARequestParameter alloc] initWithName:@"topicId"
-                                                                     value:[NSString stringWithFormat:@"%d",topicLid]];
+                                                                     value:[NSString stringWithFormat:@"%lld",topicLid]];
     [params addObject:topicId];
     TT_RELEASE_SAFELY(topicId);
     
@@ -417,15 +417,15 @@
 
 /////////////////////////////////////////////////////////////////////////////////////
 
-- (void) createOn:(int) topicLid {
+- (void) createOn:(long long) topicLid {
     [self createOn:topicLid andSharers:nil];
 }
 
-- (void) createOn:(int)topicLid andSharersArray:(NSArray *)sharers {
+- (void) createOn:(long long)topicLid andSharersArray:(NSArray *)sharers {
     [self createOn:topicLid andSharers:[SISharer getSharerFragmentFor:sharers]];
 }
 
-- (void) createOn:(int) topicLid andSharers:(NSString*) shareOn {
+- (void) createOn:(long long) topicLid andSharers:(NSString*) shareOn {
     NSMutableArray *params = [[[NSMutableArray alloc] init] autorelease];
     
     OARequestParameter *actionParam = [[OARequestParameter alloc] initWithName:@"action"
@@ -435,14 +435,14 @@
     
     if (self.lid) {
         OARequestParameter *idParam = [[OARequestParameter alloc] initWithName:@"id"
-                                                                     value:[NSString stringWithFormat:@"%d",self.lid]];
+                                                                     value:[NSString stringWithFormat:@"%lld",self.lid]];
         [params addObject:idParam];
         TT_RELEASE_SAFELY(idParam);
     }
     
     
     OARequestParameter *topicId = [[OARequestParameter alloc] initWithName:@"topicId"
-                                                                     value:[NSString stringWithFormat:@"%d",topicLid]];
+                                                                     value:[NSString stringWithFormat:@"%lld",topicLid]];
     [params addObject:topicId];
     TT_RELEASE_SAFELY(topicId);
     
@@ -492,7 +492,7 @@
     TT_RELEASE_SAFELY(actionParam);
     
     OARequestParameter *idParam = [[OARequestParameter alloc] initWithName:@"id"
-                                                                     value:[NSString stringWithFormat:@"%d",self.lid]];
+                                                                     value:[NSString stringWithFormat:@"%lld",self.lid]];
     [params addObject:idParam];
     TT_RELEASE_SAFELY(idParam);
     
@@ -501,15 +501,15 @@
 
 /////////////////////////////////////////////////////////////////////////////////////
 
-- (void) forwardTo:(int) topicLid {
+- (void) forwardTo:(long long) topicLid {
     [self forwardTo:topicLid andSharers:nil];
 }
 
-- (void) forwardTo:(int)topicLid andSharersArray:(NSArray *)sharers {
+- (void) forwardTo:(long long)topicLid andSharersArray:(NSArray *)sharers {
     [self forwardTo:topicLid andSharers:[SISharer getSharerFragmentFor:sharers]];
 }
 
-- (void) forwardTo:(int) topicLid andSharers:(NSString*) shareOn {
+- (void) forwardTo:(long long) topicLid andSharers:(NSString*) shareOn {
     NSMutableArray *params = [[[NSMutableArray alloc] init] autorelease];
     
     OARequestParameter *actionParam = [[OARequestParameter alloc] initWithName:@"action"
@@ -518,13 +518,13 @@
     TT_RELEASE_SAFELY(actionParam);
     
     OARequestParameter *idParam = [[OARequestParameter alloc] initWithName:@"id"
-                                                                     value:[NSString stringWithFormat:@"%d",self.lid]];
+                                                                     value:[NSString stringWithFormat:@"%lld",self.lid]];
     [params addObject:idParam];
     TT_RELEASE_SAFELY(idParam);
     
     
     OARequestParameter *topicId = [[OARequestParameter alloc] initWithName:@"topicId"
-                                                                     value:[NSString stringWithFormat:@"%d",topicLid]];
+                                                                     value:[NSString stringWithFormat:@"%lld",topicLid]];
     [params addObject:topicId];
     TT_RELEASE_SAFELY(topicId);
     

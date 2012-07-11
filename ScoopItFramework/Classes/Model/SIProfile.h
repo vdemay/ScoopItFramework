@@ -15,7 +15,7 @@
 @interface SIProfile : SIModel {
     SIUser *_user;
     SIStats *_stats;
-    int lid;
+    long long lid;
     
     
     int nbCuratedPost;
@@ -26,7 +26,7 @@
 }
 @property (nonatomic, retain) SIUser* user;
 @property (nonatomic, retain) SIStats* stats;
-@property (nonatomic) int lid;
+@property (nonatomic) long long lid;
 @property (nonatomic) BOOL getCuratedTopics;
 @property (nonatomic) BOOL getFollowedTopics;
 

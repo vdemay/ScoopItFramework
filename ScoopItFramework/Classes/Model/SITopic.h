@@ -24,7 +24,7 @@ typedef enum actions_topics {
 } TopicAction;
 
 @interface SITopic : SIModel {
-	int lid;
+	long long lid;
 	NSString* imageUrl;
 	NSString* smallImageUrl;
 	NSString* mediumImageUrl;
@@ -49,7 +49,7 @@ typedef enum actions_topics {
     id<SITopicActionDelegate> actionDelegate;
 	
 }
-@property (nonatomic) int lid;
+@property (nonatomic) long long lid;
 @property (nonatomic, retain) NSString* imageUrl;
 @property (nonatomic, retain) NSString* smallImageUrl;
 @property (nonatomic, retain) NSString* mediumImageUrl;
@@ -74,7 +74,7 @@ typedef enum actions_topics {
 @property (nonatomic, assign) id<SITopicActionDelegate> actionDelegate;
 
 
--(id) init:(SIScoopIt*)_scoopIt withLid:(int)_lid;
+-(id) init:(SIScoopIt*)_scoopIt withLid:(long long)_lid;
 
 -(void) getFromDictionary:(NSDictionary*) dic;
 

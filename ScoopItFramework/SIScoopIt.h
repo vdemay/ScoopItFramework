@@ -34,7 +34,6 @@ typedef enum SIRequestType {
     SIRequestProfile,
 } SIRequestType;    
 
-
 @protocol SIScoopItAuthorizationDelegate;
 
 /////////////////////////////////////////////////////////////////////////////////////////

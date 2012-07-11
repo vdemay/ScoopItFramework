@@ -21,7 +21,7 @@
 
 -(void) getFromDictionary:(NSDictionary*) dic {
 	if (dic != nil) {
-		self.lid = [[dic objectForKey:@"id"] intValue];
+		self.lid = [[dic objectForKey:@"id"] longLongValue];
 		self.type = [dic objectForKey:@"type"];
 		self.description = [dic objectForKey:@"description"];
 		self.name = [dic objectForKey:@"name"];

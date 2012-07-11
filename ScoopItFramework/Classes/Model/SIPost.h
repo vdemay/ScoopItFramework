@@ -34,7 +34,7 @@ typedef enum actions {
 @protocol SIPostActionDelegate;
 
 @interface SIPost : SIModel {
-	int lid;
+	long long lid;
 	NSString* content;
 	NSString* title;
 	SISource* source;
@@ -70,7 +70,7 @@ typedef enum actions {
 	
 }
 
-@property (nonatomic) int lid;
+@property (nonatomic) long long lid;
 @property (nonatomic, retain) NSString* content;
 @property (nonatomic, retain) NSString* title;
 @property (nonatomic) int thanksCount;
@@ -98,21 +98,21 @@ typedef enum actions {
 @property (nonatomic, retain) NSArray* tags;
 @property (nonatomic, assign) id<SIPostActionDelegate> actionDelegate;
 
-- (id) init:(SIScoopIt*) _scoopIt withLid:(int) _lid;
+- (id) init:(SIScoopIt*) _scoopIt withLid:(long long) _lid;
 - (void) getFromDictionary:(NSDictionary*) dic;
 
 /*
  * Accept a Post into a Topic
  * Edit properties of the post before calling this method
  */
-- (void) acceptToTopic:(int) topicLid;
+- (void) acceptToTopic:(long long) topicLid;
 
 /*
  * Accept a Post into a Topic
  * Edit properties of the post before calling this method
  * You can also set sharers : see http://www.scoop.it/dev/api/1/types#sharer
  */
-- (void) acceptToTopic:(int) topicLid andSharers:(NSString *) shareOn;
+- (void) acceptToTopic:(long long) topicLid andSharers:(NSString *) shareOn;
 
 /*
  * Accept a Post into a Topic
@@ -120,7 +120,7 @@ typedef enum actions {
  * You can also set sharers via an Array
  * You can set a specific texy using property "specificText" in sharer it self
  */
-- (void) acceptToTopic:(int) topicLid andSharersArray:(NSArray *) sharers;
+- (void) acceptToTopic:(long long) topicLid andSharersArray:(NSArray *) sharers;
 
 /*
  * Refuse this post
@@ -139,7 +139,7 @@ typedef enum actions {
  * The post need to be populated first
  * Usefull information are : title / url / content / imageUrl 
  */
-- (void) createOn:(int) topicLid;
+- (void) createOn:(long long) topicLid;
 
 /*
  * Create this post from scratch
@@ -148,7 +148,7 @@ typedef enum actions {
  * You can also set sharers via an Array
  * You can set a specific texy using property "specificText" in sharer it self
  */
-- (void) createOn:(int) topicLid andSharersArray:(NSArray*) sharers;
+- (void) createOn:(long long) topicLid andSharersArray:(NSArray*) sharers;
 
 /*
  * Create this post from scratch
@@ -157,14 +157,14 @@ typedef enum actions {
  * topic
  * You can also set sharers : see http://www.scoop.it/dev/api/1/types#sharer
  */
-- (void) createOn:(int) topicLid andSharers:(NSString *) sharerOn;
+- (void) createOn:(long long) topicLid andSharers:(NSString *) sharerOn;
 
 /*
  * Forward this post to another topic
  * this action is equivalent to Accept but to another
  * topic
  */
-- (void) forwardTo:(int) topicLid;
+- (void) forwardTo:(long long) topicLid;
 
 /*
  * Forward this post to another topic
@@ -173,7 +173,7 @@ typedef enum actions {
  * You can also set sharers via an Array
  * You can set a specific texy using property "specificText" in sharer it self
  */
-- (void) forwardTo:(int) topicLid andSharersArray:(NSArray *) sharers;
+- (void) forwardTo:(long long) topicLid andSharersArray:(NSArray *) sharers;
 
 /*
  * Forward this post to another topic
@@ -181,7 +181,7 @@ typedef enum actions {
  * topic
  * You can also set sharers : see http://www.scoop.it/dev/api/1/types#sharer
  */
-- (void) forwardTo:(int) topicLid andSharers:(NSString *) sharerOn;
+- (void) forwardTo:(long long) topicLid andSharers:(NSString *) sharerOn;
 
 
 /*

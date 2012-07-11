@@ -115,10 +115,10 @@ static SIScoopIt* sharedObj = nil;
 
 - (void) getAuthorizationWithKey:(NSString*)key andSecret:(NSString*) secret andDelegate:(id<SIScoopItAuthorizationDelegate>) delegate {
 	
-    self.key = key;
-    self.secret = secret;
+    self.key = [key retain];
+    self.secret = [secret retain];
 	
-    [self getAuthorizationWithKey:key andSecret:secret andDelegate:delegate];
+    [self getAuthorizationWithDelegate:delegate];
 
 }
 

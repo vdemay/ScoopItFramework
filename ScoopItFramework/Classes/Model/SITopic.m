@@ -45,7 +45,7 @@
 
 @synthesize actionDelegate;
 
-- (id) init:(SIScoopIt*) _scoopIt withLid:(int) _lid
+- (id) init:(SIScoopIt*) _scoopIt withLid:(long) _lid
 {
 	self = [super init];
 	if (self != nil) {
@@ -67,7 +67,7 @@
 }
 
 - (NSString*) generateUrl {
-	return [NSString stringWithFormat:@"%@api/1/topic?curated=%d&curable=%d&id=%d", BASE_URL, nbCuratedPost, nbCurablePost, self.lid];
+	return [NSString stringWithFormat:@"%@api/1/topic?curated=%d&curable=%d&id=%ld", BASE_URL, nbCuratedPost, nbCurablePost, self.lid];
 }
 - (void) populateModel:(NSDictionary*) dic {
 	NSDictionary* topicJson = [dic objectForKey:@"topic"];
@@ -77,7 +77,7 @@
 
 -(void) getFromDictionary:(NSDictionary*) dic {
 	if (dic != nil) {
-		self.lid = [[dic objectForKey:@"id"] intValue];
+		self.lid = [[dic objectForKey:@"id"] longLongValue];
 		self.imageUrl = [dic objectForKey:@"imageUrl"];
 		self.smallImageUrl = [dic objectForKey:@"smallImageUrl"];
 		self.mediumImageUrl = [dic objectForKey:@"mediumImageUrl"];
@@ -190,7 +190,7 @@
     TT_RELEASE_SAFELY(actionParam);
     
     OARequestParameter *idParam = [[OARequestParameter alloc] initWithName:@"id"
-                                                                      value:[NSString stringWithFormat:@"%d",self.lid]];
+                                                                      value:[NSString stringWithFormat:@"%lld",self.lid]];
     [params addObject:idParam];
     TT_RELEASE_SAFELY(idParam);
     
@@ -206,7 +206,7 @@
     TT_RELEASE_SAFELY(actionParam);
     
     OARequestParameter *idParam = [[OARequestParameter alloc] initWithName:@"id"
-                                                                     value:[NSString stringWithFormat:@"%d",self.lid]];
+                                                                     value:[NSString stringWithFormat:@"%lld",self.lid]];
     [params addObject:idParam];
     TT_RELEASE_SAFELY(idParam);
     

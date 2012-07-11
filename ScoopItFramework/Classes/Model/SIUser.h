@@ -13,7 +13,7 @@
 
 
 @interface SIUser : SIModel {
-	int lid;
+	long long lid;
 	NSString* name;
 	NSString* shortName;
 	NSString* bio;
@@ -30,7 +30,7 @@
     BOOL getCuratedTopics;
     BOOL getFollowedTopics;
 }
-@property (nonatomic) int lid;
+@property (nonatomic) long long lid;
 @property (nonatomic, retain) NSString* name;
 @property (nonatomic, retain) NSString* shortName;
 @property (nonatomic, retain) NSString* bio;
@@ -48,7 +48,7 @@
 
 -(void) getFromDictionary:(NSDictionary*) dic;
 
--(id) init:(SIScoopIt*)_scoopIt withLid:(int)_lid;
+-(id) init:(SIScoopIt*)_scoopIt withLid:(long long)_lid;
 -(id) initWithConnectedUser:(SIScoopIt*)_scoopIt;
 
 @end

@@ -22,7 +22,7 @@
 @synthesize getFollowedTopics;
 
 
--(id) init:(SIScoopIt*)_scoopIt withLid:(int)_lid {
+-(id) init:(SIScoopIt*)_scoopIt withLid:(long long)_lid {
 	self = [super init];
 	if (self != nil) {
 		self.scoopIt = _scoopIt;
@@ -46,7 +46,7 @@
 
 - (NSString*) generateUrl {
     NSString *url = nil;
-    url =  [NSString stringWithFormat:@"%@api/1/profile?id=%d", BASE_URL, self.lid];
+    url =  [NSString stringWithFormat:@"%@api/1/profile?id=%lld", BASE_URL, self.lid];
          
     url = [NSString stringWithFormat:@"%@&curated=%d&curable=%d", url, self.nbCuratedPost, self.nbCurablePost];
     

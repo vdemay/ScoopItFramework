@@ -31,7 +31,7 @@
 
 
 
--(id) init:(SIScoopIt*)_scoopIt withLid:(int)_lid {
+-(id) init:(SIScoopIt*)_scoopIt withLid:(long long)_lid {
 	self = [super init];
 	if (self != nil) {
 		self.scoopIt = _scoopIt;
@@ -69,7 +69,7 @@
 - (NSString*) generateUrl {
     NSString *url = nil;
     if (!connectedUser) {
-        url =  [NSString stringWithFormat:@"%@api/1/profile?id=%d", BASE_URL, self.lid];
+        url =  [NSString stringWithFormat:@"%@api/1/profile?id=%lld", BASE_URL, self.lid];
     } else {
         url =  [NSString stringWithFormat:@"%@api/1/profile?1=1", BASE_URL];
     }
@@ -92,7 +92,7 @@
 
 -(void) getFromDictionary:(NSDictionary*) dic {
 	if (dic != nil) {
-		self.lid = [[dic objectForKey:@"id"] intValue];
+		self.lid = [[dic objectForKey:@"id"] longLongValue];
 		self.name = [dic objectForKey:@"name"];
 		self.shortName = [dic objectForKey:@"shortName"];
 		self.bio = [dic objectForKey:@"bio"];
