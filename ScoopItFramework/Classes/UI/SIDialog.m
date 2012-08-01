@@ -369,7 +369,7 @@ static CGFloat kBorderWidth = 10;
   if ([[url absoluteString] hasPrefix:@"http://si.ok"]) {
 	[self dialogDidSucceed:url];
     return NO;
-  } else if (navigationType == UIWebViewNavigationTypeLinkClicked) {
+  } /*else if (navigationType == UIWebViewNavigationTypeLinkClicked) {
     if ([_delegate respondsToSelector:@selector(dialog:shouldOpenURLInExternalBrowser:)]) {
       if (![_delegate dialog:self shouldOpenURLInExternalBrowser:url]) {
         return NO;
@@ -378,7 +378,7 @@ static CGFloat kBorderWidth = 10;
     
     [[UIApplication sharedApplication] openURL:request.URL];
     return NO;
-  }
+  }*/
   return YES;
 }
 

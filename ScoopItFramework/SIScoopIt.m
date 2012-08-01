@@ -196,7 +196,7 @@ static SIScoopIt* sharedObj = nil;
 }
 
 - (BOOL)dialog:(SIDialog*)dialog shouldOpenURLInExternalBrowser:(NSURL*)url {
-	return YES;
+    return NO;
 }
 
 
