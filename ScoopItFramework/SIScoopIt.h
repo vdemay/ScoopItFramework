@@ -41,6 +41,7 @@ typedef enum SIRequestType {
 @interface SIScoopIt : NSObject<SIDialogDelegate> {
 	
 	UIWebView* _loginPopup;
+    UIActivityIndicatorView* _spinner;
 	
 	NSString* _key;
 	NSString* _secret;

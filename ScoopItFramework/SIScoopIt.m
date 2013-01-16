@@ -78,6 +78,21 @@ static SIScoopIt* sharedObj = nil;
 
 
 - (void) getAuthorizationWithDelegate:(id<SIScoopItAuthorizationDelegate>) delegate {
+    //add a spinner
+    _spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:
+                UIActivityIndicatorViewStyleWhiteLarge];
+    _spinner.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin | 
+    UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin;
+    
+    UIWindow* window = [UIApplication sharedApplication].keyWindow;
+    if (!window) {
+        window = [[UIApplication sharedApplication].windows objectAtIndex:0];
+    }
+    [window addSubview:_spinner];
+    _spinner.center = window.center;
+    [_spinner startAnimating];
+    _spinner.hidden = NO;
+    
     _authorizationDelegate = delegate;
 	//try to get in the keychain
 	_accessToken = [[OAToken alloc] initWithUserDefaultsUsingServiceProviderName:@"SIAPP" prefix:@"scoop.it"];
@@ -135,6 +150,9 @@ static SIScoopIt* sharedObj = nil;
 }
 
 - (void)requestTokenTicket:(OAServiceTicket *)ticket didFinishWithData:(NSData *)data {
+    [_spinner stopAnimating];
+    _spinner.hidden = YES;
+    [_spinner removeFromSuperview];
 	if (ticket.didSucceed) {
 		NSString *responseBody = [[NSString alloc] initWithData:data
 													   encoding:NSUTF8StringEncoding];
@@ -150,6 +168,10 @@ static SIScoopIt* sharedObj = nil;
 	}
 }
 - (void)requestTokenTicket:(OAServiceTicket *)ticket didFailWithError:(NSError *)error {
+    [_spinner stopAnimating];
+    _spinner.hidden = YES;
+    [_spinner removeFromSuperview];
+    
 	[_authorizationDelegate scoopIt:self authenticationReturned:NO];
 }
 
