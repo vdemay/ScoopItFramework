@@ -321,10 +321,9 @@ static CGFloat kBorderWidth = 10;
     [self addSubview:_webView];
 
     _spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:
-      UIActivityIndicatorViewStyleWhiteLarge];
-    _spinner.autoresizingMask =
-      UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin
-      | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+      UIActivityIndicatorViewStyleGray];
+    _spinner.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin
+      | UIViewAutoresizingFlexibleRightMargin;
     [self addSubview:_spinner];
   }
   return self;
@@ -366,7 +365,7 @@ static CGFloat kBorderWidth = 10;
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request
     navigationType:(UIWebViewNavigationType)navigationType {
 	NSURL* url = request.URL;
-    NSLog([url absoluteString]);
+    //NSLog([url absoluteString]);
   if ([[url absoluteString] hasPrefix:@"http://si.ok"]) {
 	[self dialogDidSucceed:url];
     return NO;
@@ -380,6 +379,9 @@ static CGFloat kBorderWidth = 10;
     [[UIApplication sharedApplication] openURL:request.URL];
     return NO;
   }*/
+  [_spinner sizeToFit];
+  [_spinner startAnimating];
+  _spinner.center = CGPointMake(_titleLabel.right + 5, _titleLabel.top + 13);
   return YES;
 }
 
@@ -513,7 +515,7 @@ static CGFloat kBorderWidth = 10;
 
   [_spinner sizeToFit];
   [_spinner startAnimating];
-  _spinner.center = _webView.center;
+   _spinner.center = CGPointMake(_titleLabel.right + 5, _titleLabel.top + 13);
 
   UIWindow* window = [UIApplication sharedApplication].keyWindow;
   if (!window) {
