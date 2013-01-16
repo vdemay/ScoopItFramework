@@ -28,6 +28,9 @@
 @synthesize nbCurablePost;
 @synthesize getCuratedTopics;
 @synthesize getFollowedTopics;
+@synthesize getTags;
+@synthesize getStats;
+@synthesize getCreator;
 
 
 
@@ -39,6 +42,9 @@
 		self.connectedUser = NO;
         self.getCuratedTopics = YES;
         self.getFollowedTopics = YES;
+        self.getCreator = YES;
+        self.getTags = YES;
+        self.getStats = YES;
 	}
 	return self;
 }
@@ -62,6 +68,9 @@
 		self.connectedUser = YES;
         self.getCuratedTopics = YES;
         self.getFollowedTopics = YES;
+        self.getCreator = YES;
+        self.getTags = YES;
+        self.getStats = YES;
 	}
 	return self;
 }
@@ -81,6 +90,15 @@
     }
     if (!getFollowedTopics) {
         url = [NSString stringWithFormat:@"%@&getFollowedTopics=false", url];
+    }
+    if (!getCreator) {
+        url = [NSString stringWithFormat:@"%@&getCreator=false", url];
+    }
+    if (!getStats) {
+        url = [NSString stringWithFormat:@"%@&getStats=false", url];
+    }
+    if (!getTags) {
+        url = [NSString stringWithFormat:@"%@&getTags=false", url];
     }
     
     return url;

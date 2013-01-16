@@ -357,15 +357,15 @@
 
 /////////////////////////////////////////////////////////////////////////////////////
 
-- (void) acceptToTopic:(long) topicLid {
+- (void) acceptToTopic:(long long) topicLid {
     [self acceptToTopic:topicLid andSharers:nil];
 }
 
-- (void) acceptToTopic:(long) topicLid andSharersArray:(NSArray*) sharers {
+- (void) acceptToTopic:(long long) topicLid andSharersArray:(NSArray*) sharers {
     [self acceptToTopic:topicLid andSharers:[SISharer getSharerFragmentFor:sharers]];
 }
 
-- (void) acceptToTopic:(long) topicLid andSharers:(NSString*) shareOn {
+- (void) acceptToTopic:(long long) topicLid andSharers:(NSString*) shareOn {
     NSMutableArray *params = [[[NSMutableArray alloc] init] autorelease];
     
     OARequestParameter *actionParam = [[OARequestParameter alloc] initWithName:@"action"

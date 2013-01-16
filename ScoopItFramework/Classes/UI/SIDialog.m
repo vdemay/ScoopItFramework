@@ -366,6 +366,7 @@ static CGFloat kBorderWidth = 10;
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request
     navigationType:(UIWebViewNavigationType)navigationType {
 	NSURL* url = request.URL;
+    NSLog([url absoluteString]);
   if ([[url absoluteString] hasPrefix:@"http://si.ok"]) {
 	[self dialogDidSucceed:url];
     return NO;
@@ -392,9 +393,28 @@ static CGFloat kBorderWidth = 10;
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
   // 102 == WebKitErrorFrameLoadInterruptedByPolicyChange
+    [self getErrors:error];
   if (!([error.domain isEqualToString:@"WebKitErrorDomain"] && error.code == 102)) {
     [self dismissWithError:error animated:YES];
   }
+}
+-(void)getErrors:(NSError *)error {
+    if (!error)
+        return;
+    
+    NSLog(@"Failed to %@", [error localizedDescription]);
+   /* NSArray* detailedErrors = [[error userInfo] objectForKey:NSDetailedErrorsKey];
+    if(detailedErrors && [detailedErrors count] > 0) 
+    {
+        for(NSError* detailedError in detailedErrors) 
+        {
+            NSLog(@"DetailedError: %@", [detailedError userInfo]);
+        }
+    }
+    else
+    {
+        NSLog(@"%@", [error userInfo]);
+    }*/
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////

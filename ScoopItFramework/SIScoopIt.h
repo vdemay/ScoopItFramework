@@ -24,9 +24,9 @@
 #import "SIStats.h"
 #import "SIProfile.h"
 
-
 #define BASE_URL @"http://www.scoop.it/"
-//#define BASE_URL @"http://10.0.0.138:8888/"
+//#define BASE_URL @"https://qa.scoop.it/"
+//#define BASE_URL @"http://10.9.2.26:8888/"
 
 
 typedef enum SIRequestType {
@@ -51,6 +51,8 @@ typedef enum SIRequestType {
 	OAToken* _accessToken;
     //the connected user
     SIUser* _connectedUser;
+    //the connected profile
+    SIProfile* _connectedProfile;
 	
 	//delegate for authorization
 	id<SIScoopItAuthorizationDelegate> _authorizationDelegate;
@@ -71,7 +73,7 @@ typedef enum SIRequestType {
 //MODEL GET
 - (SITopic*) getTopic:(int)lid;
 
-// This method does not create an object each time. It will reacte object on 
+// This method does not create an object each time. It will create object on 
 // demand. In all cases, the user is not loaded from network. user method is in charge
 // of the loading. If the object is not loaded all property will be nil
 - (SIUser*) getConnectedUser;
@@ -79,6 +81,7 @@ typedef enum SIRequestType {
 - (SIUser*) getUser:(int)lid;
 
 - (SIProfile*) getProfile:(int)lid;
+- (SIProfile*) getConnectedProfile;
 
 - (SICompilation*) getCompilation;
 

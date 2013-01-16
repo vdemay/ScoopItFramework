@@ -20,7 +20,7 @@
 @synthesize nbCurablePost;
 @synthesize getCuratedTopics;
 @synthesize getFollowedTopics;
-
+@synthesize connectedUser;
 
 -(id) init:(SIScoopIt*)_scoopIt withLid:(long long)_lid {
 	self = [super init];
@@ -43,11 +43,25 @@
     [self invalidate:YES];
 }
 
+-(id) initWithConnectedUser:(SIScoopIt*)_scoopIt {
+    self = [super init];
+	if (self != nil) {
+		self.scoopIt = _scoopIt;
+		self.connectedUser = YES;
+        self.getCuratedTopics = NO;
+        self.getFollowedTopics = NO;
+	}
+	return self;
+}
 
 - (NSString*) generateUrl {
     NSString *url = nil;
-    url =  [NSString stringWithFormat:@"%@api/1/profile?id=%lld", BASE_URL, self.lid];
-         
+    if (!connectedUser) {
+        url =  [NSString stringWithFormat:@"%@api/1/profile?id=%lld", BASE_URL, self.lid];
+    } else {
+        url =  [NSString stringWithFormat:@"%@api/1/profile?1=1", BASE_URL];
+    }
+    
     url = [NSString stringWithFormat:@"%@&curated=%d&curable=%d", url, self.nbCuratedPost, self.nbCurablePost];
     
     if (!getCuratedTopics) {

@@ -29,6 +29,9 @@
     
     BOOL getCuratedTopics;
     BOOL getFollowedTopics;
+    BOOL getStats;
+    BOOL getTags;
+    BOOL getCreator;
 }
 @property (nonatomic) long long lid;
 @property (nonatomic, retain) NSString* name;
@@ -40,6 +43,9 @@
 @property (nonatomic, retain) NSArray* followedTopics;
 @property (nonatomic) BOOL getCuratedTopics;
 @property (nonatomic) BOOL getFollowedTopics;
+@property (nonatomic) BOOL getStats;
+@property (nonatomic) BOOL getTags;
+@property (nonatomic) BOOL getCreator;
 @property (nonatomic) BOOL connectedUser;
 
 @property (nonatomic) int nbCuratedPost;

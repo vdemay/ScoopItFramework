@@ -99,9 +99,9 @@
 }
 
 - (void)requestModel:(OAServiceTicket *)ticket didFailWithError:(NSError *)error {
-    
     _loading = NO;
 	[self didFailLoadWithError:error];
+    NSLog(@"%@",[error localizedDescription]);
 }
 
 - (void)dealloc {

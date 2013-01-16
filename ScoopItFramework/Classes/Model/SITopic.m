@@ -45,7 +45,7 @@
 
 @synthesize actionDelegate;
 
-- (id) init:(SIScoopIt*) _scoopIt withLid:(long) _lid
+- (id) init:(SIScoopIt*) _scoopIt withLid:(long long) _lid
 {
 	self = [super init];
 	if (self != nil) {
@@ -67,7 +67,7 @@
 }
 
 - (NSString*) generateUrl {
-	return [NSString stringWithFormat:@"%@api/1/topic?curated=%d&curable=%d&id=%ld", BASE_URL, nbCuratedPost, nbCurablePost, self.lid];
+	return [NSString stringWithFormat:@"%@api/1/topic?curated=%d&curable=%d&id=%lld", BASE_URL, nbCuratedPost, nbCurablePost, self.lid];
 }
 - (void) populateModel:(NSDictionary*) dic {
 	NSDictionary* topicJson = [dic objectForKey:@"topic"];

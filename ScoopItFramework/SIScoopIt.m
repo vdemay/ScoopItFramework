@@ -238,7 +238,9 @@ static SIScoopIt* sharedObj = nil;
 
 - (SIUser*) getConnectedUser {
     if (self.accessToken != nil) {
-        if (_connectedUser == nil) {
+        if (_connectedUser == nil && _connectedProfile != nil) {
+            return _connectedProfile.user;
+        } else {
             _connectedUser = [[[SIUser alloc] initWithConnectedUser:self] retain];
         }
         return _connectedUser;
@@ -252,6 +254,16 @@ static SIScoopIt* sharedObj = nil;
 
 - (SIProfile*) getProfile:(int)lid {
     return [[SIProfile alloc] init:self withLid:lid];
+}
+
+- (SIProfile*) getConnectedProfile {
+    if (self.accessToken != nil) {
+        if (_connectedProfile == nil) {
+            _connectedProfile = [[[SIProfile alloc] initWithConnectedUser:self] retain];
+        }
+        return _connectedProfile;
+    }
+    return nil;
 }
 
 - (SICompilation*) getCompilation {
