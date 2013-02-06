@@ -76,7 +76,6 @@ static SIScoopIt* sharedObj = nil;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
 - (void) getAuthorizationWithDelegate:(id<SIScoopItAuthorizationDelegate>) delegate {
     //add a spinner
     _spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:
@@ -260,10 +259,12 @@ static SIScoopIt* sharedObj = nil;
 
 - (SIUser*) getConnectedUser {
     if (self.accessToken != nil) {
-        if (_connectedUser == nil && _connectedProfile != nil) {
-            return _connectedProfile.user;
-        } else {
-            _connectedUser = [[[SIUser alloc] initWithConnectedUser:self] retain];
+        if (_connectedUser == nil) {
+            if (_connectedProfile != nil) {
+                return _connectedProfile.user;
+            } else {
+                _connectedUser = [[[SIUser alloc] initWithConnectedUser:self] retain];
+            }
         }
         return _connectedUser;
     }

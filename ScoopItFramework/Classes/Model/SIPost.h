@@ -11,6 +11,7 @@
 #import "SIScoopIt.h"
 #import "SISharer.h"
 
+
 typedef enum actions {
     PostActionPrepare = 0,
     PostActionCreate,
@@ -36,6 +37,7 @@ typedef enum actions {
 @interface SIPost : SIModel {
 	long long lid;
 	NSString* content;
+    NSString* insight;
 	NSString* title;
 	SISource* source;
 	NSString* url;
@@ -72,6 +74,7 @@ typedef enum actions {
 
 @property (nonatomic) long long lid;
 @property (nonatomic, retain) NSString* content;
+@property (nonatomic, retain) NSString* insight;
 @property (nonatomic, retain) NSString* title;
 @property (nonatomic) int thanksCount;
 @property (nonatomic, retain) SISource* source;

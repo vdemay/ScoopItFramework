@@ -22,6 +22,7 @@
 
 @synthesize lid;
 @synthesize content;
+@synthesize insight;
 @synthesize title;
 @synthesize thanksCount;
 @synthesize source;
@@ -64,6 +65,7 @@
 	if (dic != nil) {
 		self.lid = [[dic objectForKey:@"id"] longLongValue];
 		self.content = [dic objectForKey:@"content"];
+        self.insight = [dic objectForKey:@"insight"];
 		self.title = [dic objectForKey:@"title"];
 		self.thanksCount = [[dic objectForKey:@"thanksCount"] intValue];
 		self.source = [[[SISource alloc] init] autorelease] ;
@@ -105,6 +107,9 @@
 {
 	[content release];
 	content = nil;
+    
+    [insight release];
+	insight = nil;
     
 	[title release];
 	title = nil;
@@ -391,6 +396,14 @@
         [params addObject:titleParam];
         TT_RELEASE_SAFELY(titleParam);
     }
+    
+    if (self.insight) {
+        OARequestParameter *titleParam = [[OARequestParameter alloc] initWithName:@"insight"
+                                                                            value:self.insight];
+        [params addObject:titleParam];
+        TT_RELEASE_SAFELY(titleParam);
+    }
+    
     if (self.content) {
         OARequestParameter *contentParam = [[OARequestParameter alloc] initWithName:@"content"
                                                                           value:self.content];
