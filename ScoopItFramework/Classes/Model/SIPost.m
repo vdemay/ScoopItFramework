@@ -246,6 +246,12 @@
     [params addObject:contentParam];
     TT_RELEASE_SAFELY(contentParam);
     
+    OARequestParameter *insightParam = [[OARequestParameter alloc] initWithName:@"insight"
+                                                                            value:self.insight];
+    [params addObject:insightParam];
+    TT_RELEASE_SAFELY(insightParam);
+    
+    
     if (self.imageUrl == nil) {
         self.imageUrl = @"";
     }
@@ -398,10 +404,10 @@
     }
     
     if (self.insight) {
-        OARequestParameter *titleParam = [[OARequestParameter alloc] initWithName:@"insight"
+        OARequestParameter *insightParam = [[OARequestParameter alloc] initWithName:@"insight"
                                                                             value:self.insight];
-        [params addObject:titleParam];
-        TT_RELEASE_SAFELY(titleParam);
+        [params addObject:insightParam];
+        TT_RELEASE_SAFELY(insightParam);
     }
     
     if (self.content) {
@@ -477,6 +483,12 @@
                                                                                value:self.imageUrl];
         [params addObject:imageUrlParam];
         TT_RELEASE_SAFELY(imageUrlParam);
+    }
+    if (self.insight) {
+        OARequestParameter *insightParam = [[OARequestParameter alloc] initWithName:@"insight"
+                                                                               value:self.insight];
+        [params addObject:insightParam];
+        TT_RELEASE_SAFELY(insightParam);
     }
     if (self.url) {
         OARequestParameter *imageUrlParam = [[OARequestParameter alloc] initWithName:@"url"
